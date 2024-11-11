@@ -3,6 +3,7 @@ import numpy as np
 class Variable:#定义深度学习的变量类
     def __init__(self, data):
         self.data = data
+        self.grad = None
 
 if __name__ == '__main__':
 #通过numpy.array测试

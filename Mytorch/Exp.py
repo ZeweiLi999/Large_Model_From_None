@@ -7,6 +7,12 @@ class Exp(Function):
     def forward(self,x):
         return np.exp(x)
 
+    def backward(self,gy):
+        x = self.input.data
+        #np.exp(x)是导数
+        gx = np.exp(x) * gy
+        return gx
+
 if __name__ == '__main__':
     x = np.array(20)
     f = Exp()
