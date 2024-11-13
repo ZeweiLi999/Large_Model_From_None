@@ -1,8 +1,8 @@
 #用于测试各函数的文件
 import numpy as np
-from Variable import Variable
-from Square import Square
-from Exp import Exp
+from Core.Variable import Variable
+from Core.Square import Square
+from Core.Exp import Exp
 
 if __name__ == "__main__":
     A = Square()
