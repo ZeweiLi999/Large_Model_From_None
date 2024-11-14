@@ -1,6 +1,6 @@
 import numpy as np
-from Variable import Variable
-from Function import Function
+from .Variable import Variable
+from .Function import Function
 
 class Add(Function):
     def forward(self,x0,x1):
