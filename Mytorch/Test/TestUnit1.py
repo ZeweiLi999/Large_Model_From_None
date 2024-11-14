@@ -18,7 +18,7 @@ class SquareTest(unittest.TestCase):
         x = Variable(np.array(2.0))
         y = square(x)
         expected = np.array(4.0)
-        self.assertEquals(y.data,expected)
+        self.assertEqual(y.data,expected)
 
     #反向传播的手动测试
     def test_backward(self):
@@ -26,7 +26,7 @@ class SquareTest(unittest.TestCase):
         y = square(x)
         y.backward()
         expected = np.array(6.0) #平方的导数是2 * x
-        self.assertEquals(x.grad,expected)
+        self.assertEqual(x.grad,expected)
 
     #利用数值微分的反向传播自动测试
     def test_gradient_check(self):
