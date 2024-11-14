@@ -1,5 +1,5 @@
 import numpy as np
-from Variable import Variable
+from .Variable import Variable
 
 def as_array(x):
     #写这个函数是因为numpy特性不一定返回ndarray，也可能返回一个标量，要通过检测
