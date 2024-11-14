@@ -15,14 +15,19 @@ class Variable:#定义深度学习的变量类
         self.creator = func
 
     def backward(self):
-        if self.grad is None:       #如果没有梯度，就不用在外部创建梯度了
+        if self.grad is None:       #如果没有导数，就不用在外部创建梯度了
             self.grad = np.ones_like(self.data)
 
         funcs = [self.creator] #1.创造循环的函数列表
         while funcs:
             f = funcs.pop()     #2.获取变量的创造函数
-            x,y = f.input,f.output  #3.获取函数的输入和输出
-            x.grad = f.backward(y.grad)  #4.将反向传播的链条推进一步
+            gys = [output.grad for output in f.outputs]#3.获取函数的输出的所有导数
+            gxs = f.backward(*gys) #3.将反向传播的链条推进一步，获取所有输入的导数
+            if not isinstance(gxs,tuple):
+                gxs = (gxs,)
+
+            for x, gx in zip(f.inputs, gxs):  #4.更新变量的梯度
+                x.grad = gx
             if x.creator is not None:
                 funcs.append(x.creator)
         #如果没有creator，反向传播到此结束
