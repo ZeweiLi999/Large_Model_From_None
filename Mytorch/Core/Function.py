@@ -16,6 +16,8 @@ class Function:
         if not isinstance(ys,tuple):    #对于非元组情况的额外处理
             ys = (ys,)
         outputs = [Variable(as_array(y)) for y in ys]
+
+        self.generation = max([x.generation for x in inputs])
         for output in outputs:
             output.set_creator(self)#让输出变量保留创造者信息
                                     #这句是关键，是把Function对象传入记录了
