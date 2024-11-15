@@ -9,7 +9,7 @@ def as_array(x):
 
 #这是基类Function函数，不写明具体用法，继承使用
 class Function:
-    #接收一个Variable类型的变量作为输入
+    #接收多个Variable类型的变量作为输入
     def __call__(self,*inputs):
         xs = [x.data for x in inputs]
         ys = self.forward(*xs) #使用*号解包成单独的参数，传递给函数

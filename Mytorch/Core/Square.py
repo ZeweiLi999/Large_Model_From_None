@@ -9,6 +9,7 @@ class Square(Function):
         return x**2
 
     def backward(self,gy):
+        #平方函数只有一个ndarray，但是参数改成了inputs，取出第一个ndarray
         x = self.inputs[0].data
         #2*x是x的平方的导数
         gx = 2 * x * gy
@@ -18,7 +19,7 @@ def square(x):
     return Square()(x)
 
 if __name__ == '__main__':
-    x = Variable(np.array([2.0,1.0]))
-    y = square(x)
+    x0 = Variable(np.array([2.0,1.0]))
+    y = square(x0)
     y.backward()
-    print(x.grad)
+    print(x0.grad)
