@@ -9,13 +9,15 @@ def as_array(x):
 
 #这是基类Function函数，不写明具体用法，继承使用
 class Function:
-    #接收一个Variable类型的变量作为输入
+    #接收多个Variable类型的变量作为输入
     def __call__(self,*inputs):
         xs = [x.data for x in inputs]
         ys = self.forward(*xs) #使用*号解包成单独的参数，传递给函数
         if not isinstance(ys,tuple):    #对于非元组情况的额外处理
             ys = (ys,)
         outputs = [Variable(as_array(y)) for y in ys]
+
+        self.generation = max([x.generation for x in inputs])
         for output in outputs:
             output.set_creator(self)#让输出变量保留创造者信息
                                     #这句是关键，是把Function对象传入记录了
