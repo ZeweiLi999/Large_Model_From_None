@@ -3,3 +3,5 @@ channels:
   - defaults
 dependencies:
   - numpy
+  - memory_profiler
+  - weakref
