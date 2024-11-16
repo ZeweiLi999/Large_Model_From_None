@@ -36,7 +36,7 @@ class Variable:#定义深度学习的变量类
         add_func(self.creator)
         while funcs:
             f = funcs.pop()     #2.获取变量的创造函数
-            gys = [output.grad for output in f.outputs]#3.获取函数的输出的所有导数
+            gys = [output().grad for output in f.outputs]#3.获取函数的输出的所有导数,() 是 weakref.ref 对象的调用方法，用于返回被弱引用的对象。
             gxs = f.backward(*gys) #3.将反向传播的链条推进一步，获取所有输入的导数
             if not isinstance(gxs,tuple):
                 #改为元组类型便于后面的zip循环

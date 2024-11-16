@@ -1,3 +1,4 @@
+import weakref
 import numpy as np
 from .Variable import Variable
 
@@ -22,7 +23,7 @@ class Function:
             output.set_creator(self)#让输出变量保留创造者信息
                                     #这句是关键，是把Function对象传入记录了
         self.inputs = inputs        #保存输入的变量，可在反向传播中调用
-        self.outputs = outputs      #保留输出变量
+        self.outputs = [weakref.ref(output) for output in outputs]      #使用弱引用保留输出变量
         return outputs if len(outputs) > 1 else outputs[0]
         #如果列表中只有一个元素，则返回第一个元素，而非列表
 
