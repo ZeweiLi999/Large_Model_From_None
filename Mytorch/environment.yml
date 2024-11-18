@@ -3,4 +3,4 @@ channels:
   - defaults
 dependencies:
   - numpy
-  - memory_profiler
+  - memory_profiler=0.58.0
