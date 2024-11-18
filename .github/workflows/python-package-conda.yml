@@ -22,5 +22,5 @@ jobs:
         conda env update --file ./Mytorch/environment.yml --name base
     - name: Test with unittest
       run: |
-        cd Mytorch
+        cd LearnTorch
         python -m unittest discover -s Test -p "Test*.py"  
