@@ -5,3 +5,4 @@ dependencies:
   - numpy
   - memory_profiler
   - weakref
+  - contextlib
