@@ -1,6 +1,6 @@
 import unittest
 import numpy as np
-from Core.Variable import Variable
+from Core.VariableFunction import Variable
 from Core.Square import Square,square
 
 #数值微分，就是用很小值近似导数，结果准备用于反向传播的测试

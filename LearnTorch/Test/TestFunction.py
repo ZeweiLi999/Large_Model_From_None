@@ -1,10 +1,18 @@
 #用于测试各函数的文件
 import numpy as np
-from Core.Function import Function
-from Core.Variable import Variable
-from Core.Square import Square
+from memory_profiler import profile
+from Core.VariableFunction import Variable,Function,no_grad,Add
+from Core.Square import Square,square
 from Core.Exp import Exp
-from Core.Add import Add
+
+
+
+@profile
+def test_memory():
+    for i in range(10):
+        x = Variable(np.random.randn(10000))
+        y = square(square(square(x)))
+
 
 if __name__ == "__main__":
     A = Exp()
@@ -26,6 +34,10 @@ if __name__ == "__main__":
     assert y.creator.inputs[0].creator.inputs[0].creator == A
     assert y.creator.inputs[0].creator.inputs[0].creator.inputs[0] == x
 
+    test_memory()
+
+    with no_grad():
+        test_memory()
 
     generations = [2,0,1,4,2]
     funcs = []

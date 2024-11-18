@@ -1,6 +1,5 @@
 import numpy as np
-from .Variable import Variable
-from .Function import Function
+from .VariableFunction import Variable,Function
 
 #通过继承Function实现了平方函数
 

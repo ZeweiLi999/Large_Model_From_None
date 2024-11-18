@@ -1,0 +1,8 @@
+name: myenv
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - pip
+  - pip:
+      - memory_profiler==0.61.0
