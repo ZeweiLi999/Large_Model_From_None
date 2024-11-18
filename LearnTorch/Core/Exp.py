@@ -1,6 +1,5 @@
 import numpy as np
-from .Variable import Variable
-from .Function import Function
+from .VariableFunction import Variable,Function
 
 #就是调用np.exp,但是封装成Variable
 class Exp(Function):
