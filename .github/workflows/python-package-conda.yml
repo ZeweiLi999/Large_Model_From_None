@@ -19,7 +19,7 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda env update --file ./Mytorch/environment.yml --name base
+        conda env update --file ./LearnTorch/environment.yml --name base
     - name: Test with unittest
       run: |
         cd LearnTorch
