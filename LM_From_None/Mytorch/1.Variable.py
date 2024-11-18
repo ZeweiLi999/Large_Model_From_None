@@ -11,3 +11,4 @@ if __name__ == '__main__':
     print(x.data)
     x.data = np.array(2.0)
     print(x.data)
+
