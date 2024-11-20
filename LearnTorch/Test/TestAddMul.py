@@ -3,26 +3,32 @@ from Core.VariableFunction import Variable,add,mul
 
 
 if __name__ == "__main__":
-    x0 = Variable(np.array(2))
-    y0 = add(add(x0, x0), x0)
-    y0.backward()
-    print("y0.data", y0.data)
-    print("x0.grad", x0.grad)
+    print("不保留中间变量导数")
+    x0 = Variable(np.array(1.0))
+    x1 = Variable(np.array(1.0))
+    t = add(x0, x1)
+    y = add(x0, t)
+    y.backward()
+    print("y.grad, t.grad", y.grad, t.grad)
+    print("x0.grad, x1.grad", x0.grad, x1.grad)
 
+    print("保留中间变量导数")
     x0.cleargrad()
-    y1 = x0 + x0 +x0
+    x1.cleargrad()
+    x0 = Variable(np.array(1.0))
+    x1 = Variable(np.array(1.0))
+    t = add(x0, x1)
+    y = add(x0, t)
+    y.backward(retain_grad = True)
+    print("y.grad, t.grad", y.grad, t.grad)
+    print("x0.grad, x1.grad", x0.grad, x1.grad)
+
+    print("乘法测试")
+    x0.cleargrad()
+    x1 = add(x0, x0)
+    x2 = add(x0, x0)
+    y1 = mul(x1, x2)
     y1.backward()
-    print("y1.data", y1.data)
+    print("x1.grad, x2.grad", x1.grad, x2.grad)
     print("x0.grad", x0.grad)
 
-    x0.cleargrad()
-    y0 = mul(mul(x0, x0), x0)
-    y0.backward()
-    print("y0.data", y0.data)
-    print("x0.grad", x0.grad)
-
-    x0.cleargrad()
-    y1 = x0 * x0 * x0
-    y1.backward()
-    print("y1.data", y1.data)
-    print("x0.grad", x0.grad)
