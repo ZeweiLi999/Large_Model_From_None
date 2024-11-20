@@ -2,7 +2,24 @@ import numpy as np
 import weakref
 import contextlib
 
+
+class Config:   #用于决定是否启用反向传播的类
+    enable_backprop = True
+
+@contextlib.contextmanager #调用上下文的库
+def using_config(name, value):
+    old_value = getattr(Config, name)
+    setattr(Config, name, value)
+    try:
+        yield
+    finally:
+        setattr(Config, name, old_value)
+
+def no_grad(): #封装函数
+    return using_config('enable_backprop', False)
+
 class Variable:#定义深度学习的变量类
+    __array_priority__ = 200 # 大于0.0，运算符优先级就会大于ndarray
     def __init__(self, data, name = None):
         #鲁棒性检测，检测输入的是否是ndarray
         if data is not None:
@@ -10,7 +27,7 @@ class Variable:#定义深度学习的变量类
                 raise TypeError("{} is not supported\nOnly support ndarray".format(type(data)))
 
         self.data = data
-        self.name = None
+        self.name = name
         self.grad = None
         self.creator = None #变量和函数的连接，创建自己的函数
         self.generation = 0 #用于决定反向传播路径的顺序,初始化为0
@@ -37,14 +54,6 @@ class Variable:#定义深度学习的变量类
     def __len__(self):
         # 重载len函数，返回第一维度的元素数量
         return len(self.data)
-
-    def __mul__(self, other):
-        # 重载乘法函数
-        return mul(self, other)
-
-    def __add__(self,other):
-        # 重载加法函数
-        return add(self, other)
 
     def __repr__(self):
         # 重载输出函数，分行输出数字会对齐
@@ -100,21 +109,11 @@ class Variable:#定义深度学习的变量类
                     #不要保留各函数输出变量的导数
                     y().grad = None #因为y是weakref,必须要用y()访问
 
-class Config:   #用于决定是否启用反向传播的类
-    enable_backprop = True
-
-@contextlib.contextmanager #调用上下文的库
-def using_config(name, value):
-    old_value = getattr(Config, name)
-    setattr(Config, name, value)
-    try:
-        yield
-    finally:
-        setattr(Config, name, old_value)
-
-def no_grad(): #封装函数
-    return using_config('enable_backprop', False)
-
+#把传来的参数转化为Variable实例
+def as_variable(obj):
+    if isinstance(obj, Variable):
+        return obj
+    return Variable(obj)
 
 def as_array(x):
     #写这个函数是因为numpy特性不一定返回ndarray，也可能返回一个标量，要通过检测
@@ -126,6 +125,7 @@ def as_array(x):
 class Function:
     #接收多个Variable类型的变量作为输入
     def __call__(self,*inputs):
+        inputs = [as_variable(x) for x in inputs] #过一遍循环，把参数都转化为Variable
         xs = [x.data for x in inputs]
         ys = self.forward(*xs) #使用*号解包成单独的参数，传递给函数
         if not isinstance(ys,tuple):    #对于非元组情况的额外处理
@@ -142,10 +142,10 @@ class Function:
         return outputs if len(outputs) > 1 else outputs[0]
         #如果列表中只有一个元素，则返回第一个元素，而非列表
 
-    def forward(self,x):
+    def forward(self,xs):
         raise NotImplementedError()
 
-    def backward(self,gy):
+    def backward(self,gys):
         #输入：反向传播链条中上一步传播而来的导数乘积
         #输出：反向传播链条中进一步传播的导数乘积
         raise NotImplementedError()
@@ -160,6 +160,10 @@ class Add(Function):
         gx = 1 * gy
         return gx, gx
 
+def add(x0, x1):
+    x1 = as_array(x1) #因为self本身肯定是Variable，所以只要针对x1是标量的情况就可以了，是ndarray会在function变为Variable
+    return Add()(x0, x1)
+
 class Mul(Function):
     def forward(self, x0, x1):
         #前向传播
@@ -171,7 +175,85 @@ class Mul(Function):
         return gx0, gx1
 
 def mul(x0, x1):
+    x1 = as_array(x1)
     return Mul()(x0,x1)
 
-def add(x0, x1):
-    return Add()(x0, x1)
+class Neg(Function):
+    #取负函数
+    def forward(self,x):
+        return -x
+
+    def backward(self,gy):
+        gx = -1 * gy
+        return gx
+
+def neg(x):
+    return Neg()(x)
+
+class Sub(Function):
+    def forward(self, x0, x1):
+        y = x0 - x1
+        return y
+
+    def backward(self,gy):
+        gx0 = gy
+        gx1 = -1 * gy
+        return gx0, gx1
+
+def sub(x0, x1):
+    x1 = as_array(x1)
+    return Sub()(x0,x1)
+
+def rsub(x0, x1):
+    x1 = as_array(x1)
+    return Sub()(x1,x0) # 交换x1和x0，因为self是x0，是减数
+
+class Div(Function):
+    def forward(self, x0, x1):
+        y = x0 / x1
+        return y
+
+    def backward(self,gy):
+        x0, x1 = self.inputs[0].data, self.inputs[1].data
+        gx0 = gy / x1
+        gx1 = gy * (-x0 / x1 ** 2)
+        return gx0, gx1
+
+def div(x0, x1):
+    x1 = as_array(x1)
+    return Div()(x0, x1)
+
+def rdiv(x0, x1):
+    x1 = as_array(x1)
+    return Div()(x1, x0) # 交换x1和x0，因为self是x0，是除数
+
+class Pow(Function):
+    def __init__(self, c):
+        # 前向传播和后向传播都需要用到指数，所以列为属性
+        self.c = c
+
+    def forward(self,x):
+        y = x ** self.c
+        return y
+
+    def backward(self,gy):
+        x = self.inputs[0].data
+        c = self.c
+        gx = c * x ** (c - 1) * gy
+        return gx
+
+def pow(x, c):
+    return Pow(c)(x)
+
+#重载Variable的函数
+Variable.__add__ = add
+Variable.__radd__ = add
+Variable.__mul__ = mul
+Variable.__rmul__ = mul
+Variable.__neg__ = neg
+Variable.__sub__ = sub
+Variable.__rsub__ = rsub
+Variable.__truediv__ = div
+Variable.__rtruediv__ = rdiv
+Variable.__pow__ = pow
+#重载Variable的函数
