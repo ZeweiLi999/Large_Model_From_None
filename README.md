@@ -25,7 +25,7 @@ graph TD
     Large_Model_From_None --> LearnTorch
 
     llama3 --> llama3_from_Pytorch["llama3_from_Pytorch<br>用Pytorch实现llama3"]
-    llama3 --> llama3_from_LearnTorch["llama3_from_Mytorch<br>用LearnTorch实现llama3"]
+    llama3 --> llama3_from_LearnTorch["llama3_from_LearnTorch<br>用LearnTorch实现llama3"]
 
     LearnTorch --> Core["Core<br>LearnTorch核心代码"]
     LearnTorch --> Test["Test<br>LearnTorch测试代码"]
