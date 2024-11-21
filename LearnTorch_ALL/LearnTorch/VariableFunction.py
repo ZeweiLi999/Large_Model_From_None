@@ -157,8 +157,7 @@ class Add(Function):
         return y    #返回的是Variable
 
     def backward(self,gy):  #返回的两个偏导数都是导数是（1*输入的导数）
-        gx = 1 * gy
-        return gx, gx
+        return gy, gy
 
 def add(x0, x1):
     x1 = as_array(x1) #因为self本身肯定是Variable，所以只要针对x1是标量的情况就可以了，是ndarray会在function变为Variable
@@ -171,8 +170,8 @@ class Mul(Function):
         return y
 
     def backward(self, gy):
-        gx0, gx1 = self.inputs[0].data * gy, self.inputs[1].data * gy
-        return gx0, gx1
+        x0, x1 = self.inputs[0].data, self.inputs[1].data
+        return gy * x1, gy * x0
 
 def mul(x0, x1):
     x1 = as_array(x1)
@@ -184,8 +183,7 @@ class Neg(Function):
         return -x
 
     def backward(self,gy):
-        gx = -1 * gy
-        return gx
+        return -gy
 
 def neg(x):
     return Neg()(x)
@@ -196,9 +194,7 @@ class Sub(Function):
         return y
 
     def backward(self,gy):
-        gx0 = gy
-        gx1 = -1 * gy
-        return gx0, gx1
+        return gy, -gy
 
 def sub(x0, x1):
     x1 = as_array(x1)
@@ -245,15 +241,16 @@ class Pow(Function):
 def pow(x, c):
     return Pow(c)(x)
 
-#重载Variable的函数
-Variable.__add__ = add
-Variable.__radd__ = add
-Variable.__mul__ = mul
-Variable.__rmul__ = mul
-Variable.__neg__ = neg
-Variable.__sub__ = sub
-Variable.__rsub__ = rsub
-Variable.__truediv__ = div
-Variable.__rtruediv__ = rdiv
-Variable.__pow__ = pow
-#重载Variable的函数
+def setup_variable():
+    #重载Variable的函数
+    Variable.__add__ = add
+    Variable.__radd__ = add
+    Variable.__mul__ = mul
+    Variable.__rmul__ = mul
+    Variable.__neg__ = neg
+    Variable.__sub__ = sub
+    Variable.__rsub__ = rsub
+    Variable.__truediv__ = div
+    Variable.__rtruediv__ = rdiv
+    Variable.__pow__ = pow
+    #重载Variable的函数

@@ -1,15 +1,10 @@
 import unittest
 import numpy as np
-from Core.VariableFunction import Variable
-from Core.Square import Square,square
+from LearnTorch import Variable
+from LearnTorch.Functions import Square,square
+from Numberical_diff import numerical_diff
 
-#数值微分，就是用很小值近似导数，结果准备用于反向传播的测试
-def numerical_diff(f,x,eps = 1e-5):
-    x0 = Variable(x.data - eps)
-    x1 = Variable(x.data + eps)
-    y0 = f(x0)
-    y1 = f(x1)
-    return (y1.data - y0.data) / (2 * eps)
+
 
 #测试类，测试Square的正向传播和反向传播是否正确
 class SquareTest(unittest.TestCase):

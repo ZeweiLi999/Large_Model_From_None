@@ -1,8 +1,21 @@
 import numpy as np
-from .VariableFunction import Variable,Function
+from LearnTorch import Function
+
+
+#就是调用np.exp,但是封装成Variable
+class Exp(Function):
+    def forward(self,x):
+        return np.exp(x)
+
+    def backward(self,gy):
+        x = self.inputs[0].data
+        #np.exp(x)是导数
+        gx = np.exp(x) * gy
+        return gx
+def exp(x):
+    return Exp()(x)
 
 #通过继承Function实现了平方函数
-
 class Square(Function):
     def forward(self,x):
         return x**2
@@ -13,12 +26,6 @@ class Square(Function):
         #2*x是x的平方的导数
         gx = 2 * x * gy
         return gx
-
 def square(x):
     return Square()(x)
 
-if __name__ == '__main__':
-    x0 = Variable(np.array([2.0,1.0]))
-    y = square(x0)
-    y.backward()
-    print(x0.grad)
