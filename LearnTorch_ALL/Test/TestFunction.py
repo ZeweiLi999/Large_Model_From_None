@@ -1,9 +1,8 @@
 #用于测试各函数的文件
 import numpy as np
 from memory_profiler import profile
-from Core.VariableFunction import Variable,Function,no_grad,Add
-from Core.Square import Square,square
-from Core.Exp import Exp
+from LearnTorch.VariableFunction import Variable,Function,no_grad,Add
+from LearnTorch.Functions import Square,square,Exp
 
 
 

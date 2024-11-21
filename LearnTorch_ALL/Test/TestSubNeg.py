@@ -1,5 +1,5 @@
 import numpy as np
-from Core.VariableFunction import Variable,sub,neg
+from LearnTorch.VariableFunction import Variable,sub,neg
 
 
 if __name__ == "__main__":

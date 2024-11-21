@@ -1,7 +1,7 @@
 import unittest
 import numpy as np
-from Core.VariableFunction import Variable,Function,add
-from Core.Square import square
+from LearnTorch.VariableFunction import Variable,Function,add
+from LearnTorch.Functions import square
 
 
 #测试类，测试复杂计算图的正向传播和反向传播是否正确

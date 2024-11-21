@@ -1,8 +1,8 @@
 #用于测试各函数的文件
 import numpy as np
-from Core.VariableFunction import Variable
-from Core.Square import Square
-from Core.Exp import Exp
+from LearnTorch import Variable
+from LearnTorch.Functions import Square,Exp
+
 
 if __name__ == "__main__":
     A = Square()
