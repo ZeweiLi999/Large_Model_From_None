@@ -1,0 +1,17 @@
+digraph g {
+2117961354640 [label="z: (1, 1) float64", color=lightcoral, style=filled]
+2117961353440 [label ="Add", color=lightblue, style=filled, shape=box]
+2117960449520 -> 2117961353440
+2117961353680 -> 2117961353440
+2117961353440 -> 2117961354640
+2117960449520 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961353680 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117960446304 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117960446304
+2117960446304 -> 2117961353680
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117922324288 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117922324288
+2117922324288 -> 2117960449520
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+}
