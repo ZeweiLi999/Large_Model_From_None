@@ -1,0 +1,219 @@
+digraph g {
+2117961422256 [label="z: (1, 1) float64", color=lightcoral, style=filled]
+2117961422160 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961417488 -> 2117961422160
+2117961422064 -> 2117961422160
+2117961422160 -> 2117961422256
+2117961417488 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961422064 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421872 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961421776 -> 2117961421872
+2117961421968 -> 2117961421872
+2117961421872 -> 2117961422064
+2117961421776 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421968 [label="() int32", color=lightcoral, style=filled]
+2117961421680 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961418496 -> 2117961421680
+2117961421584 -> 2117961421680
+2117961421680 -> 2117961421776
+2117961418496 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421584 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421488 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961420912 -> 2117961421488
+2117961421392 -> 2117961421488
+2117961421488 -> 2117961421584
+2117961420912 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421392 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421104 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961421152 -> 2117961421104
+2117961421296 -> 2117961421104
+2117961421104 -> 2117961421392
+2117961421152 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961421296 [label="() int32", color=lightcoral, style=filled]
+2117961421008 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117961421008
+2117961421008 -> 2117961421152
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961420752 [label ="Sub", color=lightblue, style=filled, shape=box]
+2117961420176 -> 2117961420752
+2117961420656 -> 2117961420752
+2117961420752 -> 2117961420912
+2117961420176 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961420656 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961420560 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961420464 -> 2117961420560
+2117922324336 -> 2117961420560
+2117961420560 -> 2117961420656
+2117961420464 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961420272 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961420272
+2117961420368 -> 2117961420272
+2117961420272 -> 2117961420464
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961420368 [label="() int32", color=lightcoral, style=filled]
+2117961420080 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961419696 -> 2117961420080
+2117961419984 -> 2117961420080
+2117961420080 -> 2117961420176
+2117961419696 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961419984 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961419792 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117961419792
+2117961419888 -> 2117961419792
+2117961419792 -> 2117961419984
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961419888 [label="() int32", color=lightcoral, style=filled]
+2117961419600 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961419024 -> 2117961419600
+2117961419504 -> 2117961419600
+2117961419600 -> 2117961419696
+2117961419024 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961419504 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961419216 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961419264 -> 2117961419216
+2117961419408 -> 2117961419216
+2117961419216 -> 2117961419504
+2117961419264 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961419408 [label="() int32", color=lightcoral, style=filled]
+2117961419120 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961419120
+2117961419120 -> 2117961419264
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961418832 [label ="Sub", color=lightblue, style=filled, shape=box]
+2117961418928 -> 2117961418832
+2117961418736 -> 2117961418832
+2117961418832 -> 2117961419024
+2117961418928 [label="() int32", color=lightcoral, style=filled]
+2117961418736 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961418448 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961418448
+2117961418640 -> 2117961418448
+2117961418448 -> 2117961418736
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961418640 [label="() int32", color=lightcoral, style=filled]
+2117961418352 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117961418256 -> 2117961418352
+2117961418352 -> 2117961418496
+2117961418256 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961418160 [label ="Sub", color=lightblue, style=filled, shape=box]
+2117961417776 -> 2117961418160
+2117961418064 -> 2117961418160
+2117961418160 -> 2117961418256
+2117961417776 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961418064 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961417872 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117961417872
+2117961417968 -> 2117961417872
+2117961417872 -> 2117961418064
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961417968 [label="() int32", color=lightcoral, style=filled]
+2117961417584 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961417584
+2117961417680 -> 2117961417584
+2117961417584 -> 2117961417776
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961417680 [label="() int32", color=lightcoral, style=filled]
+2117961417296 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961417200 -> 2117961417296
+2117961417392 -> 2117961417296
+2117961417296 -> 2117961417488
+2117961417200 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961417392 [label="() int32", color=lightcoral, style=filled]
+2117961417104 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961372960 -> 2117961417104
+2117961417008 -> 2117961417104
+2117961417104 -> 2117961417200
+2117961372960 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961417008 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961416912 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961375312 -> 2117961416912
+2117961416816 -> 2117961416912
+2117961416912 -> 2117961417008
+2117961375312 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961416816 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961375504 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961375552 -> 2117961375504
+2117961375696 -> 2117961375504
+2117961375504 -> 2117961416816
+2117961375552 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961375696 [label="() int32", color=lightcoral, style=filled]
+2117961375408 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117961375408
+2117961375408 -> 2117961375552
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961375216 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961374640 -> 2117961375216
+2117961375120 -> 2117961375216
+2117961375216 -> 2117961375312
+2117961374640 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961375120 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961375024 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961374928 -> 2117961375024
+2117922324336 -> 2117961375024
+2117961375024 -> 2117961375120
+2117961374928 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961374736 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961374736
+2117961374832 -> 2117961374736
+2117961374736 -> 2117961374928
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961374832 [label="() int32", color=lightcoral, style=filled]
+2117961374544 [label ="Sub", color=lightblue, style=filled, shape=box]
+2117961374160 -> 2117961374544
+2117961374448 -> 2117961374544
+2117961374544 -> 2117961374640
+2117961374160 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961374448 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961374256 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117961374256
+2117961374352 -> 2117961374256
+2117961374256 -> 2117961374448
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961374352 [label="() int32", color=lightcoral, style=filled]
+2117961374064 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961373488 -> 2117961374064
+2117961373968 -> 2117961374064
+2117961374064 -> 2117961374160
+2117961373488 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961373968 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961373680 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961373728 -> 2117961373680
+2117961373872 -> 2117961373680
+2117961373680 -> 2117961373968
+2117961373728 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961373872 [label="() int32", color=lightcoral, style=filled]
+2117961373584 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961373584
+2117961373584 -> 2117961373728
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961373296 [label ="Sub", color=lightblue, style=filled, shape=box]
+2117961373392 -> 2117961373296
+2117961373200 -> 2117961373296
+2117961373296 -> 2117961373488
+2117961373392 [label="() int32", color=lightcoral, style=filled]
+2117961373200 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961372912 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961372912
+2117961373104 -> 2117961372912
+2117961372912 -> 2117961373200
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961373104 [label="() int32", color=lightcoral, style=filled]
+2117961372816 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117961372720 -> 2117961372816
+2117961372816 -> 2117961372960
+2117961372720 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961372432 [label ="Add", color=lightblue, style=filled, shape=box]
+2117961372480 -> 2117961372432
+2117961372624 -> 2117961372432
+2117961372432 -> 2117961372720
+2117961372480 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961372624 [label="() int32", color=lightcoral, style=filled]
+2117961372336 [label ="Add", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961372336
+2117922324336 -> 2117961372336
+2117961372336 -> 2117961372480
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+}

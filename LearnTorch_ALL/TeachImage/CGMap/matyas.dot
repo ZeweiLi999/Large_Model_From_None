@@ -1,0 +1,41 @@
+digraph g {
+2117961423216 [label="z: (1, 1) float64", color=lightcoral, style=filled]
+2117961423120 [label ="Sub", color=lightblue, style=filled, shape=box]
+2117961422544 -> 2117961423120
+2117961423024 -> 2117961423120
+2117961423120 -> 2117961423216
+2117961422544 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961423024 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961422928 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961422832 -> 2117961422928
+2117922324336 -> 2117961422928
+2117961422928 -> 2117961423024
+2117961422832 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117961422640 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117961422640
+2117961422736 -> 2117961422640
+2117961422640 -> 2117961422832
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+2117961422736 [label="() float64", color=lightcoral, style=filled]
+2117961422352 [label ="Mul", color=lightblue, style=filled, shape=box]
+2117961353968 -> 2117961422352
+2117961422448 -> 2117961422352
+2117961422352 -> 2117961422544
+2117961353968 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961422448 [label="() float64", color=lightcoral, style=filled]
+2117961355072 [label ="Add", color=lightblue, style=filled, shape=box]
+2117960446304 -> 2117961355072
+2117961353440 -> 2117961355072
+2117961355072 -> 2117961353968
+2117960446304 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117961353440 [label="(1, 1) float64", color=lightcoral, style=filled]
+2117960449568 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324336 -> 2117960449568
+2117960449568 -> 2117961353440
+2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
+2117922323808 [label ="Pow", color=lightblue, style=filled, shape=box]
+2117922324384 -> 2117922323808
+2117922323808 -> 2117960446304
+2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+}
