@@ -3,9 +3,12 @@ import subprocess
 import numpy as np
 from LearnTorch import Variable
 
+# =============================================================================
+# 计算图可视化函数
+# =============================================================================
 def _dot_var(v, verbose=False): # 变量Variable转化为dot语言的函数
     dot_var = '{} [label="{}", color=lightcoral, style=filled]\n'
-    name = '' if v.name is None else v.name
+    name = str(v.data) if v.name is None else (v.name+": " + str(v.data))
     if verbose and v.data is not None:
         if v.name is not None:
             name += ': '
@@ -24,6 +27,7 @@ def _dot_func_(f): # 函数Function转化为dot语言的函数
         txt += dot_edge.format(id(f), id(y())) #因为y是weakref，所以要用y()来引用
     return txt
 
+# 获取计算图的dot语言版本
 def get_dot_graph(output, verbose=True):
     # 逻辑参照Variable中的回溯算法
     # 因为只需要显示，顺序不重要，所以取消了generation部分
@@ -50,6 +54,7 @@ def get_dot_graph(output, verbose=True):
                 add_func(x.creator) # 添加进一步的函数
     return 'digraph g {\n' + txt + '}'
 
+#计算图的可视化函数
 def plot_dot_graph(output, verbose=True, to_file='graph.png', file_path='CGMap'):
     # 最终输出变量 是否详细显示 输出文件名 输出路径
     dot_graph = get_dot_graph(output, verbose)
@@ -73,3 +78,7 @@ def plot_dot_graph(output, verbose=True, to_file='graph.png', file_path='CGMap')
         return display.Image(filename=to_file)
     except:
         pass
+
+# =============================================================================
+# 梯度下降可视化函数
+# =============================================================================

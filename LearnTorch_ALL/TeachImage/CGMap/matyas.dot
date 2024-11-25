@@ -1,41 +1,41 @@
 digraph g {
-2117961423216 [label="z: (1, 1) float64", color=lightcoral, style=filled]
-2117961423120 [label ="Sub", color=lightblue, style=filled, shape=box]
-2117961422544 -> 2117961423120
-2117961423024 -> 2117961423120
-2117961423120 -> 2117961423216
-2117961422544 [label="(1, 1) float64", color=lightcoral, style=filled]
-2117961423024 [label="(1, 1) float64", color=lightcoral, style=filled]
-2117961422928 [label ="Mul", color=lightblue, style=filled, shape=box]
-2117961422832 -> 2117961422928
-2117922324336 -> 2117961422928
-2117961422928 -> 2117961423024
-2117961422832 [label="(1, 1) float64", color=lightcoral, style=filled]
-2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
-2117961422640 [label ="Mul", color=lightblue, style=filled, shape=box]
-2117922324384 -> 2117961422640
-2117961422736 -> 2117961422640
-2117961422640 -> 2117961422832
-2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
-2117961422736 [label="() float64", color=lightcoral, style=filled]
-2117961422352 [label ="Mul", color=lightblue, style=filled, shape=box]
-2117961353968 -> 2117961422352
-2117961422448 -> 2117961422352
-2117961422352 -> 2117961422544
-2117961353968 [label="(1, 1) float64", color=lightcoral, style=filled]
-2117961422448 [label="() float64", color=lightcoral, style=filled]
-2117961355072 [label ="Add", color=lightblue, style=filled, shape=box]
-2117960446304 -> 2117961355072
-2117961353440 -> 2117961355072
-2117961355072 -> 2117961353968
-2117960446304 [label="(1, 1) float64", color=lightcoral, style=filled]
-2117961353440 [label="(1, 1) float64", color=lightcoral, style=filled]
-2117960449568 [label ="Pow", color=lightblue, style=filled, shape=box]
-2117922324336 -> 2117960449568
-2117960449568 -> 2117961353440
-2117922324336 [label="y: (1, 1) float64", color=lightcoral, style=filled]
-2117922323808 [label ="Pow", color=lightblue, style=filled, shape=box]
-2117922324384 -> 2117922323808
-2117922323808 -> 2117960446304
-2117922324384 [label="x: (1, 1) float64", color=lightcoral, style=filled]
+1958102754352 [label="z: 0.040000000000000036", color=lightcoral, style=filled]
+1958102754256 [label ="Sub", color=lightblue, style=filled, shape=box]
+1958102753680 -> 1958102754256
+1958102754160 -> 1958102754256
+1958102754256 -> 1958102754352
+1958102753680 [label="0.52", color=lightcoral, style=filled]
+1958102754160 [label="0.48", color=lightcoral, style=filled]
+1958102754064 [label ="Mul", color=lightblue, style=filled, shape=box]
+1958102753968 -> 1958102754064
+1958063713584 -> 1958102754064
+1958102754064 -> 1958102754160
+1958102753968 [label="0.48", color=lightcoral, style=filled]
+1958063713584 [label="y: 1.0", color=lightcoral, style=filled]
+1958102753776 [label ="Mul", color=lightblue, style=filled, shape=box]
+1958063713632 -> 1958102753776
+1958102753872 -> 1958102753776
+1958102753776 -> 1958102753968
+1958063713632 [label="x: 1.0", color=lightcoral, style=filled]
+1958102753872 [label="0.48", color=lightcoral, style=filled]
+1958102753488 [label ="Mul", color=lightblue, style=filled, shape=box]
+1958102682304 -> 1958102753488
+1958102753584 -> 1958102753488
+1958102753488 -> 1958102753680
+1958102682304 [label="2.0", color=lightcoral, style=filled]
+1958102753584 [label="0.26", color=lightcoral, style=filled]
+1958102682400 [label ="Add", color=lightblue, style=filled, shape=box]
+1958102682640 -> 1958102682400
+1958102682208 -> 1958102682400
+1958102682400 -> 1958102682304
+1958102682640 [label="1.0", color=lightcoral, style=filled]
+1958102682208 [label="1.0", color=lightcoral, style=filled]
+1958102682688 [label ="Pow", color=lightblue, style=filled, shape=box]
+1958063713584 -> 1958102682688
+1958102682688 -> 1958102682208
+1958063713584 [label="y: 1.0", color=lightcoral, style=filled]
+1958063713488 [label ="Pow", color=lightblue, style=filled, shape=box]
+1958063713632 -> 1958063713488
+1958063713488 -> 1958102682640
+1958063713632 [label="x: 1.0", color=lightcoral, style=filled]
 }
