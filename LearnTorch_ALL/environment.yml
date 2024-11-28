@@ -5,4 +5,5 @@ dependencies:
   - numpy
   - pip
   - pip:
+      - matplotlib==3.7.1
       - memory_profiler==0.61.0
