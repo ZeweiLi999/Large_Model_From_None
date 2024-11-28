@@ -119,6 +119,9 @@ def grad_newton_animate_optimization(lr, iter_grad, iter_newton, fps, if_save, m
     plt.show()
 
 
-# 调用函数进行动画演示
-grad_newton_animate_optimization(lr= 0.001, iter_grad=200, iter_newton=10 ,fps=10, if_save=True, mp4_file_path="..//TeachImage//Grad//GradV.S.Newton.mp4")
+if __name__ == "__main__":
+    mp4_file_path = os.path.join(".", "Grad", "GradV.S.Newton.mp4")
+
+    # 调用函数进行动画演示
+    grad_newton_animate_optimization(lr= 0.001, iter_grad=200, iter_newton=10 ,fps=10, if_save=True, mp4_file_path=mp4_file_path)
 
