@@ -1,0 +1,67 @@
+digraph g {
+2714442444080 [label="z(Forward) data: 0.7071064695751781", color=lightcoral, style=filled]
+2714442465824 [label ="Add", color=lightblue, style=filled, shape=box]
+2714442469184 -> 2714442465824
+2714442465920 -> 2714442465824
+2714442465824 -> 2714442444080
+2714442469184 [label="(Forward) data: 0.7071430457793603", color=lightcoral, style=filled]
+2714442465920 [label="(Forward) data: -3.657620418217724e-05", color=lightcoral, style=filled]
+2714442469088 [label ="Mul", color=lightblue, style=filled, shape=box]
+2714442469136 -> 2714442469088
+2714442465536 -> 2714442469088
+2714442469088 -> 2714442465920
+2714442469136 [label="(Forward) data: 0.1843440690781733", color=lightcoral, style=filled]
+2714442465536 [label="(Forward) data: -0.0001984126984126984", color=lightcoral, style=filled]
+2714442468992 [label ="Pow", color=lightblue, style=filled, shape=box]
+2714442467600 -> 2714442468992
+2714442468992 -> 2714442469136
+2714442467600 [label="x1(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+2714442468608 [label ="Add", color=lightblue, style=filled, shape=box]
+2714442467648 -> 2714442468608
+2714442468320 -> 2714442468608
+2714442468608 -> 2714442469184
+2714442467648 [label="(Forward) data: 0.7046526512091675", color=lightcoral, style=filled]
+2714442468320 [label="(Forward) data: 0.00249039457019272", color=lightcoral, style=filled]
+2714442468704 [label ="Mul", color=lightblue, style=filled, shape=box]
+2714442468752 -> 2714442468704
+2714442468464 -> 2714442468704
+2714442468704 -> 2714442468320
+2714442468752 [label="(Forward) data: 0.2988473484231264", color=lightcoral, style=filled]
+2714442468464 [label="(Forward) data: 0.008333333333333333", color=lightcoral, style=filled]
+2714442467840 [label ="Pow", color=lightblue, style=filled, shape=box]
+2714442467600 -> 2714442467840
+2714442467840 -> 2714442468752
+2714442467600 [label="x1(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+2714442467936 [label ="Add", color=lightblue, style=filled, shape=box]
+2714442469280 -> 2714442467936
+2714442468128 -> 2714442467936
+2714442467936 -> 2714442467648
+2714442469280 [label="(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+2714442468128 [label="(Forward) data: -0.08074551218828077", color=lightcoral, style=filled]
+2714442468800 [label ="Mul", color=lightblue, style=filled, shape=box]
+2714442468848 -> 2714442468800
+2714442468032 -> 2714442468800
+2714442468800 -> 2714442468128
+2714442468848 [label="(Forward) data: 0.48447307312968463", color=lightcoral, style=filled]
+2714442468032 [label="(Forward) data: -0.16666666666666666", color=lightcoral, style=filled]
+2714442468896 [label ="Pow", color=lightblue, style=filled, shape=box]
+2714442467600 -> 2714442468896
+2714442468896 -> 2714442468848
+2714442467600 [label="x1(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+2714442467360 [label ="Add", color=lightblue, style=filled, shape=box]
+2714442467216 -> 2714442467360
+2714442466544 -> 2714442467360
+2714442467360 -> 2714442469280
+2714442467216 [label="(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+2714442466544 [label="(Forward) data: 0", color=lightcoral, style=filled]
+2714442467744 [label ="Mul", color=lightblue, style=filled, shape=box]
+2714442467504 -> 2714442467744
+2714442467120 -> 2714442467744
+2714442467744 -> 2714442467216
+2714442467504 [label="(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+2714442467120 [label="(Forward) data: 1.0", color=lightcoral, style=filled]
+2714442467696 [label ="Pow", color=lightblue, style=filled, shape=box]
+2714442467600 -> 2714442467696
+2714442467696 -> 2714442467504
+2714442467600 [label="x1(Forward) data: 0.7853981633974483", color=lightcoral, style=filled]
+}

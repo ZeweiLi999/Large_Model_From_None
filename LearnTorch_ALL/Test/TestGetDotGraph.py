@@ -11,27 +11,27 @@ if __name__ == "__main__":
     x = Variable(np.array(1.0))
     y = Variable(np.array(1.0))
     z = sphere(x, y) 
-    z.backward() 
+    z.backward(retain_grad=True)
     x.name = 'x' 
     y.name = 'y' 
     z.name = 'z' 
-    plot_dot_graph(z, verbose=False, to_file='sphere.png', file_path="../TeachImage/CGMap")
+    plot_dot_graph(z, savefile=True, verbose=False, to_file='sphere.png', file_path="../TeachImage/CGMap")
 
     z.cleargrad()
     z = goldstein(x, y) 
-    z.backward() 
+    z.backward(retain_grad=True)
     x.name = 'x' 
     y.name = 'y' 
     z.name = 'z' 
-    plot_dot_graph(z, verbose=False, to_file='goldstein.png', file_path="../TeachImage/CGMap")
+    plot_dot_graph(z, savefile=True, verbose=False, to_file='goldstein.png', file_path="../TeachImage/CGMap")
 
     z.cleargrad()
     z = matyas(x, y) 
-    z.backward() 
+    z.backward(retain_grad=True)
     x.name = 'x' 
     y.name = 'y' 
     z.name = 'z' 
-    plot_dot_graph(z, verbose=False, to_file='matyas.png', file_path="../TeachImage/CGMap")
+    plot_dot_graph(z, savefile=True, verbose=False, to_file='matyas.png', file_path="../TeachImage/CGMap")
 
     z.cleargrad()
     x1 = Variable(np.array(np.pi / 4))
@@ -39,5 +39,5 @@ if __name__ == "__main__":
     z.backward()
     x1.name = 'x1'
     z.name = 'z'
-    plot_dot_graph(z, verbose=False, to_file='taylorsin.png', file_path="../TeachImage/CGMap")
+    plot_dot_graph(z, savefile=True, verbose=False, to_file='taylorsin.png', file_path="../TeachImage/CGMap")
 
