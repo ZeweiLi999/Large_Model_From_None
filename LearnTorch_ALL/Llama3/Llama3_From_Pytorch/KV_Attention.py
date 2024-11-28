@@ -2,10 +2,10 @@ import torch
 import math
 from typing import Tuple, Optional
 from input_model import device
-from RMSNorm import ModelArgs, x_norm
+from RMSNorm import ModelArgs
 from torch import nn
 from torch.nn import functional as F
-from RoPE import precompute_freqs_cis, apply_rotary_emb, xk
+from RoPE import precompute_freqs_cis, apply_rotary_emb
 
 ## 注意力模块 [步骤2c: KV缓存; 步骤2d: 分组查询注意力]
 ## 如前所述，命名约定遵循原始Meta LLama3 GitHub
@@ -23,7 +23,7 @@ class Attention(nn.Module):
         # 每个头相对于模型维度的维度
         self.head_dim = args.dim // args.n_heads
         # 重复次数，以使键、值头数与查询头数匹配
-        self.n_rep = args.n_heads // args.n_kv_heads
+        self.n_rep = args.n_heads // self.n_kv_heads
 
         # 初始化键、查询、值和输出的权重。注意q和kv的权重out_feature值基于其头数
         self.wq = nn.Linear(self.dim, self.n_heads * self.head_dim, bias=False, device=device)
@@ -91,28 +91,28 @@ class Attention(nn.Module):
             mask = torch.full((seq_len, seq_len), float("-inf"), device=self.args.device)
             mask = torch.triu(mask, diagonal=1).to(self.args.device)
 
-            # 为了计算注意力,我们需要执行转置操作来重塑所有查询、键和值,将头部放在维度1,序列放在维度2
-            xq = xq.transpose(1, 2)  # xq[bsz,n_heads,seq_len,head_dim]
-            keys = keys.transpose(1, 2)  # keys[bsz,n_heads,seq_len,head_dim]
-            values = values.transpose(1, 2)  # values[bsz,n_heads,seq_len,head_dim]
+        # 为了计算注意力,我们需要执行转置操作来重塑所有查询、键和值,将头部放在维度1,序列放在维度2
+        xq = xq.transpose(1, 2)  # xq[bsz,n_heads,seq_len,head_dim]
+        keys = keys.transpose(1, 2)  # keys[bsz,n_heads,seq_len,head_dim]
+        values = values.transpose(1, 2)  # values[bsz,n_heads,seq_len,head_dim]
 
-            # 计算注意力分数
-            scores = torch.matmul(xq, keys.transpose(2, 3)).to(self.args.device) / math.sqrt(self.head_dim)
-            if mask is not None:
-                scores = scores + mask
+        # 计算注意力分数
+        scores = torch.matmul(xq, keys.transpose(2, 3)).to(self.args.device) / math.sqrt(self.head_dim)
+        if mask is not None:
+            scores = scores + mask
 
-            # 对注意力分数应用softmax
-            scores = F.softmax(scores.float(), dim=-1).type_as(xq)
-            # 注意力分数与值的矩阵乘法
-            output = torch.matmul(scores, values).to(self.args.device)
+        # 对注意力分数应用softmax
+        scores = F.softmax(scores.float(), dim=-1).type_as(xq)
+        # 注意力分数与值的矩阵乘法
+        output = torch.matmul(scores, values).to(self.args.device)
 
-            # 我们得到了每个头部的上下文嵌入
-            # 所有头部需要重塑回来并组合,以给出单个上下文注意力输出
-            # 形状变化: output[bsz,n_heads,seq_len,head_dim] -> output[bsz,seq_len, n_heads,head_dim] -> output[bsz,seq_len, n_heads * head_dim]
-            output = output.transpose(1, 2).contiguous().view(bsz, seq_len, -1)
+        # 我们得到了每个头部的上下文嵌入
+        # 所有头部需要重塑回来并组合,以给出单个上下文注意力输出
+        # 形状变化: output[bsz,n_heads,seq_len,head_dim] -> output[bsz,seq_len, n_heads,head_dim] -> output[bsz,seq_len, n_heads * head_dim]
+        output = output.transpose(1, 2).contiguous().view(bsz, seq_len, -1)
 
-            # 形状: output [bsz,seq_len,dim]
-            return self.wo(output)
+        # 形状: output [bsz,seq_len,dim]
+        return self.wo(output)
 
 # 如果键/值头的数量少于查询头,此函数使用所需的重复次数扩展键/值嵌入
 def repeat_kv(x: torch.Tensor, n_rep: int)->torch.Tensor:
@@ -125,17 +125,17 @@ def repeat_kv(x: torch.Tensor, n_rep: int)->torch.Tensor:
 # 注: xk, x_norm已在RoPE, RMSNorm测试中计算,这里用于测试
 # 取消下面的三重引号来执行测试
 
-n_rep = ModelArgs.n_heads // ModelArgs.n_kv_heads  
-keys = repeat_kv(xk, n_rep)  
-print(f"xk.shape: {xk.shape}")  
-print(f"keys.shape: {keys.shape}")  
+# n_rep = ModelArgs.n_heads // ModelArgs.n_kv_heads
+# keys = repeat_kv(xk, n_rep)
+# print(f"xk.shape: {xk.shape}")
+# print(f"keys.shape: {keys.shape}")
 
 ## 测试: Attention函数  
 # 取消下面的三重引号来执行测试  
 
-attention = Attention(ModelArgs)
-x_out = attention(x_norm,start_pos=0, inference=False)  
-print(f"x_out.shape: {x_out.shape}")  
+# attention = Attention(ModelArgs())
+# x_out = attention(x_norm,start_pos=0, inference=False)
+# print(f"x_out.shape: {x_out.shape}")
 
 ### 测试结果: ###
 """  
