@@ -7,10 +7,8 @@ from matplotlib.animation import FuncAnimation
 from LearnTorch import Variable
 
 def f(x):
-    return x ** 4 - 2 * x ** 2
-
-def gx2(x):  # f函数的二阶导数形式
-    return 12 * x ** 2 - 4
+    y = x ** 4 - 2 * x ** 2
+    return y
 
 # 梯度下降与牛顿法数据生成
 def gradient_descent(x,lr=0.001, iters=1000):
@@ -20,7 +18,8 @@ def gradient_descent(x,lr=0.001, iters=1000):
         y = f(x)
         x.cleargrad()
         y.backward()
-        x.data = x.data -  lr * x.grad
+        gx = x.grad # 获取一阶导数
+        x.data = x.data -  lr * gx.data
         x_vals.append(x.data)
         y_vals.append(f(x.data))
     return x_vals, y_vals
@@ -31,14 +30,19 @@ def newton_method(x, iters=9):
     for _ in range(iters):
         y = f(x)
         x.cleargrad()
-        y.backward()
-        x.data = x.data -  x.grad / gx2(x.data)
+        y.backward(create_graph = True)
+
+        gx = x.grad
+        x.cleargrad()
+        gx.backward()
+        gx2 = x.grad # 连续两次求导，此时gx2获得的是x的二阶导数
+        x.data = x.data -  gx.data / gx2.data
         x_vals.append(x.data)
         y_vals.append(f(x.data))
     return x_vals, y_vals
 
 # 动态绘图
-def grad_newton_animate_optimization(lr, iter_grad, iter_newton, fps, if_save, mp4_file_path):
+def grad_newton_animate_optimization(lr, iter_grad, iter_newton, fps, if_save, file_path):
     x_range = np.linspace(-2.5, 2.5, 500)
     y_range = f(x_range)
 
@@ -114,14 +118,14 @@ def grad_newton_animate_optimization(lr, iter_grad, iter_newton, fps, if_save, m
     # 显示动画
     plt.tight_layout()
     if if_save:
-        filename = mp4_file_path.replace(".mp4", "") + "iter_{}_{}".format(iter_grad,iter_newton) + "_FPS{}.mp4".format(fps)
-        ani.save(filename = filename, fps = fps, writer = "ffmpeg")
+        filename = os.path.splitext(file_path)[0] + "iter_{}_{}".format(iter_grad,iter_newton) + "_FPS{}".format(fps) + os.path.splitext(file_path)[-1]
+        ani.save(filename = filename, fps = fps, writer = "pillow")
     plt.show()
 
 
 if __name__ == "__main__":
-    mp4_file_path = os.path.join(".", "Grad", "GradV.S.Newton.mp4")
+    file_path = os.path.join(".", "Grad", "GradV.S.Newton.gif") # GIF或MP4
 
     # 调用函数进行动画演示
-    grad_newton_animate_optimization(lr= 0.001, iter_grad=200, iter_newton=10 ,fps=10, if_save=True, mp4_file_path=mp4_file_path)
+    grad_newton_animate_optimization(lr= 0.001, iter_grad=200, iter_newton=10 ,fps=10, if_save=False, file_path=file_path)
 

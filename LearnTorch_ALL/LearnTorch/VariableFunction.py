@@ -70,9 +70,9 @@ class Variable:#定义深度学习的变量类
         self.creator = func
         self.generation = func.generation + 1
 
-    def backward(self, retain_grad = False):
+    def backward(self, retain_grad = False, create_graph=False):
         if self.grad is None:       #如果没有导数，就不用在外部创建了
-            self.grad = np.ones_like(self.data)
+            self.grad = Variable(np.ones_like(self.data)) # 创建Variable，使得反向传播也有连接，可以一直求导
 
         funcs = [] #1.创造循环的函数列表
         seen_set = set() #用去去重的集合
@@ -88,21 +88,23 @@ class Variable:#定义深度学习的变量类
         while funcs:
             f = funcs.pop()     #2.获取变量的创造函数
             gys = [output().grad for output in f.outputs]#3.获取函数的输出的所有导数,() 是 weakref.ref 对象的调用方法，用于返回被弱引用的对象。
-            gxs = f.backward(*gys) #3.将反向传播的链条推进一步，获取所有输入的导数
-            if not isinstance(gxs,tuple):
-                #改为元组类型便于后面的zip循环
-                gxs = (gxs,)
 
-            for x, gx in zip(f.inputs, gxs):  #4.更新变量的梯度
-                if x.grad is None:
-                    x.grad = gx
-                else:
-                    x.grad = x.grad + gx #这样会新创建内存空间，+=会原地操作
+            with using_config('enable_backprop', create_graph): # 如果不需要梯度，反向传播的反向传播不创建计算图和梯度
+                gxs = f.backward(*gys) #3.将反向传播的链条推进一步，获取所有输入的导数
+                if not isinstance(gxs,tuple):
+                    #改为元组类型便于后面的zip循环
+                    gxs = (gxs,)
 
-                #记住要放在循环内，不断反向传播
-                if x.creator is not None:
-                    add_func(x.creator)
-                #如果没有creator，反向传播到此结束
+                for x, gx in zip(f.inputs, gxs):  #4.更新变量的梯度
+                    if x.grad is None:
+                        x.grad = gx
+                    else:
+                        x.grad = x.grad + gx #这样会新创建内存空间，+=会原地操作
+
+                    #记住要放在循环内，不断反向传播
+                    if x.creator is not None:
+                        add_func(x.creator)
+                    #如果没有creator，反向传播到此结束
 
             if not retain_grad:
                 for y in f.outputs:
@@ -157,7 +159,7 @@ class Add(Function):
         return y    #返回的是Variable
 
     def backward(self,gy):  #返回的两个偏导数都是导数是（1*输入的导数）
-        return gy, gy
+        return gy, gy # 没有计算的内容，适用于Variable类
 
 def add(x0, x1):
     x1 = as_array(x1) #因为self本身肯定是Variable，所以只要针对x1是标量的情况就可以了，是ndarray会在function变为Variable
@@ -170,8 +172,8 @@ class Mul(Function):
         return y
 
     def backward(self, gy):
-        x0, x1 = self.inputs[0].data, self.inputs[1].data
-        return gy * x1, gy * x0
+        x0, x1 = self.inputs
+        return gy * x1, gy * x0 # 重载运算符后，Variable类可以直接相乘
 
 def mul(x0, x1):
     x1 = as_array(x1)
@@ -210,7 +212,7 @@ class Div(Function):
         return y
 
     def backward(self,gy):
-        x0, x1 = self.inputs[0].data, self.inputs[1].data
+        x0, x1 = self.inputs
         gx0 = gy / x1
         gx1 = gy * (-x0 / x1 ** 2)
         return gx0, gx1
@@ -228,12 +230,12 @@ class Pow(Function):
         # 前向传播和后向传播都需要用到指数，所以列为属性
         self.c = c
 
-    def forward(self,x):
+    def forward(self, x):
         y = x ** self.c
         return y
 
-    def backward(self,gy):
-        x = self.inputs[0].data
+    def backward(self, gy):
+        x, = self.inputs
         c = self.c
         gx = c * x ** (c - 1) * gy
         return gx

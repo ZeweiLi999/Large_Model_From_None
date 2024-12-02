@@ -1,219 +1,219 @@
 digraph g {
-2714442410064 [label="z(Backward) data: 1876.0 grad:1.0", color=lightgoldenrodyellow, style=filled]
-2714442410160 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442410160 -> 2714442444080
-2714442410160 -> 2714442410256
-2714442410064 -> 2714442410160
-2714442444080 [label="(Backward) data: 28.0 grad:67.0", color=lightgoldenrodyellow, style=filled]
-2714442410256 [label="(Backward) data: 67.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442410448 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442410448 -> 2714442410544
-2714442410448 -> 2714442410352
-2714442410256 -> 2714442410448
-2714442410544 [label="(Backward) data: 37.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442410352 [label="(Backward) data: 30 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442411408 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442411408 -> 2714442443072
-2714442411408 -> 2714442411504
-2714442410544 -> 2714442411408
-2714442443072 [label="(Backward) data: 1.0 grad:1036.0", color=lightgoldenrodyellow, style=filled]
-2714442411504 [label="(Backward) data: 37.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442411600 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442411600 -> 2714442411168
-2714442411600 -> 2714442411696
-2714442411504 -> 2714442411600
-2714442411168 [label="(Backward) data: 10.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442411696 [label="(Backward) data: 27.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442411984 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442411984 -> 2714442411936
-2714442411984 -> 2714442411792
-2714442411696 -> 2714442411984
-2714442411936 [label="(Backward) data: 1.0 grad:756.0", color=lightgoldenrodyellow, style=filled]
-2714442411792 [label="(Backward) data: 27 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442411264 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442411264 -> 2716550835600
-2714442411936 -> 2714442411264
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442411072 [label ="Sub", color=lightblue, style=filled, shape=box]
-2714442411072 -> 2714442408912
-2714442411072 -> 2714442410976
-2714442411168 -> 2714442411072
-2714442408912 [label="(Backward) data: 46.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442410976 [label="(Backward) data: 36.0 grad:-28.0", color=lightgoldenrodyellow, style=filled]
-2714442410880 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442410880 -> 2714442410736
-2714442410880 -> 2716550835600
-2714442410976 -> 2714442410880
-2714442410736 [label="(Backward) data: 36.0 grad:-28.0", color=lightgoldenrodyellow, style=filled]
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442409008 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442409008 -> 2716550835648
-2714442409008 -> 2714442410640
-2714442410736 -> 2714442409008
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442410640 [label="(Backward) data: 36 grad:-28.0", color=lightgoldenrodyellow, style=filled]
-2714442408816 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442408816 -> 2714442441872
-2714442408816 -> 2714442408672
-2714442408912 -> 2714442408816
-2714442441872 [label="(Backward) data: -2.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442408672 [label="(Backward) data: 48.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442441776 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442441776 -> 2716550835600
-2714442441776 -> 2714442441680
-2714442408672 -> 2714442441776
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442441680 [label="(Backward) data: 48 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442441968 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442441968 -> 2714442442544
-2714442441968 -> 2714442442064
-2714442441872 -> 2714442441968
-2714442442544 [label="(Backward) data: -14.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442442064 [label="(Backward) data: 12.0 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442442352 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442442352 -> 2714442442304
-2714442442352 -> 2714442442160
-2714442442064 -> 2714442442352
-2714442442304 [label="(Backward) data: 1.0 grad:336.0", color=lightgoldenrodyellow, style=filled]
-2714442442160 [label="(Backward) data: 12 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442442448 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442442448 -> 2716550835648
-2714442442304 -> 2714442442448
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442442736 [label ="Sub", color=lightblue, style=filled, shape=box]
-2714442442736 -> 2714442442640
-2714442442736 -> 2714442442832
-2714442442544 -> 2714442442736
-2714442442640 [label="(Backward) data: 18 grad:28.0", color=lightgoldenrodyellow, style=filled]
-2714442442832 [label="(Backward) data: 32.0 grad:-28.0", color=lightgoldenrodyellow, style=filled]
-2714442443120 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442443120 -> 2716550835648
-2714442443120 -> 2714442442928
-2714442442832 -> 2714442443120
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442442928 [label="(Backward) data: 32 grad:-28.0", color=lightgoldenrodyellow, style=filled]
-2714442443216 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442443216 -> 2714442443312
-2714442443072 -> 2714442443216
-2714442443312 [label="(Backward) data: -1.0 grad:-2072.0", color=lightgoldenrodyellow, style=filled]
-2714442443408 [label ="Sub", color=lightblue, style=filled, shape=box]
-2714442443408 -> 2714442443792
-2714442443408 -> 2714442443504
-2714442443312 -> 2714442443408
-2714442443792 [label="(Backward) data: 2.0 grad:-2072.0", color=lightgoldenrodyellow, style=filled]
-2714442443504 [label="(Backward) data: 3.0 grad:2072.0", color=lightgoldenrodyellow, style=filled]
-2714442443696 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442443696 -> 2716550835600
-2714442443696 -> 2714442443600
-2714442443504 -> 2714442443696
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442443600 [label="(Backward) data: 3 grad:2072.0", color=lightgoldenrodyellow, style=filled]
-2714442443984 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442443984 -> 2716550835648
-2714442443984 -> 2714442443888
-2714442443792 -> 2714442443984
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442443888 [label="(Backward) data: 2 grad:-2072.0", color=lightgoldenrodyellow, style=filled]
-2714442444272 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442444272 -> 2714442444368
-2714442444272 -> 2714442444176
-2714442444080 -> 2714442444272
-2714442444368 [label="(Backward) data: 27.0 grad:67.0", color=lightgoldenrodyellow, style=filled]
-2714442444176 [label="(Backward) data: 1 grad:67.0", color=lightgoldenrodyellow, style=filled]
-2714442444608 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442444608 -> 2714442467696
-2714442444608 -> 2714442444704
-2714442444368 -> 2714442444608
-2714442467696 [label="(Backward) data: 9.0 grad:201.0", color=lightgoldenrodyellow, style=filled]
-2714442444704 [label="(Backward) data: 3.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442441536 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442441536 -> 2714442440960
-2714442441536 -> 2714442441440
-2714442444704 -> 2714442441536
-2714442440960 [label="(Backward) data: 0.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442441440 [label="(Backward) data: 3.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442441152 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442441152 -> 2714442441200
-2714442441152 -> 2714442441344
-2714442441440 -> 2714442441152
-2714442441200 [label="(Backward) data: 1.0 grad:1809.0", color=lightgoldenrodyellow, style=filled]
-2714442441344 [label="(Backward) data: 3 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442441056 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442441056 -> 2716550835600
-2714442441200 -> 2714442441056
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442440864 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442440864 -> 2714442466544
-2714442440864 -> 2714442440768
-2714442440960 -> 2714442440864
-2714442466544 [label="(Backward) data: -6.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442440768 [label="(Backward) data: 6.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442465440 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442465440 -> 2714442465536
-2714442465440 -> 2716550835600
-2714442440768 -> 2714442465440
-2714442465536 [label="(Backward) data: 6.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442465920 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442465920 -> 2716550835648
-2714442465920 -> 2714442465824
-2714442465536 -> 2714442465920
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442465824 [label="(Backward) data: 6 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442469280 [label ="Sub", color=lightblue, style=filled, shape=box]
-2714442469280 -> 2714442468896
-2714442469280 -> 2714442469184
-2714442466544 -> 2714442469280
-2714442468896 [label="(Backward) data: 8.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442469184 [label="(Backward) data: 14.0 grad:-603.0", color=lightgoldenrodyellow, style=filled]
-2714442468992 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442468992 -> 2716550835600
-2714442468992 -> 2714442469088
-2714442469184 -> 2714442468992
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
-2714442469088 [label="(Backward) data: 14 grad:-603.0", color=lightgoldenrodyellow, style=filled]
-2714442468800 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442468800 -> 2714442468224
-2714442468800 -> 2714442468704
-2714442468896 -> 2714442468800
-2714442468224 [label="(Backward) data: 5.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442468704 [label="(Backward) data: 3.0 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442468416 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442468416 -> 2714442468464
-2714442468416 -> 2714442468608
-2714442468704 -> 2714442468416
-2714442468464 [label="(Backward) data: 1.0 grad:1809.0", color=lightgoldenrodyellow, style=filled]
-2714442468608 [label="(Backward) data: 3 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442468320 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442468320 -> 2716550835648
-2714442468464 -> 2714442468320
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442468032 [label ="Sub", color=lightblue, style=filled, shape=box]
-2714442468032 -> 2714442468128
-2714442468032 -> 2714442467936
-2714442468224 -> 2714442468032
-2714442468128 [label="(Backward) data: 19 grad:603.0", color=lightgoldenrodyellow, style=filled]
-2714442467936 [label="(Backward) data: 14.0 grad:-603.0", color=lightgoldenrodyellow, style=filled]
-2714442467648 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442467648 -> 2716550835648
-2714442467648 -> 2714442467840
-2714442467936 -> 2714442467648
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2714442467840 [label="(Backward) data: 14 grad:-603.0", color=lightgoldenrodyellow, style=filled]
-2714442467552 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442467552 -> 2714442467456
-2714442467696 -> 2714442467552
-2714442467456 [label="(Backward) data: 3.0 grad:1206.0", color=lightgoldenrodyellow, style=filled]
-2714442467024 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442467024 -> 2714442467120
-2714442467024 -> 2714442467360
-2714442467456 -> 2714442467024
-2714442467120 [label="(Backward) data: 2.0 grad:1206.0", color=lightgoldenrodyellow, style=filled]
-2714442467360 [label="(Backward) data: 1 grad:1206.0", color=lightgoldenrodyellow, style=filled]
-2714442467216 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442467216 -> 2716550835648
-2714442467216 -> 2716550835600
-2714442467120 -> 2714442467216
-2716550835648 [label="x(Backward) data: 1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
-2716550835600 [label="y(Backward) data: 1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169910944 [label="z(Backward) data:1876.0 grad:1.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169910848 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169910848 -> Backward2667169693120
+Backward2667169910848 -> Backward2667169709984
+Backward2667169910944 -> Backward2667169910848
+Backward2667169693120 [label="(Backward)data:28.0grad:67.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709984 [label="(Backward)data:67.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709792 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169709792 -> Backward2667169709696
+Backward2667169709792 -> Backward2667169709888
+Backward2667169709984 -> Backward2667169709792
+Backward2667169709696 [label="(Backward)data:37.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709888 [label="(Backward)data:30grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709600 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169709600 -> Backward2667169706480
+Backward2667169709600 -> Backward2667169709504
+Backward2667169709696 -> Backward2667169709600
+Backward2667169706480 [label="(Backward)data:1.0grad:1036.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709504 [label="(Backward)data:37.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709408 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169709408 -> Backward2667169708832
+Backward2667169709408 -> Backward2667169709312
+Backward2667169709504 -> Backward2667169709408
+Backward2667169708832 [label="(Backward)data:10.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709312 [label="(Backward)data:27.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709024 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169709024 -> Backward2667169709072
+Backward2667169709024 -> Backward2667169709216
+Backward2667169709312 -> Backward2667169709024
+Backward2667169709072 [label="(Backward)data:1.0grad:756.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169709216 [label="(Backward)data:27grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708928 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169708928 -> Backward2667152493296
+Backward2667169709072 -> Backward2667169708928
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708736 [label ="Sub", color=lightblue, style=filled, shape=box]
+Backward2667169708736 -> Backward2667169708160
+Backward2667169708736 -> Backward2667169708640
+Backward2667169708832 -> Backward2667169708736
+Backward2667169708160 [label="(Backward)data:46.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708640 [label="(Backward)data:36.0grad:-28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708544 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169708544 -> Backward2667169708448
+Backward2667169708544 -> Backward2667152493296
+Backward2667169708640 -> Backward2667169708544
+Backward2667169708448 [label="(Backward)data:36.0grad:-28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708256 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169708256 -> Backward2667152493344
+Backward2667169708256 -> Backward2667169708352
+Backward2667169708448 -> Backward2667169708256
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708352 [label="(Backward)data:36grad:-28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169708064 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169708064 -> Backward2667169707680
+Backward2667169708064 -> Backward2667169707968
+Backward2667169708160 -> Backward2667169708064
+Backward2667169707680 [label="(Backward)data:-2.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707968 [label="(Backward)data:48.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707776 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169707776 -> Backward2667152493296
+Backward2667169707776 -> Backward2667169707872
+Backward2667169707968 -> Backward2667169707776
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707872 [label="(Backward)data:48grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707584 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169707584 -> Backward2667169707008
+Backward2667169707584 -> Backward2667169707488
+Backward2667169707680 -> Backward2667169707584
+Backward2667169707008 [label="(Backward)data:-14.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707488 [label="(Backward)data:12.0grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707200 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169707200 -> Backward2667169707248
+Backward2667169707200 -> Backward2667169707392
+Backward2667169707488 -> Backward2667169707200
+Backward2667169707248 [label="(Backward)data:1.0grad:336.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707392 [label="(Backward)data:12grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169707104 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169707104 -> Backward2667152493344
+Backward2667169707248 -> Backward2667169707104
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706816 [label ="Sub", color=lightblue, style=filled, shape=box]
+Backward2667169706816 -> Backward2667169706912
+Backward2667169706816 -> Backward2667169706720
+Backward2667169707008 -> Backward2667169706816
+Backward2667169706912 [label="(Backward)data:18grad:28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706720 [label="(Backward)data:32.0grad:-28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706432 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169706432 -> Backward2667152493344
+Backward2667169706432 -> Backward2667169706624
+Backward2667169706720 -> Backward2667169706432
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706624 [label="(Backward)data:32grad:-28.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706336 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169706336 -> Backward2667169706240
+Backward2667169706480 -> Backward2667169706336
+Backward2667169706240 [label="(Backward)data:-1.0grad:-2072.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706144 [label ="Sub", color=lightblue, style=filled, shape=box]
+Backward2667169706144 -> Backward2667169693408
+Backward2667169706144 -> Backward2667169706048
+Backward2667169706240 -> Backward2667169706144
+Backward2667169693408 [label="(Backward)data:2.0grad:-2072.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169706048 [label="(Backward)data:3.0grad:2072.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169693504 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169693504 -> Backward2667152493296
+Backward2667169693504 -> Backward2667169693600
+Backward2667169706048 -> Backward2667169693504
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169693600 [label="(Backward)data:3grad:2072.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169693216 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169693216 -> Backward2667152493344
+Backward2667169693216 -> Backward2667169693312
+Backward2667169693408 -> Backward2667169693216
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169693312 [label="(Backward)data:2grad:-2072.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692928 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169692928 -> Backward2667169692832
+Backward2667169692928 -> Backward2667169693024
+Backward2667169693120 -> Backward2667169692928
+Backward2667169692832 [label="(Backward)data:27.0grad:67.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169693024 [label="(Backward)data:1grad:67.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692736 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169692736 -> Backward2667169648592
+Backward2667169692736 -> Backward2667169692640
+Backward2667169692832 -> Backward2667169692736
+Backward2667169648592 [label="(Backward)data:9.0grad:201.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692640 [label="(Backward)data:3.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692544 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169692544 -> Backward2667169691968
+Backward2667169692544 -> Backward2667169692448
+Backward2667169692640 -> Backward2667169692544
+Backward2667169691968 [label="(Backward)data:0.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692448 [label="(Backward)data:3.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692160 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169692160 -> Backward2667169692208
+Backward2667169692160 -> Backward2667169692352
+Backward2667169692448 -> Backward2667169692160
+Backward2667169692208 [label="(Backward)data:1.0grad:1809.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692352 [label="(Backward)data:3grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169692064 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169692064 -> Backward2667152493296
+Backward2667169692208 -> Backward2667169692064
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691872 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169691872 -> Backward2667169691296
+Backward2667169691872 -> Backward2667169691776
+Backward2667169691968 -> Backward2667169691872
+Backward2667169691296 [label="(Backward)data:-6.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691776 [label="(Backward)data:6.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691680 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169691680 -> Backward2667169691584
+Backward2667169691680 -> Backward2667152493296
+Backward2667169691776 -> Backward2667169691680
+Backward2667169691584 [label="(Backward)data:6.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691392 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169691392 -> Backward2667152493344
+Backward2667169691392 -> Backward2667169691488
+Backward2667169691584 -> Backward2667169691392
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691488 [label="(Backward)data:6grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691200 [label ="Sub", color=lightblue, style=filled, shape=box]
+Backward2667169691200 -> Backward2667169690816
+Backward2667169691200 -> Backward2667169691104
+Backward2667169691296 -> Backward2667169691200
+Backward2667169690816 [label="(Backward)data:8.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691104 [label="(Backward)data:14.0grad:-603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169690912 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169690912 -> Backward2667152493296
+Backward2667169690912 -> Backward2667169691008
+Backward2667169691104 -> Backward2667169690912
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169691008 [label="(Backward)data:14grad:-603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169690720 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169690720 -> Backward2667169690144
+Backward2667169690720 -> Backward2667169690624
+Backward2667169690816 -> Backward2667169690720
+Backward2667169690144 [label="(Backward)data:5.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169690624 [label="(Backward)data:3.0grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169690336 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169690336 -> Backward2667169690384
+Backward2667169690336 -> Backward2667169690528
+Backward2667169690624 -> Backward2667169690336
+Backward2667169690384 [label="(Backward)data:1.0grad:1809.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169690528 [label="(Backward)data:3grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169690240 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169690240 -> Backward2667152493344
+Backward2667169690384 -> Backward2667169690240
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169689952 [label ="Sub", color=lightblue, style=filled, shape=box]
+Backward2667169689952 -> Backward2667169690048
+Backward2667169689952 -> Backward2667169689856
+Backward2667169690144 -> Backward2667169689952
+Backward2667169690048 [label="(Backward)data:19grad:603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169689856 [label="(Backward)data:14.0grad:-603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169648544 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169648544 -> Backward2667152493344
+Backward2667169648544 -> Backward2667169689760
+Backward2667169689856 -> Backward2667169648544
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169689760 [label="(Backward)data:14grad:-603.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169648448 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169648448 -> Backward2667169648352
+Backward2667169648592 -> Backward2667169648448
+Backward2667169648352 [label="(Backward)data:3.0grad:1206.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169648064 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169648064 -> Backward2667169648112
+Backward2667169648064 -> Backward2667169648256
+Backward2667169648352 -> Backward2667169648064
+Backward2667169648112 [label="(Backward)data:2.0grad:1206.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169648256 [label="(Backward)data:1grad:1206.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169648016 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169648016 -> Backward2667152493344
+Backward2667169648016 -> Backward2667152493296
+Backward2667169648112 -> Backward2667169648016
+Backward2667152493344 [label="x(Backward) data:1.0 grad:-5374.0", color=lightgoldenrodyellow, style=filled]
+Backward2667152493296 [label="y(Backward) data:1.0 grad:8066.0", color=lightgoldenrodyellow, style=filled]
 }

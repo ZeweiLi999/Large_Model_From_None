@@ -9,8 +9,8 @@ class Sin(Function):
         return y
 
     def backward(self, gy):
-        x = self.inputs[0].data
-        gx = gy * np.cos(x)
+        x, = self.inputs # 加逗号，是为了解包操作
+        gx = gy * cos(x)
         return gx
 
 def sin(x):
@@ -26,6 +26,20 @@ def my_sin(x, threshold=0.0001):
         if abs(t.data) < threshold:
             break
     return y
+
+class Cos(Function):
+    def forward(self, x):
+        y = np.cos(x)
+        return y
+
+    def backward(self, gy):
+        x, = self.inputs # 加逗号，是为了解包操作
+        gx = gy * -sin(x)
+        return gx
+
+def cos(x):
+    return Cos()(x)
+
 
 # Exp函数，就是调用np.exp,但是封装成Variable
 class Exp(Function):
