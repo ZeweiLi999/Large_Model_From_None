@@ -1,67 +1,67 @@
 digraph g {
-2714442444080 [label="z(Backward) data: 0.7071064695751781 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442465824 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442465824 -> 2714442469184
-2714442465824 -> 2714442465920
-2714442444080 -> 2714442465824
-2714442469184 [label="(Backward) data: 0.7071430457793603 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442465920 [label="(Backward) data: -3.657620418217724e-05 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442469088 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442469088 -> 2714442469136
-2714442469088 -> 2714442465536
-2714442465920 -> 2714442469088
-2714442469136 [label="(Backward) data: 0.1843440690781733 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442465536 [label="(Backward) data: -0.0001984126984126984 grad:0.1843440690781733", color=lightgoldenrodyellow, style=filled]
-2714442468992 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442468992 -> 2714442467600
-2714442469136 -> 2714442468992
-2714442467600 [label="x1(Backward) data: 0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
-2714442468608 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442468608 -> 2714442467648
-2714442468608 -> 2714442468320
-2714442469184 -> 2714442468608
-2714442467648 [label="(Backward) data: 0.7046526512091675 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442468320 [label="(Backward) data: 0.00249039457019272 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442468704 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442468704 -> 2714442468752
-2714442468704 -> 2714442468464
-2714442468320 -> 2714442468704
-2714442468752 [label="(Backward) data: 0.2988473484231264 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442468464 [label="(Backward) data: 0.008333333333333333 grad:0.2988473484231264", color=lightgoldenrodyellow, style=filled]
-2714442467840 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442467840 -> 2714442467600
-2714442468752 -> 2714442467840
-2714442467600 [label="x1(Backward) data: 0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
-2714442467936 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442467936 -> 2714442469280
-2714442467936 -> 2714442468128
-2714442467648 -> 2714442467936
-2714442469280 [label="(Backward) data: 0.7853981633974483 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442468128 [label="(Backward) data: -0.08074551218828077 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442468800 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442468800 -> 2714442468848
-2714442468800 -> 2714442468032
-2714442468128 -> 2714442468800
-2714442468848 [label="(Backward) data: 0.48447307312968463 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442468032 [label="(Backward) data: -0.16666666666666666 grad:0.48447307312968463", color=lightgoldenrodyellow, style=filled]
-2714442468896 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442468896 -> 2714442467600
-2714442468848 -> 2714442468896
-2714442467600 [label="x1(Backward) data: 0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
-2714442467360 [label ="Add", color=lightblue, style=filled, shape=box]
-2714442467360 -> 2714442467216
-2714442467360 -> 2714442466544
-2714442469280 -> 2714442467360
-2714442467216 [label="(Backward) data: 0.7853981633974483 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442466544 [label="(Backward) data: 0 grad:1.0", color=lightgoldenrodyellow, style=filled]
-2714442467744 [label ="Mul", color=lightblue, style=filled, shape=box]
-2714442467744 -> 2714442467504
-2714442467744 -> 2714442467120
-2714442467216 -> 2714442467744
-2714442467504 [label="(Backward) data: 0.7853981633974483 grad:None", color=lightgoldenrodyellow, style=filled]
-2714442467120 [label="(Backward) data: 1.0 grad:0.7853981633974483", color=lightgoldenrodyellow, style=filled]
-2714442467696 [label ="Pow", color=lightblue, style=filled, shape=box]
-2714442467696 -> 2714442467600
-2714442467504 -> 2714442467696
-2714442467600 [label="x1(Backward) data: 0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
+Backward2667169913920 [label="z(Backward) data:0.7071064695751781 grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169913824 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169913824 -> Backward2667169913248
+Backward2667169913824 -> Backward2667169913728
+Backward2667169913920 -> Backward2667169913824
+Backward2667169913248 [label="(Backward)data:0.7071430457793603grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169913728 [label="(Backward)data:-3.657620418217724e-05grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169913440 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169913440 -> Backward2667169913488
+Backward2667169913440 -> Backward2667169913632
+Backward2667169913728 -> Backward2667169913440
+Backward2667169913488 [label="(Backward)data:0.1843440690781733grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169913632 [label="(Backward)data:-0.0001984126984126984grad:0.1843440690781733", color=lightgoldenrodyellow, style=filled]
+Backward2667169913344 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169913344 -> Backward2667169648592
+Backward2667169913488 -> Backward2667169913344
+Backward2667169648592 [label="x1(Backward) data:0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
+Backward2667169913152 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169913152 -> Backward2667169912576
+Backward2667169913152 -> Backward2667169913056
+Backward2667169913248 -> Backward2667169913152
+Backward2667169912576 [label="(Backward)data:0.7046526512091675grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169913056 [label="(Backward)data:0.00249039457019272grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169912768 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169912768 -> Backward2667169912816
+Backward2667169912768 -> Backward2667169912960
+Backward2667169913056 -> Backward2667169912768
+Backward2667169912816 [label="(Backward)data:0.2988473484231264grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169912960 [label="(Backward)data:0.008333333333333333grad:0.2988473484231264", color=lightgoldenrodyellow, style=filled]
+Backward2667169912672 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169912672 -> Backward2667169648592
+Backward2667169912816 -> Backward2667169912672
+Backward2667169648592 [label="x1(Backward) data:0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
+Backward2667169912480 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169912480 -> Backward2667169910848
+Backward2667169912480 -> Backward2667169912384
+Backward2667169912576 -> Backward2667169912480
+Backward2667169910848 [label="(Backward)data:0.7853981633974483grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169912384 [label="(Backward)data:-0.08074551218828077grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169912096 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169912096 -> Backward2667169912144
+Backward2667169912096 -> Backward2667169912288
+Backward2667169912384 -> Backward2667169912096
+Backward2667169912144 [label="(Backward)data:0.48447307312968463grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169912288 [label="(Backward)data:-0.16666666666666666grad:0.48447307312968463", color=lightgoldenrodyellow, style=filled]
+Backward2667169912000 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169912000 -> Backward2667169648592
+Backward2667169912144 -> Backward2667169912000
+Backward2667169648592 [label="x1(Backward) data:0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
+Backward2667169648304 [label ="Add", color=lightblue, style=filled, shape=box]
+Backward2667169648304 -> Backward2667169647824
+Backward2667169648304 -> Backward2667169910944
+Backward2667169910848 -> Backward2667169648304
+Backward2667169647824 [label="(Backward)data:0.7853981633974483grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169910944 [label="(Backward)data:0grad:1.0", color=lightgoldenrodyellow, style=filled]
+Backward2667169648496 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2667169648496 -> Backward2667169648064
+Backward2667169648496 -> Backward2667169648160
+Backward2667169647824 -> Backward2667169648496
+Backward2667169648064 [label="(Backward)data:0.7853981633974483grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2667169648160 [label="(Backward)data:1.0grad:0.7853981633974483", color=lightgoldenrodyellow, style=filled]
+Backward2667169648352 [label ="Pow", color=lightblue, style=filled, shape=box]
+Backward2667169648352 -> Backward2667169648592
+Backward2667169648064 -> Backward2667169648352
+Backward2667169648592 [label="x1(Backward) data:0.7853981633974483 grad:0.7071032148228457", color=lightgoldenrodyellow, style=filled]
 }
