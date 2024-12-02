@@ -33,9 +33,28 @@ graph TD
 
 
 ## 1.自制深度学习框架/LearnTorch ![Static Badge](https://img.shields.io/badge/LearnTorch-自制深度学习框架-0584E3) 
+<br/><br/><br/><br/>
+<div align=center>
+<img src="https://github.com/user-attachments/assets/cd20746f-4781-4412-903e-cd968ae5c095">
+</div><br/><br/><br/>
 
+### (1)可视化计算图
+<br/>
 
-![img_title-removebg](https://github.com/user-attachments/assets/7059a476-6c70-49e5-b327-ef767222f730)
+![sphere_All](https://github.com/user-attachments/assets/55d090b9-c96a-4d64-bebe-05f2e3d813b2)
+
+### (2)可视化梯度下降
+<br/>
+
+https://github.com/user-attachments/assets/d8e18c83-ecdb-48ce-acb7-a6d6183c1d7b
 
 
 ## 2.虚拟私人助手/VirtualAssistant ![Static Badge](https://img.shields.io/badge/VirtualAssistant-虚拟私人助手-7884A4) 
+
+### (1)自定义助手模型
+<br/>
+
+![image](https://github.com/user-attachments/assets/4db5d7a5-a3e0-48d4-82c2-c227883beb4a)
+
+
+
