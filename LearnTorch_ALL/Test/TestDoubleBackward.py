@@ -10,10 +10,12 @@ def f(x):
 if __name__ == "__main__":
     x = Variable(np.array(2.0))
     y = f(x)
-    y.backward(create_graph=True)
+    y.backward(create_graph=True) # 非常重要，要允许反向传播建立连接
     print(x.grad)
 
     gx = x.grad
     x.cleargrad()
     gx.backward()
     print(x.grad)
+
+
