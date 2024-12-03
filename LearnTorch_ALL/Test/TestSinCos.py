@@ -21,10 +21,12 @@ if __name__ == "__main__":
     x2 = Variable(np.array(np.pi / 6))
     y2 = F.sin(x2)
     y2.backward(create_graph = True)
-    print("sin(pi/6) 的1阶导数:{}".format(x2.grad))
+    print("x2.grad -> sin(pi/6) 的1阶导数:{}".format(x2.grad))
+    print("x2.grad.data -> sin(pi/6) 的1阶导数:{}".format(x2.grad.data))
     for i in range(2,10):
-        x_grad = x2.grad
+        x_grad = x2.grad # x2.grad.data 就是导数
         x2.cleargrad()
         x_grad.backward(create_graph = True) # create_graph = True代表允许高阶导数
-        print("sin(pi/6) 的{}阶导数:{}".format(i, x2.grad))
+        print("x2.grad -> sin(pi/6) 的{}阶导数:{}".format(i, x2.grad)) # Variable格式
+        print("x2.grad.data -> sin(pi/6) 的{}阶导数:{}".format(i, x2.grad.data)) # data是np标量
 

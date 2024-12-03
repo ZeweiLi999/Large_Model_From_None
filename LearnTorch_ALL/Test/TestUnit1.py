@@ -22,7 +22,7 @@ class SquareTest(unittest.TestCase):
         y.backward()
         gx = x.grad
         expected = np.array(6.0) #平方的导数是2 * x
-        self.assertEqual(gx.grad,expected)
+        self.assertEqual(gx.data,expected)
 
     #利用数值微分的反向传播自动测试
     def test_gradient_check(self):
@@ -31,5 +31,5 @@ class SquareTest(unittest.TestCase):
         y.backward()
         gx = x.grad
         num_grad = numerical_diff(square,x)
-        flg = np.allclose(gx.grad,num_grad) #判断数值微分的梯度和x的梯度是否足够接近
+        flg = np.allclose(gx.data,num_grad) #判断数值微分的梯度和x的梯度是否足够接近
         self.assertTrue(flg)

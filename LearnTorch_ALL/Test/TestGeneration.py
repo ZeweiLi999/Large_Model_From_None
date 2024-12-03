@@ -19,5 +19,6 @@ class SquareTest(unittest.TestCase):
         a = square(x)
         y = add(square(a), square(a))
         y.backward()
+        gx = x.grad
         expected = np.array(64.0)
-        self.assertEqual(x.grad,expected)
+        self.assertEqual(gx.data,expected)
