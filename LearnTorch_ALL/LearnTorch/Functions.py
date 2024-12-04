@@ -1,6 +1,7 @@
 import math
 import numpy as np
 from LearnTorch import Function
+from LearnTorch.VariableFunction import as_variable
 
 # Sin函数
 class Sin(Function):
@@ -80,3 +81,42 @@ class Tanh(Function):
 
 def tanh(x):
     return Tanh()(x)
+
+class Reshape(Function):
+    def __init__(self, shape):
+        self.shape = shape
+
+    def forward(self, x):
+        self.x_shape = x.shape # 保留输入变量的shape，后面的backward要用
+        y = x.reshape(self.shape)
+        return y
+
+    def backward(self, gy):
+        return reshape(gy, self.x_shape)
+
+def reshape(x, shape):
+    if x.shape == shape:
+        return as_variable(x)
+    return Reshape(shape)(x) # 前向传播调用
+
+class Transpose(Function):
+    def __init__(self, axes=None):
+        self.axes = axes    # 转置的轴顺序
+    def forward(self, x):
+        y = x.transpose(self.axes) # 指定轴转置，参照Function的__call__，会取出data来运算，所以x是ndarray，这里调用的是numpy的transpose
+        return y
+
+    def backward(self, gy):
+        if self.axes is None:
+            return transpose(gy) # 二阶张量转置再转置回去，就是逆转置了
+
+        axes_len = len(self.axes)
+        inv_axes = tuple(np.argsort([ax % axes_len for ax in self.axes]))
+        # 取余数是为了处理负轴索引的情况 ax = -1 → -1 % 3 = 2
+        # np.argsort中返回数组元素排序后对应索引
+        # np.argsort用于计算逆轴顺序，即反向传播时所需的逆转置。
+        # 例如，如果self.axes = (2, 0, 1)，逆转置应该是(1, 2, 0)。
+        return transpose(gy, inv_axes)
+
+def transpose(x, axes=None): # 调用前向传播
+    return Transpose(axes)(x)
