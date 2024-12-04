@@ -1,6 +1,7 @@
 import numpy as np
 import weakref
 import contextlib
+import LearnTorch
 
 
 class Config:   #用于决定是否启用反向传播的类
@@ -48,6 +49,9 @@ class Variable:#定义深度学习的变量类
     @property
     def dtype(self):
         return self.data.dtype
+
+    def T(self):
+        return LearnTorch.Functions.transpose(self)
     # numpy的实例变量
 
     # 重载函数
@@ -110,6 +114,22 @@ class Variable:#定义深度学习的变量类
                 for y in f.outputs:
                     #不要保留各函数输出变量的导数
                     y().grad = None #因为y是weakref,必须要用y()访问
+
+    def reshape(self, *shape): # 可变长参数支持元组或列表
+        if len(shape) == 1 and isinstance(shape[0], (tuple, list)): # 判断参数是不是元组或列表
+            shape = shape[0]
+        return LearnTorch.Functions.reshape(self, shape) # 在这里全称引入，是为了避免循环导入
+        # 返回一个新形状的Variable
+
+    def transpose(self, *axes):
+        if len(axes) == 0:
+            axes = None
+        elif len(axes) == 1:
+            if isinstance(axes[0], (tuple, list)) or axes[0] is None:
+                axes = axes[0] # 解包操作，展开
+        return LearnTorch.Functions.transpose(self, axes)
+
+
 
 #把传来的参数转化为Variable实例
 def as_variable(obj):
