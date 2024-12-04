@@ -24,9 +24,11 @@ class ComplexFunctionTest(unittest.TestCase):
         y = Variable(np.array(1.0))
         z_sphere = sphere(x, y)
         z_sphere.backward()
+        gx = x.grad
+        gy = y.grad
         sphere_num_x_grad, sphere_num_y_grad = numerical_diff_twoinput(sphere, x, y)
-        flg_sphere_x = np.allclose(x.grad, sphere_num_x_grad) #判断数值微分的导数和LearnTorch反向传播x的导数是否足够接近
-        flg_sphere_y = np.allclose(y.grad, sphere_num_y_grad)
+        flg_sphere_x = np.allclose(gx.data, sphere_num_x_grad) #判断数值微分的导数和LearnTorch反向传播x的导数是否足够接近
+        flg_sphere_y = np.allclose(gy.data, sphere_num_y_grad)
         self.assertTrue(flg_sphere_x)
         self.assertTrue(flg_sphere_y)
 
@@ -35,9 +37,11 @@ class ComplexFunctionTest(unittest.TestCase):
         y.cleargrad()
         z_matyas = matyas(x, y)
         z_matyas.backward()
+        gx = x.grad
+        gy = y.grad
         matyas_num_x_grad, matyas_num_y_grad = numerical_diff_twoinput(matyas, x, y)
-        flg_matyas_x = np.allclose(x.grad, matyas_num_x_grad)  # 判断数值微分的导数和LearnTorch反向传播x的导数是否足够接近
-        flg_matyas_y = np.allclose(y.grad, matyas_num_y_grad)
+        flg_matyas_x = np.allclose(gx.data, matyas_num_x_grad)  # 判断数值微分的导数和LearnTorch反向传播x的导数是否足够接近
+        flg_matyas_y = np.allclose(gy.data, matyas_num_y_grad)
         self.assertTrue(flg_matyas_x)
         self.assertTrue(flg_matyas_y)
 
@@ -46,8 +50,10 @@ class ComplexFunctionTest(unittest.TestCase):
         y.cleargrad()
         z_goldstein = goldstein(x, y)
         z_goldstein.backward()
+        gx = x.grad
+        gy = y.grad
         goldstein_num_x_grad, goldstein_num_y_grad = numerical_diff_twoinput(goldstein, x, y)
-        flg_goldstein_x = np.allclose(x.grad, goldstein_num_x_grad)  # 判断数值微分的导数和LearnTorch反向传播x的导数是否足够接近
-        flg_goldstein_y = np.allclose(y.grad, goldstein_num_y_grad)
+        flg_goldstein_x = np.allclose(gx.data, goldstein_num_x_grad)  # 判断数值微分的导数和LearnTorch反向传播x的导数是否足够接近
+        flg_goldstein_y = np.allclose(gy.data, goldstein_num_y_grad)
         self.assertTrue(flg_goldstein_x)
         self.assertTrue(flg_goldstein_y)

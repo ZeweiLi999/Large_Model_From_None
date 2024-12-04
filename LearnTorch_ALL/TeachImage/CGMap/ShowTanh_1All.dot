@@ -1,0 +1,61 @@
+digraph g {
+subgraph cluster_g1 {
+    label = "Forward Propagation";
+    color = blue;
+    style = dashed;
+Forward2093505487008 [label="gx1(Forward) data: 0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505486912 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505449312 -> Forward2093505486912
+Forward2093505449888 -> Forward2093505486912
+Forward2093505486912 -> Forward2093505487008
+Forward2093505449312 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505449888 [label="(Forward)data:0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505449696 [label ="Sub", color=lightblue, style=filled, shape=box]
+Forward2093505449792 -> Forward2093505449696
+Forward2093505449600 -> Forward2093505449696
+Forward2093505449696 -> Forward2093505449888
+Forward2093505449792 [label="(Forward)data:1", color=lightcoral, style=filled]
+Forward2093505449600 [label="(Forward)data:0.5800256583859739", color=lightcoral, style=filled]
+Forward2093505449504 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093464256128 -> Forward2093505449504
+Forward2093464256128 -> Forward2093505449504
+Forward2093505449504 -> Forward2093505449600
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464255216 [label ="Tanh", color=lightblue, style=filled, shape=box]
+Forward2093464256272 -> Forward2093464255216
+Forward2093464255216 -> Forward2093464256128
+Forward2093464256272 [label="x(Forward) data: 1.0", color=lightcoral, style=filled]
+
+}
+subgraph cluster_g2 {
+    label = "Backward Propagation";
+    color = red;
+    style = dashed;
+    rankdir=BT;
+Backward2093505487008 [label="gx1(Backward) data:0.41997434161402614 grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093505486912 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2093505486912 -> Backward2093505449312
+Backward2093505486912 -> Backward2093505449888
+Backward2093505487008 -> Backward2093505486912
+Backward2093505449312 [label="(Backward)data:1.0grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093505449888 [label="(Backward)data:0.41997434161402614grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093505449696 [label ="Sub", color=lightblue, style=filled, shape=box]
+Backward2093505449696 -> Backward2093505449792
+Backward2093505449696 -> Backward2093505449600
+Backward2093505449888 -> Backward2093505449696
+Backward2093505449792 [label="(Backward)data:1grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093505449600 [label="(Backward)data:0.5800256583859739grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093505449504 [label ="Mul", color=lightblue, style=filled, shape=box]
+Backward2093505449504 -> Backward2093464256128
+Backward2093505449504 -> Backward2093464256128
+Backward2093505449600 -> Backward2093505449504
+Backward2093464256128 [label="y(Backward) data:0.7615941559557649 grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093464256128 [label="y(Backward) data:0.7615941559557649 grad:None", color=lightgoldenrodyellow, style=filled]
+Backward2093464255216 [label ="Tanh", color=lightblue, style=filled, shape=box]
+Backward2093464255216 -> Backward2093464256272
+Backward2093464256128 -> Backward2093464255216
+Backward2093464256272 [label="x(Backward) data:1.0 grad:variable(0.41997434161402614)", color=lightgoldenrodyellow, style=filled]
+
+}
+}
