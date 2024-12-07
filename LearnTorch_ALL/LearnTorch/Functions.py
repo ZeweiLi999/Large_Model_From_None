@@ -161,6 +161,7 @@ def broadcast_to(x, shape):
     return BroadcastTo(shape)(x)
 
 # 深度学习版的sumto，带有反向传播
+# sum_to和broad_cast反向传播相互依赖，但是正向传播是独立的
 class SumTo(Function):
     def __init__(self, shape):
         self.shape = shape
@@ -179,4 +180,18 @@ def sum_to(x, shape):
         return as_variable(x)
     return SumTo(shape)(x)
 
-# sum_to和broad_cast反向传播相互依赖，但是正向传播是独立的
+class MatMul(Function):
+    def forward(self, x, W):
+        # 一维是向量内积，高维是矩阵乘法 (a x b) x (b x c) = (a x c)
+        y = x.dot(W) # x.dot，numpy类型实例也能用
+        return y
+
+    def backward(self, gy):
+        # 将梯度形状变为输入变量的形状
+        x, W = self.inputs
+        gx = matmul(gy, W.T)  # (a x c)x(c x b) = (a x b)
+        gW = matmul(x.T, gy)  # (b x a)x(a x c) = (b x c)
+        return gx, gW
+
+def matmul(x, W):
+    return MatMul()(x, W)
