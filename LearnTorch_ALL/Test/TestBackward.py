@@ -1,4 +1,7 @@
 #用于测试各函数的文件
+if '__file__' in globals():
+    import os, sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import numpy as np
 from LearnTorch import Variable
 from LearnTorch.Functions import Square,Exp
