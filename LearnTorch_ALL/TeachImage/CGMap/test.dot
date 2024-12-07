@@ -1,0 +1,40 @@
+digraph g{
+
+    subgraph cluster_g1 {
+    cluster=true;
+    2843389783728 [label="z(Forward) data: 2.0", color=lightcoral, style=filled]
+    2843389783536 [label ="Add", color=lightblue, style=filled, shape=box]
+    2843389783392 -> 2843389783536
+    2843389783584 -> 2843389783536
+    2843389783536 -> 2843389783728
+    2843389783392 [label="(Forward) data: 1.0", color=lightcoral, style=filled]
+    2843389783584 [label="(Forward) data: 1.0", color=lightcoral, style=filled]
+    2843389783344 [label ="Pow", color=lightblue, style=filled, shape=box]
+    2843350748608 -> 2843389783344
+    2843389783344 -> 2843389783584
+    2843350748608 [label="y(Forward) data: 1.0", color=lightcoral, style=filled]
+    2843350748512 [label ="Pow", color=lightblue, style=filled, shape=box]
+    2843350748656 -> 2843350748512
+    2843350748512 -> 2843389783392
+    2843350748656 [label="x(Forward) data: 1.0", color=lightcoral, style=filled]
+    }
+
+    subgraph cluster_g2 {
+    cluster=true;
+    2843389783728 [label="z(Backward) data: 2.0 grad:1.0", color=lightgoldenrodyellow, style=filled]
+    2843389783536 [label ="Add", color=lightblue, style=filled, shape=box]
+    2843389783536 -> 2843389783392
+    2843389783536 -> 2843389783584
+    2843389783728 -> 2843389783536
+    2843389783392 [label="(Backward) data: 1.0 grad:1.0", color=lightgoldenrodyellow, style=filled]
+    2843389783584 [label="(Backward) data: 1.0 grad:1.0", color=lightgoldenrodyellow, style=filled]
+    2843389783344 [label ="Pow", color=lightblue, style=filled, shape=box]
+    2843389783344 -> 2843350748608
+    2843389783584 -> 2843389783344
+    2843350748608 [label="y(Backward) data: 1.0 grad:2.0", color=lightgoldenrodyellow, style=filled]
+    2843350748512 [label ="Pow", color=lightblue, style=filled, shape=box]
+    2843350748512 -> 2843350748656
+    2843389783392 -> 2843350748512
+    2843350748656 [label="x(Backward) data: 1.0 grad:2.0", color=lightgoldenrodyellow, style=filled]
+    }
+}

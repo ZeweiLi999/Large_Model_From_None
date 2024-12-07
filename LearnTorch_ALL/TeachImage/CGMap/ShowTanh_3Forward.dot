@@ -1,0 +1,123 @@
+digraph g {
+Forward2093505505216 [label="gx3(Forward) data: 0.6216266807712962", color=lightcoral, style=filled]
+Forward2093505505120 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505503872 -> Forward2093505505120
+Forward2093505505024 -> Forward2093505505120
+Forward2093505505120 -> Forward2093505505216
+Forward2093505503872 [label="(Forward)data:1.4801539503158432", color=lightcoral, style=filled]
+Forward2093505505024 [label="(Forward)data:0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505504832 [label ="Sub", color=lightblue, style=filled, shape=box]
+Forward2093505504928 -> Forward2093505504832
+Forward2093505504736 -> Forward2093505504832
+Forward2093505504832 -> Forward2093505505024
+Forward2093505504928 [label="(Forward)data:1", color=lightcoral, style=filled]
+Forward2093505504736 [label="(Forward)data:0.5800256583859739", color=lightcoral, style=filled]
+Forward2093505504448 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093464256128 -> Forward2093505504448
+Forward2093464256128 -> Forward2093505504448
+Forward2093505504448 -> Forward2093505504736
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464255216 [label ="Tanh", color=lightblue, style=filled, shape=box]
+Forward2093464256272 -> Forward2093464255216
+Forward2093464255216 -> Forward2093464256128
+Forward2093464256272 [label="x(Forward) data: 1.0", color=lightcoral, style=filled]
+Forward2093505503776 [label ="Add", color=lightblue, style=filled, shape=box]
+Forward2093505503680 -> Forward2093505503776
+Forward2093505503392 -> Forward2093505503776
+Forward2093505503776 -> Forward2093505503872
+Forward2093505503680 [label="(Forward)data:0.32010263354389545", color=lightcoral, style=filled]
+Forward2093505503392 [label="(Forward)data:1.1600513167719477", color=lightcoral, style=filled]
+Forward2093505503296 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505490656 -> Forward2093505503296
+Forward2093464256128 -> Forward2093505503296
+Forward2093505503296 -> Forward2093505503392
+Forward2093505490656 [label="(Forward)data:1.5231883119115297", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505490176 [label ="Neg", color=lightblue, style=filled, shape=box]
+Forward2093505489312 -> Forward2093505490176
+Forward2093505490176 -> Forward2093505490656
+Forward2093505489312 [label="(Forward)data:-1.5231883119115297", color=lightcoral, style=filled]
+Forward2093505489216 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487056 -> Forward2093505489216
+Forward2093505488448 -> Forward2093505489216
+Forward2093505489216 -> Forward2093505489312
+Forward2093505487056 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505488448 [label="(Forward)data:-1.5231883119115297", color=lightcoral, style=filled]
+Forward2093505488352 [label ="Add", color=lightblue, style=filled, shape=box]
+Forward2093505487968 -> Forward2093505488352
+Forward2093505488160 -> Forward2093505488352
+Forward2093505488352 -> Forward2093505488448
+Forward2093505487968 [label="(Forward)data:-0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505488160 [label="(Forward)data:-0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505488064 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487776 -> Forward2093505488064
+Forward2093464256128 -> Forward2093505488064
+Forward2093505488064 -> Forward2093505488160
+Forward2093505487776 [label="(Forward)data:-1.0", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505487680 [label ="Neg", color=lightblue, style=filled, shape=box]
+Forward2093505487584 -> Forward2093505487680
+Forward2093505487680 -> Forward2093505487776
+Forward2093505487584 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505487488 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487200 -> Forward2093505487488
+Forward2093505449312 -> Forward2093505487488
+Forward2093505487488 -> Forward2093505487584
+Forward2093505487200 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505449312 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505487872 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487776 -> Forward2093505487872
+Forward2093464256128 -> Forward2093505487872
+Forward2093505487872 -> Forward2093505487968
+Forward2093505487776 [label="(Forward)data:-1.0", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505503584 [label ="Add", color=lightblue, style=filled, shape=box]
+Forward2093505490560 -> Forward2093505503584
+Forward2093505490848 -> Forward2093505503584
+Forward2093505503584 -> Forward2093505503680
+Forward2093505490560 [label="(Forward)data:-0.8399486832280523", color=lightcoral, style=filled]
+Forward2093505490848 [label="(Forward)data:1.1600513167719477", color=lightcoral, style=filled]
+Forward2093505490752 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505490656 -> Forward2093505490752
+Forward2093464256128 -> Forward2093505490752
+Forward2093505490752 -> Forward2093505490848
+Forward2093505490656 [label="(Forward)data:1.5231883119115297", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505490464 [label ="Add", color=lightblue, style=filled, shape=box]
+Forward2093505489696 -> Forward2093505490464
+Forward2093505490080 -> Forward2093505490464
+Forward2093505490464 -> Forward2093505490560
+Forward2093505489696 [label="(Forward)data:-0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505490080 [label="(Forward)data:-0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505489984 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505489120 -> Forward2093505489984
+Forward2093505487776 -> Forward2093505489984
+Forward2093505489984 -> Forward2093505490080
+Forward2093505489120 [label="(Forward)data:0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505487776 [label="(Forward)data:-1.0", color=lightcoral, style=filled]
+Forward2093505486912 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487056 -> Forward2093505486912
+Forward2093505488832 -> Forward2093505486912
+Forward2093505486912 -> Forward2093505489120
+Forward2093505487056 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505488832 [label="(Forward)data:0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505488640 [label ="Sub", color=lightblue, style=filled, shape=box]
+Forward2093505488736 -> Forward2093505488640
+Forward2093505488544 -> Forward2093505488640
+Forward2093505488640 -> Forward2093505488832
+Forward2093505488736 [label="(Forward)data:1", color=lightcoral, style=filled]
+Forward2093505488544 [label="(Forward)data:0.5800256583859739", color=lightcoral, style=filled]
+Forward2093505488256 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093464256128 -> Forward2093505488256
+Forward2093464256128 -> Forward2093505488256
+Forward2093505488256 -> Forward2093505488544
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505489600 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505489120 -> Forward2093505489600
+Forward2093505487776 -> Forward2093505489600
+Forward2093505489600 -> Forward2093505489696
+Forward2093505489120 [label="(Forward)data:0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505487776 [label="(Forward)data:-1.0", color=lightcoral, style=filled]
+}

@@ -1,6 +1,7 @@
 import numpy as np
 import weakref
 import contextlib
+import LearnTorch
 
 
 class Config:   #用于决定是否启用反向传播的类
@@ -48,6 +49,9 @@ class Variable:#定义深度学习的变量类
     @property
     def dtype(self):
         return self.data.dtype
+
+    def T(self):
+        return LearnTorch.Functions.transpose(self)
     # numpy的实例变量
 
     # 重载函数
@@ -70,9 +74,9 @@ class Variable:#定义深度学习的变量类
         self.creator = func
         self.generation = func.generation + 1
 
-    def backward(self, retain_grad = False):
+    def backward(self, retain_grad = False, create_graph=False):
         if self.grad is None:       #如果没有导数，就不用在外部创建了
-            self.grad = np.ones_like(self.data)
+            self.grad = Variable(np.ones_like(self.data)) # 创建Variable，使得反向传播也有连接，可以一直求导
 
         funcs = [] #1.创造循环的函数列表
         seen_set = set() #用去去重的集合
@@ -88,26 +92,45 @@ class Variable:#定义深度学习的变量类
         while funcs:
             f = funcs.pop()     #2.获取变量的创造函数
             gys = [output().grad for output in f.outputs]#3.获取函数的输出的所有导数,() 是 weakref.ref 对象的调用方法，用于返回被弱引用的对象。
-            gxs = f.backward(*gys) #3.将反向传播的链条推进一步，获取所有输入的导数
-            if not isinstance(gxs,tuple):
-                #改为元组类型便于后面的zip循环
-                gxs = (gxs,)
 
-            for x, gx in zip(f.inputs, gxs):  #4.更新变量的梯度
-                if x.grad is None:
-                    x.grad = gx
-                else:
-                    x.grad = x.grad + gx #这样会新创建内存空间，+=会原地操作
+            with using_config('enable_backprop', create_graph): # 如果不需要梯度，反向传播的反向传播不创建计算图和梯度
+                gxs = f.backward(*gys) #3.将反向传播的链条推进一步，获取所有输入的导数
+                if not isinstance(gxs,tuple):
+                    #改为元组类型便于后面的zip循环
+                    gxs = (gxs,)
 
-                #记住要放在循环内，不断反向传播
-                if x.creator is not None:
-                    add_func(x.creator)
-                #如果没有creator，反向传播到此结束
+                for x, gx in zip(f.inputs, gxs):  #4.更新变量的梯度
+                    if x.grad is None:
+                        x.grad = gx
+                    else:
+                        x.grad = x.grad + gx #这样会新创建内存空间，+=会原地操作
+
+                    #记住要放在循环内，不断反向传播
+                    if x.creator is not None:
+                        add_func(x.creator)
+                    #如果没有creator，反向传播到此结束
 
             if not retain_grad:
                 for y in f.outputs:
                     #不要保留各函数输出变量的导数
                     y().grad = None #因为y是weakref,必须要用y()访问
+
+    def reshape(self, *shape): # 可变长参数支持元组或列表
+        if len(shape) == 1 and isinstance(shape[0], (tuple, list)): # 判断参数是不是元组或列表
+            shape = shape[0]
+        return LearnTorch.Functions.reshape(self, shape) # 在这里全称引入，是为了避免循环导入
+        # 返回一个新形状的Variable
+
+    def transpose(self, *axes):
+        if len(axes) == 0:
+            axes = None
+        elif len(axes) == 1:
+            if isinstance(axes[0], (tuple, list)) or axes[0] is None:
+                axes = axes[0] # 解包操作，展开
+        return LearnTorch.Functions.transpose(self, axes)
+
+    def sum(self, axis=None, keepdims=False):
+        return LearnTorch.Functions.sum(self, axis, keepdims)
 
 #把传来的参数转化为Variable实例
 def as_variable(obj):
@@ -152,12 +175,19 @@ class Function:
 
 
 class Add(Function):
-    def forward(self,x0,x1):
+    def forward(self, x0, x1):
+        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         y = x0 + x1
         return y    #返回的是Variable
 
     def backward(self,gy):  #返回的两个偏导数都是导数是（1*输入的导数）
-        return gy, gy
+        gx0, gx1 = gy, gy
+        if self.x0_shape != self.x1_shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+        return gx0, gx1
 
 def add(x0, x1):
     x1 = as_array(x1) #因为self本身肯定是Variable，所以只要针对x1是标量的情况就可以了，是ndarray会在function变为Variable
@@ -165,13 +195,21 @@ def add(x0, x1):
 
 class Mul(Function):
     def forward(self, x0, x1):
+        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         #前向传播
         y = x0 * x1
         return y
 
     def backward(self, gy):
-        x0, x1 = self.inputs[0].data, self.inputs[1].data
-        return gy * x1, gy * x0
+        x0, x1 = self.inputs
+        gx0 = gy * x1
+        gx1 = gy * x0
+        if self.x0_shape != self.x1_shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+        return gx0, gx1 # 重载运算符后，Variable类可以直接相乘
 
 def mul(x0, x1):
     x1 = as_array(x1)
@@ -190,11 +228,19 @@ def neg(x):
 
 class Sub(Function):
     def forward(self, x0, x1):
+        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         y = x0 - x1
         return y
 
     def backward(self,gy):
-        return gy, -gy
+        gx0 = gy
+        gx1 = -gy
+        if self.x0_shape != self.x1_shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+        return gx0, gx1
 
 def sub(x0, x1):
     x1 = as_array(x1)
@@ -206,13 +252,19 @@ def rsub(x0, x1):
 
 class Div(Function):
     def forward(self, x0, x1):
+        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         y = x0 / x1
         return y
 
     def backward(self,gy):
-        x0, x1 = self.inputs[0].data, self.inputs[1].data
+        x0, x1 = self.inputs
         gx0 = gy / x1
         gx1 = gy * (-x0 / x1 ** 2)
+        if self.x0_shape != self.x1_shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
         return gx0, gx1
 
 def div(x0, x1):
@@ -228,12 +280,12 @@ class Pow(Function):
         # 前向传播和后向传播都需要用到指数，所以列为属性
         self.c = c
 
-    def forward(self,x):
+    def forward(self, x):
         y = x ** self.c
         return y
 
-    def backward(self,gy):
-        x = self.inputs[0].data
+    def backward(self, gy):
+        x, = self.inputs
         c = self.c
         gx = c * x ** (c - 1) * gy
         return gx

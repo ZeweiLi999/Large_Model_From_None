@@ -1,0 +1,17 @@
+digraph g {
+Forward2667169647728 [label="z(Forward) data: 2.0", color=lightcoral, style=filled]
+Forward2667169647536 [label ="Add", color=lightblue, style=filled, shape=box]
+Forward2667169647392 -> Forward2667169647536
+Forward2667169647584 -> Forward2667169647536
+Forward2667169647536 -> Forward2667169647728
+Forward2667169647392 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2667169647584 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2667169647344 [label ="Pow", color=lightblue, style=filled, shape=box]
+Forward2667152493296 -> Forward2667169647344
+Forward2667169647344 -> Forward2667169647584
+Forward2667152493296 [label="y(Forward) data: 1.0", color=lightcoral, style=filled]
+Forward2667152493248 [label ="Pow", color=lightblue, style=filled, shape=box]
+Forward2667152493344 -> Forward2667152493248
+Forward2667152493248 -> Forward2667169647392
+Forward2667152493344 [label="x(Forward) data: 1.0", color=lightcoral, style=filled]
+}
