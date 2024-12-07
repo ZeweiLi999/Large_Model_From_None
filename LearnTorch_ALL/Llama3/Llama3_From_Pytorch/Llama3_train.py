@@ -85,8 +85,8 @@ def train(model, optimizer, args: ModelArgs):
     print("验证损失: ", losses[-1]['val'])
 
     # # 将损失数据转化为DataFrame，确保列名正确
-    # losses_df = pd.DataFrame(losses)
-    # print("最终的损失 DataFrame:")s
+    losses_df = pd.DataFrame(losses)
+    # print("最终的损失 DataFrame:")s=
     # print(losses_df)
     #
     # # 绘制损失图像

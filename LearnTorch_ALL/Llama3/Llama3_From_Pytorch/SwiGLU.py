@@ -1,8 +1,8 @@
 from torch import nn
 from torch.nn import functional as F
-from input_model import device
-from RMSNorm import ModelArgs, rms_norm
-from KV_Attention import x_out
+from Llama3.Llama3_From_Pytorch.input_model import device
+from Llama3.Llama3_From_Pytorch.RMSNorm import ModelArgs
+# from KV_Attention import
 from typing import Optional
 
 ## 步骤2e: 前馈网络 (SwiGLU激活)
@@ -32,10 +32,10 @@ class FeedForward(nn.Module):
 # 注: x_out已在Attention测试中计算,这里用于测试
 # 取消下面的三重引号来执行测试
 
-feed_forward = FeedForward(ModelArgs.dim, 4 * ModelArgs.dim, ModelArgs.multiple_of, ModelArgs.ffn_dim_multiplier)  
-x_out = rms_norm(x_out)  
-x_out = feed_forward(x_out)  
-print(f"前馈输出: x_out.shape: {x_out.shape}")  
+# feed_forward = FeedForward(ModelArgs.dim, 4 * ModelArgs.dim, ModelArgs.multiple_of, ModelArgs.ffn_dim_multiplier)
+# x_out = rms_norm(x_out)
+# x_out = feed_forward(x_out)
+# print(f"前馈输出: x_out.shape: {x_out.shape}")
 
 
 ### 测试结果: ###

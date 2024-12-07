@@ -1,9 +1,9 @@
 import torch
 from torch import nn
-from RMSNorm import ModelArgs, RMSNorm
-from KV_Attention import Attention
-from SwiGLU import FeedForward
-from input_model import device
+from Llama3.Llama3_From_Pytorch.RMSNorm import ModelArgs, RMSNorm
+from Llama3.Llama3_From_Pytorch.KV_Attention import Attention
+from Llama3.Llama3_From_Pytorch.SwiGLU import FeedForward
+from Llama3.Llama3_From_Pytorch.input_model import device
 
 ## 步骤2f: 解码器块。类名为TransformerBlock,以匹配Meta Llama 3代码库
 

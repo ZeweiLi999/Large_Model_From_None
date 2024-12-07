@@ -1,4 +1,4 @@
-from input_model import vocab, device
+from Llama3.Llama3_From_Pytorch.input_model import vocab, device
 import torch
 from torch import nn
 from typing import Optional, Tuple, List
@@ -27,7 +27,7 @@ class ModelArgs:
     max_batch_size: int = 10  # 最大批量大小
     max_seq_len: int = 256  # 最大序列长度
 
-    epochs: int = 2500  # 总训练迭代次数
+    epochs: int = 2500  # 总训练迭代次数 2500
     log_interval: int = 10  # 打印日志和损失值的间隔数
     device: str = 'cuda' if torch.cuda.is_available() else 'cpu'  # 根据可用性分配设备为cuda或cpu
 
@@ -55,12 +55,12 @@ class RMSNorm(nn.Module):
 ### RMSNorm代码测试 ###
 # 取消下面的三重引号来执行测试
 
-x = torch.randn((ModelArgs.max_batch_size, ModelArgs.max_seq_len, ModelArgs.dim), device=device)  
-rms_norm = RMSNorm(dim=ModelArgs.dim)  
-x_norm = rms_norm(x)  
-
-print(f"x的形状: {x.shape}")  
-print(f"x_norm的形状: {x_norm.shape}")  
+# x = torch.randn((ModelArgs.max_batch_size, ModelArgs.max_seq_len, ModelArgs.dim), device=device)
+# rms_norm = RMSNorm(dim=ModelArgs.dim)
+# x_norm = rms_norm(x)
+#
+# print(f"x的形状: {x.shape}")
+# print(f"x_norm的形状: {x_norm.shape}")
 
 ### 测试结果: ###
 """  

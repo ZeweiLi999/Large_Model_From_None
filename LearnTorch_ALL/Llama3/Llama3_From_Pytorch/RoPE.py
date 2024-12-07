@@ -2,8 +2,8 @@
 import torch
 import math
 from typing import Tuple, Optional
-from input_model import device
-from RMSNorm import ModelArgs, x_norm
+from Llama3.Llama3_From_Pytorch.input_model import device
+from Llama3.Llama3_From_Pytorch.RMSNorm import ModelArgs
 from torch import nn
 
 ## 步骤2b: RoPE实现
@@ -51,27 +51,28 @@ def apply_rotary_emb(xq: torch.Tensor, xk: torch.Tensor, freqs_cis: torch.Tensor
 # 注：x_norm在RMSNorm测试中计算，这里用于测试。
 # 取消下面的三重引号来执行测试
 
-head_dim = ModelArgs.dim//ModelArgs.n_heads
-wq = nn.Linear(ModelArgs.dim, ModelArgs.n_heads * head_dim, bias=False, device=device)
-wk = nn.Linear(ModelArgs.dim, ModelArgs.n_kv_heads * head_dim, bias=False, device=device)
-xq = wq(x_norm)
-xk = wk(x_norm)
-print(f"xq.shape: {xq.shape}")
-print(f"xk.shape: {xk.shape}")
-
-xq = xq.view(xq.shape[0],xq.shape[1],ModelArgs.n_heads, head_dim)
-xk = xk.view(xk.shape[0],xk.shape[1],ModelArgs.n_kv_heads, head_dim)
-print(f"xq.re-shape: {xq.shape}")
-print(f"xk.re-shape: {xk.shape}")
-
-freqs_cis = precompute_freqs_cis(dim=head_dim, seq_len=ModelArgs.max_seq_len)  
-print(f"freqs_cis.shape: {freqs_cis.shape}")
-
-xq_rotate, xk_rotate = apply_rotary_emb(xq, xk, freqs_cis)
-print(f"xq_rotate.shape: {xq_rotate.shape}")
-print(f"xk_rotate.shape: {xk_rotate.shape}")
+# head_dim = ModelArgs.dim//ModelArgs.n_heads
+# wq = nn.Linear(ModelArgs.dim, ModelArgs.n_heads * head_dim, bias=False, device=device)
+# wk = nn.Linear(ModelArgs.dim, ModelArgs.n_kv_heads * head_dim, bias=False, device=device)
+# xq = wq(x_norm)
+# xk = wk(x_norm)
+# print(f"xq.shape: {xq.shape}")
+# print(f"xk.shape: {xk.shape}")
+#
+# xq = xq.view(xq.shape[0],xq.shape[1],ModelArgs.n_heads, head_dim)
+# xk = xk.view(xk.shape[0],xk.shape[1],ModelArgs.n_kv_heads, head_dim)
+# print(f"xq.re-shape: {xq.shape}")
+# print(f"xk.re-shape: {xk.shape}")
+#
+# freqs_cis = precompute_freqs_cis(dim=head_dim, seq_len=ModelArgs.max_seq_len)
+# print(f"freqs_cis.shape: {freqs_cis.shape}")
+#
+# xq_rotate, xk_rotate = apply_rotary_emb(xq, xk, freqs_cis)
+# print(f"xq_rotate.shape: {xq_rotate.shape}")
+# print(f"xk_rotate.shape: {xk_rotate.shape}")
 
 ### 测试结果: ###
+
 """  
 xq.shape: torch.Size([10, 256, 512])  
 xk.shape: torch.Size([10, 256, 256])  

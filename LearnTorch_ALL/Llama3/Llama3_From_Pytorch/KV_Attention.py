@@ -1,11 +1,11 @@
 import torch
 import math
 from typing import Tuple, Optional
-from input_model import device
-from RMSNorm import ModelArgs
+from Llama3.Llama3_From_Pytorch.input_model import device
+from Llama3.Llama3_From_Pytorch.RMSNorm import ModelArgs
 from torch import nn
 from torch.nn import functional as F
-from RoPE import precompute_freqs_cis, apply_rotary_emb
+from Llama3.Llama3_From_Pytorch.RoPE import precompute_freqs_cis, apply_rotary_emb
 
 ## 注意力模块 [步骤2c: KV缓存; 步骤2d: 分组查询注意力]
 ## 如前所述，命名约定遵循原始Meta LLama3 GitHub
