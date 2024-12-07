@@ -132,3 +132,53 @@ def plot_dot_graph(output, save_file, verbose=False, to_file='graph.png', file_p
 # =============================================================================
 # 梯度下降可视化函数
 # =============================================================================
+
+
+# =============================================================================
+# 广播前调整形状函数
+# =============================================================================
+
+def reshape_sum_backward(gy, x_shape, axis, keepdims):
+    ndim = len(x_shape) # 获取输入张量的维度
+    tupled_axis = axis
+    if axis is None:
+        tupled_axis = axis    # 输入为None，对所有轴求和
+    elif not isinstance(axis, tuple):
+        tupled_axis = (axis,) # int类型，对单个轴求和，转化为元组
+
+    if ndim == 0 or tupled_axis is None or keepdims:
+        # 1.ndim==0 表示输入是张量，无需调整梯度维度
+        # 2.tupled_axis is None 表示输出是标量，无需调整梯度维度
+        # 3.keepdims 表示保留维度，无需调整梯度维度
+        shape = gy.shape
+    else:
+        # 使用列表推导式，将所有负轴索引转换为非负索引，方便后续操作。
+        actual_axis = [a if a >= 0 else a + ndim for a in tupled_axis]
+        shape = list(gy.shape)  # 将梯度 gy 的当前形状（gy.shape）转换为列表形式，方便插入或修改元素。
+        for a in sorted(actual_axis):
+            shape.insert(a, 1)  # 依次插入要要求和维度，将梯度形状调整为与输入张量
+
+    gy = gy.reshape(shape)
+    return gy
+
+# =============================================================================
+# numpy版本的sum_to函数，
+# 通过对多余的轴或特定轴求和。将输入数组 x 的形状缩减为指定的 shape。
+# =============================================================================
+
+def sum_to(x, shape):
+    ndim = len(shape)
+    lead = x.ndim - ndim # 多余的维度
+    lead_axis = tuple(range(lead)) # 生成多余维度的索引
+    # 确定目标形状中需要求和的轴 axis：
+    # 遍历目标形状 shape，对于大小为 1 的维度，记录其对应的轴索引。
+    # 加上lead，是为了确定轴的过程中x和shape对齐，因为是求和是从低维度开始合并的
+    axis = tuple([i + lead for i, sx in enumerate(shape) if sx == 1])
+
+    # 对多余的轴和目标形状中大小为 1 的轴求和：
+    y = x.sum(lead_axis + axis, keepdims=True)
+
+    # 移除多余的前导轴：
+    if lead > 0:
+        y = y.squeeze(lead_axis)
+    return y

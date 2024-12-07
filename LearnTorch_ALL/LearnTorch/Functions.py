@@ -1,7 +1,6 @@
 import math
 import numpy as np
-from LearnTorch import Function
-from LearnTorch.VariableFunction import as_variable
+from LearnTorch import Function,utils,as_variable
 
 # Sin函数
 class Sin(Function):
@@ -120,3 +119,64 @@ class Transpose(Function):
 
 def transpose(x, axes=None): # 调用前向传播
     return Transpose(axes)(x)
+
+class Sum(Function):    # 张量求和函数，输出是一个标量
+    def __init__(self, axis, keepdims):
+        # axix沿哪个维度求和，keepdims选择是否保留维度s
+        self.axis = axis
+        self.keepdims = keepdims
+
+    def forward(self, x):
+        self.x_shape = x.shape # 反向传播要将输出梯度形状变为输入变量的形状
+        y = x.sum(axis=self.axis, keepdims=self.keepdims) # 这里调用的是numpy.sum()，因为是取出data
+        return y
+
+    def backward(self, gy):
+        # 调整gy梯度形状的与输入变量一致，特殊情况排除，只调整维度，不改动值
+        gy = utils.reshape_sum_backward(gy, self.x_shape, self.axis, self.keepdims)
+        # 广播，改动值，复制gy的元素
+        gx = broadcast_to(gy, self.x_shape)
+        return gx
+
+def sum(x, axis=None, keepdims=False):
+    # 默认全部轴求和，不保留维度，返回标量
+    return Sum(axis, keepdims)(x)
+
+class BroadcastTo(Function):
+    def __init__(self, shape):
+        self.shape = shape
+
+    def forward(self, x):
+        self.x_shape = x.shape
+        y = np.broadcast_to(x, self.shape)
+        return y
+
+    def backward(self, gy):
+        gx = sum_to(gy, self.x_shape)
+        return gx
+
+def broadcast_to(x, shape):
+    if x.shape == shape: # shape一样就不用广播了
+        return as_variable(x)
+    return BroadcastTo(shape)(x)
+
+# 深度学习版的sumto，带有反向传播
+class SumTo(Function):
+    def __init__(self, shape):
+        self.shape = shape
+
+    def forward(self, x):
+        self.x_shape = x.shape
+        y = utils.sum_to(x, self.shape)
+        return y
+
+    def backward(self, gy):
+        gx = broadcast_to(gy, self.x_shape)
+        return gx
+
+def sum_to(x, shape):
+    if x.shape == shape:
+        return as_variable(x)
+    return SumTo(shape)(x)
+
+# sum_to和broad_cast反向传播相互依赖，但是正向传播是独立的
