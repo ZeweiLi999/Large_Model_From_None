@@ -51,7 +51,7 @@ def grad_newton_animate_optimization(lr, iter_grad, iter_newton, fps, if_save, f
     nm_x_vals, nm_y_vals = newton_method(x = Variable(np.array(2.0)),iters=iter_newton)  # 牛顿法优化数据
 
     # 创建图像
-    fig, axes = plt.subplots(1, 2, figsize=(15, 6))
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
 
     # 梯度下降子图
     axes[0].plot(x_range, y_range, label="f(x) = x^4 - 2x^2", color='blue')
@@ -127,5 +127,5 @@ if __name__ == "__main__":
     file_path = os.path.join(".", "Grad", "GradV.S.Newton.gif") # GIF或MP4
 
     # 调用函数进行动画演示
-    grad_newton_animate_optimization(lr= 0.001, iter_grad=200, iter_newton=10 ,fps=10, if_save=False, file_path=file_path)
+    grad_newton_animate_optimization(lr= 0.001, iter_grad=200, iter_newton=10 ,fps=10, if_save=True, file_path=file_path)
 
