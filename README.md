@@ -49,8 +49,13 @@ graph TD
 <img src="./LearnTorch_ALL/TeachImage/CGMap/sphere_All.png">
 
 ### (3)可视化梯度下降
+#### A.梯度下降优化对比牛顿法优化
 <img src="LearnTorch_ALL/TeachImage/Grad/GradV.S.Newton.mp4iter_200_10_FPS10.gif">
 
+<br/>
+
+#### B.线性回归梯度下降优化可视化
+<img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_iter_200_lr_0.1.gif">
 
 <br/>
 

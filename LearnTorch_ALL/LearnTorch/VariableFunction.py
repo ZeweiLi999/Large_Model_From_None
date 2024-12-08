@@ -50,6 +50,7 @@ class Variable:#定义深度学习的变量类
     def dtype(self):
         return self.data.dtype
 
+    @property
     def T(self):
         return LearnTorch.Functions.transpose(self)
     # numpy的实例变量
@@ -195,7 +196,6 @@ def add(x0, x1):
 
 class Mul(Function):
     def forward(self, x0, x1):
-        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         #前向传播
         y = x0 * x1
         return y
@@ -204,11 +204,11 @@ class Mul(Function):
         x0, x1 = self.inputs
         gx0 = gy * x1
         gx1 = gy * x0
-        if self.x0_shape != self.x1_shape:
+        if x0.shape != x1.shape:
             # 正向传播中形状不相等，进行了广播
             # 反向传播则要调整形状至输入变量的梯度形状
-            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
-            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+            gx0 = LearnTorch.Functions.sum_to(gx0, x0.shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, x1.shape)
         return gx0, gx1 # 重载运算符后，Variable类可以直接相乘
 
 def mul(x0, x1):
@@ -252,7 +252,6 @@ def rsub(x0, x1):
 
 class Div(Function):
     def forward(self, x0, x1):
-        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         y = x0 / x1
         return y
 
@@ -260,11 +259,11 @@ class Div(Function):
         x0, x1 = self.inputs
         gx0 = gy / x1
         gx1 = gy * (-x0 / x1 ** 2)
-        if self.x0_shape != self.x1_shape:
+        if x0.shape != x1.shape:
             # 正向传播中形状不相等，进行了广播
             # 反向传播则要调整形状至输入变量的梯度形状
-            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
-            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+            gx0 = LearnTorch.Functions.sum_to(gx0, x0.shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, x1.shape)
         return gx0, gx1
 
 def div(x0, x1):
