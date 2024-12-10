@@ -1,4 +1,34 @@
+# Explore.py
+
+# Streamlit的页面配置（以下是用于显示侧边栏名称和图标）
+# 这些注释会被Streamlit读取
+# streamlit_page: name: 探索
+# streamlit_page: order: 2
+# streamlit_page: icon: 🧭
+
 import streamlit as st
+
+st.sidebar.image(r"C:\Users\LiRunze\Downloads\right_icon_blue-removebg-preview.png", use_container_width=True)  # 替换 "your_image_path.png" 为你的图片路径
+
+# 添加导航菜单
+st.sidebar.title("导航菜单")
+selected_page = st.sidebar.radio(
+    "选择页面",
+    ["HomePages", "BeginChats", "Explore", "GetVisualization", "UploadFiles"]
+)
+
+# 主界面内容
+if selected_page == "HomePages":
+    st.title("Welcome to LearnTorch")
+    st.write("创建属于自己的角色虚拟助手")
+elif selected_page == "BeginChats":
+    st.title("Begin Chats")
+elif selected_page == "Explore":
+    st.title("Explore")
+elif selected_page == "GetVisualization":
+    st.title("Get Visualization")
+elif selected_page == "UploadFiles":
+    st.title("Upload Files")
 
 st.title("Welcome to LearnTorch")
 st.write("创建属于自己的角色虚拟助手")

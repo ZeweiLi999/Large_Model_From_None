@@ -1,4 +1,12 @@
 import streamlit as st
+
+# 确保 st.session_state.assistants_dict 已初始化
+if "assistants_dict" not in st.session_state:
+    st.session_state.assistants_dict = {
+    "助手A": "简介A",
+    "助手B": "简介B"
+}
+
 st.header("开始和你的助手聊天吧！")
 if st.session_state.assistants_dict:
     AssistantBotName = st.sidebar.selectbox("请选择你的助手", list(st.session_state.assistants_dict.keys()))
