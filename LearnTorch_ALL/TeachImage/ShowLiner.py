@@ -48,7 +48,7 @@ def linear_regression_visualization(lr, iters, fps, if_save, file_path):
     ax.scatter(x.data, y.data, label="Data", color="lightblue")
     line, = ax.plot([], [], color="lightcoral", label="Prediction")
     target_line, = ax.plot(x.data, 5 + 2 * x.data, color="lightgreen", label="Target Function")
-    annotation = ax.annotate("", xy=(0, 0), xytext=(0, 0),
+    annotation = ax.annotate("", xy=(0, 0), xytext=(20, 20),
                              textcoords="offset points",
                              bbox=dict(boxstyle="round", fc="w"),
                              arrowprops=dict(arrowstyle="->"))
@@ -73,8 +73,6 @@ def linear_regression_visualization(lr, iters, fps, if_save, file_path):
                             f"Loss: {loss_vals[frame]:.4f}")
         mean_x, mean_y = x.data.mean(), y_pred.mean()
         annotation.xy = (mean_x, mean_y)  # 注释箭头指向的点
-        annotation.set_position((mean_x + 0.1, mean_y + 0.1))  # 调整偏移以避免重叠
-        annotation.set_visible(True)
 
         return line, annotation
 

@@ -3,9 +3,7 @@
 ## 0.项目介绍/Intro ![Static Badge](https://img.shields.io/badge/Intro-项目介绍-4B9D9D) 
 我们要实现的最终项目如下图所示：
 
-![image](https://github.com/user-attachments/assets/e9d3637a-8c4f-4f69-951b-d47f2ba8ef1e)
-
-
+<img src="imgs/规划思维导图.PNG">
 
 <!-- 
 ```
@@ -49,19 +47,36 @@ graph TD
 <img src="./LearnTorch_ALL/TeachImage/CGMap/sphere_All.png">
 
 ### (3)可视化梯度下降
-#### (3).1 梯度下降优化对比牛顿法优化
+#### (3.1) 梯度下降优化对比牛顿法优化
 <img src="LearnTorch_ALL/TeachImage/Grad/GradV.S.Newton_small_iter_200_10_FPS10.gif">
 
 
-#### (3).2 线性回归梯度下降优化可视化
+#### (3.2)线性回归梯度下降优化可视化
+<div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_small_iter_200_lr_0.1.gif">
+</div>
 
+<div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_sin_small_iter_10000_lr_0.2.gif">
+</div>
 
 ## 2.虚拟私人助手/VirtualAssistant ![Static Badge](https://img.shields.io/badge/VirtualAssistant-虚拟私人助手-7884A4) 
 
-### (1)自定义助手模型
+### (0)首页
 <br/>
 
-<img src="./VirtualAssistant/images/创建助手.png">
+<div align="center">
+<img src="./VirtualAssistant/images/0.首页.PNG">
+</div>
+
+### (1)计算图可视化
+<br/>
+
+<div align="center">
+<img src="./VirtualAssistant/images/1.计算图可视化.PNG">
+</div>
+
+<div align="center">
+<img src="./VirtualAssistant/images/1-1.计算图可视化.PNG">
+</div>
 
