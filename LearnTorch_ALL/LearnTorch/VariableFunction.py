@@ -1,6 +1,7 @@
 import numpy as np
 import weakref
 import contextlib
+import LearnTorch
 
 
 class Config:   #用于决定是否启用反向传播的类
@@ -48,6 +49,10 @@ class Variable:#定义深度学习的变量类
     @property
     def dtype(self):
         return self.data.dtype
+
+    @property
+    def T(self):
+        return LearnTorch.Functions.transpose(self)
     # numpy的实例变量
 
     # 重载函数
@@ -111,6 +116,23 @@ class Variable:#定义深度学习的变量类
                     #不要保留各函数输出变量的导数
                     y().grad = None #因为y是weakref,必须要用y()访问
 
+    def reshape(self, *shape): # 可变长参数支持元组或列表
+        if len(shape) == 1 and isinstance(shape[0], (tuple, list)): # 判断参数是不是元组或列表
+            shape = shape[0]
+        return LearnTorch.Functions.reshape(self, shape) # 在这里全称引入，是为了避免循环导入
+        # 返回一个新形状的Variable
+
+    def transpose(self, *axes):
+        if len(axes) == 0:
+            axes = None
+        elif len(axes) == 1:
+            if isinstance(axes[0], (tuple, list)) or axes[0] is None:
+                axes = axes[0] # 解包操作，展开
+        return LearnTorch.Functions.transpose(self, axes)
+
+    def sum(self, axis=None, keepdims=False):
+        return LearnTorch.Functions.sum(self, axis, keepdims)
+
 #把传来的参数转化为Variable实例
 def as_variable(obj):
     if isinstance(obj, Variable):
@@ -154,12 +176,19 @@ class Function:
 
 
 class Add(Function):
-    def forward(self,x0,x1):
+    def forward(self, x0, x1):
+        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         y = x0 + x1
         return y    #返回的是Variable
 
     def backward(self,gy):  #返回的两个偏导数都是导数是（1*输入的导数）
-        return gy, gy # 没有计算的内容，适用于Variable类
+        gx0, gx1 = gy, gy
+        if self.x0_shape != self.x1_shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+        return gx0, gx1
 
 def add(x0, x1):
     x1 = as_array(x1) #因为self本身肯定是Variable，所以只要针对x1是标量的情况就可以了，是ndarray会在function变为Variable
@@ -173,7 +202,14 @@ class Mul(Function):
 
     def backward(self, gy):
         x0, x1 = self.inputs
-        return gy * x1, gy * x0 # 重载运算符后，Variable类可以直接相乘
+        gx0 = gy * x1
+        gx1 = gy * x0
+        if x0.shape != x1.shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, x0.shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, x1.shape)
+        return gx0, gx1 # 重载运算符后，Variable类可以直接相乘
 
 def mul(x0, x1):
     x1 = as_array(x1)
@@ -192,11 +228,19 @@ def neg(x):
 
 class Sub(Function):
     def forward(self, x0, x1):
+        self.x0_shape, self.x1_shape = x0.shape, x1.shape
         y = x0 - x1
         return y
 
     def backward(self,gy):
-        return gy, -gy
+        gx0 = gy
+        gx1 = -gy
+        if self.x0_shape != self.x1_shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, self.x0_shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, self.x1_shape)
+        return gx0, gx1
 
 def sub(x0, x1):
     x1 = as_array(x1)
@@ -215,6 +259,11 @@ class Div(Function):
         x0, x1 = self.inputs
         gx0 = gy / x1
         gx1 = gy * (-x0 / x1 ** 2)
+        if x0.shape != x1.shape:
+            # 正向传播中形状不相等，进行了广播
+            # 反向传播则要调整形状至输入变量的梯度形状
+            gx0 = LearnTorch.Functions.sum_to(gx0, x0.shape)
+            gx1 = LearnTorch.Functions.sum_to(gx1, x1.shape)
         return gx0, gx1
 
 def div(x0, x1):

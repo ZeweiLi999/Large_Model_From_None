@@ -1,3 +1,6 @@
+if '__file__' in globals():
+    import os, sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
 import numpy as np
 from LearnTorch.VariableFunction import Variable,Function,add

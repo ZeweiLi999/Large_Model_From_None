@@ -6,7 +6,7 @@ import LearnTorch.Functions as F
 from LearnTorch import Variable
 
 if __name__ == "__main__":
-    x = Variable(np.array(np.pi/4))
+    x = Variable(np.array([np.pi/4, np.pi/4]))
     y = F.sin(x)
     y.backward()
     print("y.data", y.data)
