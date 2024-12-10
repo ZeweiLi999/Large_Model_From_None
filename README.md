@@ -52,20 +52,31 @@ graph TD
 
 
 #### (3.2)线性回归梯度下降优化可视化
+<div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_small_iter_200_lr_0.1.gif">
+</div>
 
+<div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_sin_small_iter_10000_lr_0.2.gif">
+</div>
 
 ## 2.虚拟私人助手/VirtualAssistant ![Static Badge](https://img.shields.io/badge/VirtualAssistant-虚拟私人助手-7884A4) 
 
 ### (0)首页
 <br/>
 
-<img src="./VirtualAssistant/images/0.首页.png">
+<div align="center">
+<img src="./VirtualAssistant/images/0.首页.PNG">
+</div>
 
 ### (1)计算图可视化
 <br/>
 
-<img src="./VirtualAssistant/images/1.计算图可视化.png">
-<img src="./VirtualAssistant/images/1-1.计算图可视化.png">
+<div align="center">
+<img src="./VirtualAssistant/images/1.计算图可视化.PNG">
+</div>
+
+<div align="center">
+<img src="./VirtualAssistant/images/1-1.计算图可视化.PNG">
+</div>
 
