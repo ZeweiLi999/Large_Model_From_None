@@ -1,3 +1,4 @@
+# 和6_Explore.py是一样的
 import streamlit as st
 from streamlit_extras.switch_page_button import switch_page  # 使用 Streamlit Extra 插件
 
