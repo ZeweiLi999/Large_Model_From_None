@@ -3,9 +3,7 @@
 ## 0.项目介绍/Intro ![Static Badge](https://img.shields.io/badge/Intro-项目介绍-4B9D9D) 
 我们要实现的最终项目如下图所示：
 
-![image](https://github.com/user-attachments/assets/e9d3637a-8c4f-4f69-951b-d47f2ba8ef1e)
-
-
+<img src="imgs/规划思维导图.PNG">
 
 <!-- 
 ```
@@ -60,8 +58,14 @@ graph TD
 
 ## 2.虚拟私人助手/VirtualAssistant ![Static Badge](https://img.shields.io/badge/VirtualAssistant-虚拟私人助手-7884A4) 
 
-### (1)自定义助手模型
+### (0)首页
 <br/>
 
-<img src="./VirtualAssistant/images/创建助手.png">
+<img src="./VirtualAssistant/images/0.首页.png">
+
+### (1)计算图可视化
+<br/>
+
+<img src="./VirtualAssistant/images/1.计算图可视化.png">
+<img src="./VirtualAssistant/images/1-1.计算图可视化.png">
 
