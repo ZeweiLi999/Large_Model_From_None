@@ -148,7 +148,7 @@ def as_array(x):
 #这是基类Function函数，不写明具体用法，继承使用
 class Function:
     #接收多个Variable类型的变量作为输入
-    def __call__(self,*inputs):
+    def __call__(self,*inputs): # __call__使得实例变量可以像函数一样被调用
         inputs = [as_variable(x) for x in inputs] #过一遍循环，把参数都转化为Variable
         xs = [x.data for x in inputs]
         ys = self.forward(*xs) #使用*号解包成单独的参数，传递给函数
@@ -174,6 +174,10 @@ class Function:
         #输出：反向传播链条中进一步传播的导数乘积
         raise NotImplementedError()
 
+
+# 参数类,继承了Variable类，有Variable所有功能
+class Parameter(Variable):
+    pass
 
 class Add(Function):
     def forward(self, x0, x1):
