@@ -130,9 +130,69 @@ def plot_dot_graph(output, save_file, verbose=False, to_file='graph.png', file_p
             pass
 
 # =============================================================================
-# 梯度下降可视化函数
+# 计算图可视化前端只用dot语言函数
 # =============================================================================
+def plot_dot_graph_streamlit(input_backward, save_file=False, verbose=False, to_file='graph.png', file_path='CGMap'):
+    # 输入：最终输出变量 是否保存dot以外文件 是否详细显示 输出文件名 输出路径
+    # 输出：dot语言代码
+    # 解析 input_backward
+    d = {}
+    exec(input_backward, globals(), d)
+    c = d['z']
+    dot_forward = get_dot_graph(output=c , direction = "Forward", verbose=verbose)
+    dot_backward = get_dot_graph(output=c , direction = "Backward", verbose=verbose)
+    dot_graph_forward = 'digraph g {\n' + dot_forward + '}'
+    dot_graph_backward = 'digraph g {\n' + dot_backward + '}'
+    dot_graph_all = (
+        'digraph g {\n'
+        'subgraph cluster_g1 {\n'
+        '    label = "Forward Propagation";\n'
+        '    color = blue;\n'
+        '    style = dashed;\n'
+        f'{dot_forward}\n'
+        '}\n'
+        'subgraph cluster_g2 {\n'
+        '    label = "Backward Propagation";\n'
+        '    color = red;\n'
+        '    style = dashed;\n'
+        '    rankdir=BT;\n'
+        f'{dot_backward}\n'
+        '}\n'
+        '}\n'
+    )
 
+
+    if save_file:
+        # 将dot数据保存至文件
+        if not os.path.exists(file_path):  # 如果不存在就创建该目录
+            os.makedirs(file_path)  # 递归创建多层目录
+
+        graph_forward_dot_path = os.path.join(file_path, os.path.splitext(to_file)[
+            0] + "Forward" + '.dot')  # 这里和书上不一样，保存前向传播计算图dot文件
+        graph_backward_dot_path = os.path.join(file_path, os.path.splitext(to_file)[
+            0] + "Backward" + '.dot')  # 这里和书上不一样，保存后向传播计算图dot文件
+        graph_all_dot_path = os.path.join(file_path, os.path.splitext(to_file)[0] + "All" + '.dot')
+
+        with open(graph_forward_dot_path, "w") as f:  # 保存前向传播计算图dot文件
+            f.write(dot_graph_forward)
+
+        with open(graph_backward_dot_path, "w") as f:  # 保存后向传播计算图dot文件
+            f.write(dot_graph_backward)
+
+        with open(graph_all_dot_path, "w") as f:  # 保存共同计算图dot文件
+            f.write(dot_graph_all)
+        to_file_forward_path = os.path.join(file_path, os.path.splitext(to_file)[0] + "_Forward" + os.path.splitext(to_file)[1]) # 前向传播目标文件路径
+        to_file_backward_path = os.path.join(file_path, os.path.splitext(to_file)[0] + "_Backward" + os.path.splitext(to_file)[1])  # 后向传播目标文件路径
+        to_file_all_path = os.path.join(file_path, os.path.splitext(to_file)[0] + "_All" + os.path.splitext(to_file)[1])  # 总计算图目标文件路径
+        extension = os.path.splitext(to_file)[1][1:]# 扩展名(png、pdf等)
+        cmd_forward = 'dot {} -T {} -o {}'.format(graph_forward_dot_path, extension, to_file_forward_path)# 前向传播dot文件名 目标文件类型 目标文件名
+        cmd_backward = 'dot {} -T {} -o {}'.format(graph_backward_dot_path, extension, to_file_backward_path)# 后向传播dot文件名 目标文件类型 目标文件名
+        cmd_all = 'dot {} -T {} -o {}'.format(graph_all_dot_path, extension, to_file_all_path)  # 总计算图dot文件名 目标文件类型 目标文件名
+        subprocess.run(cmd_forward, shell = True) # 使用subprocess.run调用前向传播cmd命令
+        subprocess.run(cmd_backward, shell = True)  # 使用subprocess.run调用后向传播cmd命令
+        subprocess.run(cmd_all, shell = True)         # 使用subprocess.run调用总计算图cmd命令
+
+    return dot_graph_all
 
 # =============================================================================
 # 广播前调整形状函数

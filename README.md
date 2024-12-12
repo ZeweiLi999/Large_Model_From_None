@@ -46,6 +46,16 @@ graph TD
 ### (2)可视化计算图
 <img src="./LearnTorch_ALL/TeachImage/CGMap/sphere_All.png">
 
+### (2)可视化学习率和迭代次数
+#### (2.1)欠拟合
+<img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Underfit_lr0.001_iters200_FPS10.gif">
+
+#### (2.2)拟合
+<img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Wellfit_lr0.085_iters200_FPS10.gif">
+
+#### (2.3)过拟合
+<img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Overfit_lr0.2_iters200_FPS10.gif">
+
 ### (3)可视化梯度下降
 #### (3.1) 梯度下降优化对比牛顿法优化
 <img src="LearnTorch_ALL/TeachImage/Grad/GradV.S.Newton_small_iter_200_10_FPS10.gif">
@@ -60,23 +70,22 @@ graph TD
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_sin_small_iter_10000_lr_0.2.gif">
 </div>
 
+
+
+
 ## 2.虚拟私人助手/VirtualAssistant ![Static Badge](https://img.shields.io/badge/VirtualAssistant-虚拟私人助手-7884A4) 
 
 ### (0)首页
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/images/0.首页.PNG">
+<img src="./VirtualAssistant/imgs/0.首页.PNG">
 </div>
 
 ### (1)计算图可视化
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/images/1.计算图可视化.PNG">
-</div>
-
-<div align="center">
-<img src="./VirtualAssistant/images/1-1.计算图可视化.PNG">
+<img src="./VirtualAssistant/imgs/1.计算图可视化.PNG">
 </div>
 
