@@ -7,25 +7,25 @@ ai_helpers = [
         "name": "助手1",
         "type": "默认提供",
         "description": "没有描述...",
-        "image": "./VirtualAssistant/imgs/test_img.png",
+        "image": "./imgs/test_img.png",
     },
     {
         "name": "助手2",
         "type": "默认提供",
         "description": "没有描述...",
-        "image": "./VirtualAssistant/imgs/test_img.png",
+        "image": "./imgs/test_img.png",
     },
     {
         "name": "助手3",
         "type": "默认提供",
         "description": "没有描述...",
-        "image": "./VirtualAssistant/imgs/test_img.png",
+        "image": "./imgs/test_img.png",
     },
     {
         "name": "可爱的Bot",
         "type": "用户自定义",
         "description": "没有描述...",
-        "image": "./VirtualAssistant/imgs/test_img.png",
+        "image": "./imgs/test_img.png",
     },
 ]
 
@@ -84,6 +84,6 @@ with st.container():
 st.markdown("---")
 col1, col2, col3 = st.columns([1, 2, 1])
 with col2:
-    st.image(r"./VirtualAssistant/imgs/logo_learntorch(1).png", use_container_width=True)
+    st.image(r"./imgs/logo_learntorch(1).png", use_container_width=True)
 st.write("Powered by Streamlit and Hugging Face.")
 st.write("Explore AI Virtual Assistants Page")
