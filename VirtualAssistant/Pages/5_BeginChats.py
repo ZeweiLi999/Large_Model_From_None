@@ -1,5 +1,5 @@
 import streamlit as st
-from LLM.Chat_reponse import Chat_reponse
+from VirtualAssistant.LLM.Chat_reponse import Chat_reponse
 import time
 
 def stream_data(response):
