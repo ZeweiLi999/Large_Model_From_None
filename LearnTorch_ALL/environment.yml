@@ -1,0 +1,10 @@
+name: myenv
+channels:
+  - defaults
+dependencies:
+  - numpy
+  - pip
+  - pip:
+      - numpy<2
+      - matplotlib==3.7.1
+      - memory_profiler==0.61.0

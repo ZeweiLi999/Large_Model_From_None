@@ -1,0 +1,53 @@
+digraph g {
+Forward2093505489024 [label="gx2(Forward) data: -0.6397000084492246", color=lightcoral, style=filled]
+Forward2093505488928 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505488448 -> Forward2093505488928
+Forward2093505488832 -> Forward2093505488928
+Forward2093505488928 -> Forward2093505489024
+Forward2093505488448 [label="(Forward)data:-1.5231883119115297", color=lightcoral, style=filled]
+Forward2093505488832 [label="(Forward)data:0.41997434161402614", color=lightcoral, style=filled]
+Forward2093505488640 [label ="Sub", color=lightblue, style=filled, shape=box]
+Forward2093505488736 -> Forward2093505488640
+Forward2093505488544 -> Forward2093505488640
+Forward2093505488640 -> Forward2093505488832
+Forward2093505488736 [label="(Forward)data:1", color=lightcoral, style=filled]
+Forward2093505488544 [label="(Forward)data:0.5800256583859739", color=lightcoral, style=filled]
+Forward2093505488256 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093464256128 -> Forward2093505488256
+Forward2093464256128 -> Forward2093505488256
+Forward2093505488256 -> Forward2093505488544
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093464255216 [label ="Tanh", color=lightblue, style=filled, shape=box]
+Forward2093464256272 -> Forward2093464255216
+Forward2093464255216 -> Forward2093464256128
+Forward2093464256272 [label="x(Forward) data: 1.0", color=lightcoral, style=filled]
+Forward2093505488352 [label ="Add", color=lightblue, style=filled, shape=box]
+Forward2093505487968 -> Forward2093505488352
+Forward2093505488160 -> Forward2093505488352
+Forward2093505488352 -> Forward2093505488448
+Forward2093505487968 [label="(Forward)data:-0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505488160 [label="(Forward)data:-0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505488064 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487776 -> Forward2093505488064
+Forward2093464256128 -> Forward2093505488064
+Forward2093505488064 -> Forward2093505488160
+Forward2093505487776 [label="(Forward)data:-1.0", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+Forward2093505487680 [label ="Neg", color=lightblue, style=filled, shape=box]
+Forward2093505487584 -> Forward2093505487680
+Forward2093505487680 -> Forward2093505487776
+Forward2093505487584 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505487488 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487200 -> Forward2093505487488
+Forward2093505449312 -> Forward2093505487488
+Forward2093505487488 -> Forward2093505487584
+Forward2093505487200 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505449312 [label="(Forward)data:1.0", color=lightcoral, style=filled]
+Forward2093505487872 [label ="Mul", color=lightblue, style=filled, shape=box]
+Forward2093505487776 -> Forward2093505487872
+Forward2093464256128 -> Forward2093505487872
+Forward2093505487872 -> Forward2093505487968
+Forward2093505487776 [label="(Forward)data:-1.0", color=lightcoral, style=filled]
+Forward2093464256128 [label="y(Forward) data: 0.7615941559557649", color=lightcoral, style=filled]
+}
