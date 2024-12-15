@@ -1,7 +1,7 @@
 import torch
 from transformers import pipeline, TextStreamer
 
-def Chat_reponse(input, prompt='You are a private code assistant!' , model_dir = 'D:\pythonProject\Qwen\Qwen\Qwen2.5-Coder-3B-Instruct'):
+def Chat_reponse(input, prompt='You are a story chatbot!' , model_dir = 'D:\pythonProject\Qwen\Qwen\Qwen2-1.5B-Instruct'):
 
     pipe = pipeline(
         "text-generation",
