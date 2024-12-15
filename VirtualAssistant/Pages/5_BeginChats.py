@@ -1,11 +1,16 @@
+if '__file__' in globals():
+    import os, sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+
 import streamlit as st
-from VirtualAssistant.LLM.Chat_reponse import Chat_reponse
+from LLM.Chat_reponse import Chat_reponse
 import time
 
-def stream_data(response):
+def stream_data(response, wait):
     for word in response:
         yield word
         time.sleep(0.02)
+    wait.update(label="生成完毕!", state="complete", expanded=False)
 
 options = ["英语教师模型","甄嬛模型"]
 
@@ -32,9 +37,12 @@ if input := st.chat_input("Say Something"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": input})
 
+    wait = st.status("生成中")
     response = Chat_reponse(input)
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
-        st.write_stream(stream_data(response))
+
+        st.write_stream(stream_data(response, wait))
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
+
