@@ -1,5 +1,9 @@
-import os
+if '__file__' in globals():
+    import os, sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import streamlit as st
+import json
+
 
 @st.dialog("创建角色虚拟助手")
 def vote(select_model,StringBotName):
@@ -7,9 +11,20 @@ def vote(select_model,StringBotName):
     st.write(f"你的助手名字是{StringBotName}")
     col1, col2 , col3 , col4 = st.columns(4)
     with col1:
-        st.button("确定",use_container_width=True)
+        yes_button = st.button("确定",use_container_width=True)
     with col4:
-        st.button("取消", use_container_width=True,type="primary")
+        no_button = st.button("取消", use_container_width=True,type="primary")
+    if yes_button:
+        # 加载JSON文件
+        with open('./LLM/History.json', 'r') as f:
+            data = json.load(f)
+        my_robot = {'name':StringBotName,'model':select_model,"description": "没有描述...","image": "./imgs/test_img.png"}
+        data["robot"].append(my_robot)
+        with open('./LLM/History.json', 'w') as f:
+            json.dump(data, f, indent=2)
+        st.rerun()
+    if no_button:
+        st.rerun()
 
 
 def Get_path(dir="./LLM"):
@@ -39,6 +54,7 @@ create_button = st.button("开始创建")
 
 if create_button:
     if StringBotName:
-        vote(select_model,StringBotName)
+        if "vote" not in st.session_state:
+            vote(select_model,StringBotName)
     else:
         st.error('助手名字不能为空')

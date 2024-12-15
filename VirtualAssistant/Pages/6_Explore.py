@@ -1,33 +1,10 @@
 import streamlit as st
+import json
 from streamlit_extras.switch_page_button import switch_page  # 使用 Streamlit Extra 插件
 
-# 定义 AI 助手数据
-ai_helpers = [
-    {
-        "name": "助手1",
-        "type": "默认提供",
-        "description": "没有描述...",
-        "image": "./imgs/test_img.png",
-    },
-    {
-        "name": "助手2",
-        "type": "默认提供",
-        "description": "没有描述...",
-        "image": "./imgs/test_img.png",
-    },
-    {
-        "name": "助手3",
-        "type": "默认提供",
-        "description": "没有描述...",
-        "image": "./imgs/test_img.png",
-    },
-    {
-        "name": "可爱的Bot",
-        "type": "用户自定义",
-        "description": "没有描述...",
-        "image": "./imgs/test_img.png",
-    },
-]
+
+with open('./LLM/History.json', 'r') as f:
+    data = json.load(f)
 
 # Streamlit 页面设置
 st.set_page_config(page_title="Explore Page", page_icon="🤖", layout="wide")
@@ -42,7 +19,7 @@ st.markdown("---")
 
 # 筛选逻辑
 filtered_helpers = [
-    helper for helper in ai_helpers
+    helper for helper in data["robot"]
     if search_query.lower() in helper["name"].lower() or search_query.lower() in helper["description"].lower()
 ]
 
@@ -52,7 +29,7 @@ if search_query:
     display_helpers = filtered_helpers
 else:
     st.subheader("你的助手: ")
-    display_helpers = ai_helpers
+    display_helpers = data["robot"]
 
 # 瀑布流展示区域
 # 使用st.columns来控制瀑布流的位置
@@ -71,7 +48,7 @@ with st.container():
                     # 图片部分
                     st.image(helper["image"], use_container_width=True, caption=helper["name"])  # 替换为你的实际图片路径
                     # 名称、类型、描述
-                    st.markdown(f"**{helper['name']}** ({helper['type']})")
+                    st.markdown(helper['model'])
                     st.write(helper["description"])
                     # 添加一个按钮，点击后跳转到聊天页面
                     if st.button(f"开始和 {helper['name']} 聊天", key=helper['name']):
