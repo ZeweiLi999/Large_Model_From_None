@@ -2,7 +2,7 @@ import streamlit as st
 import re
 
 # 读取 Markdown 文件
-with open("./model_finetuning/Colab微调py运行副本.md", "r", encoding="utf-8") as file:
+with open("./model_finetuning/Colab微调.md", "r", encoding="utf-8") as file:
     markdown_text = file.read()
 
 
