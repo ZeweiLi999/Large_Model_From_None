@@ -47,13 +47,13 @@ graph TD
 <img src="./LearnTorch_ALL/TeachImage/CGMap/sphere_All.png">
 
 ### (2)可视化学习率和迭代次数
-#### (2.1)欠拟合
+#### (2.1)优化慢
 <img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Underfit_lr0.001_iters200_FPS10.gif">
 
-#### (2.2)拟合
+#### (2.2)优化速度快
 <img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Wellfit_lr0.085_iters200_FPS10.gif">
 
-#### (2.3)过拟合
+#### (2.3)反复震荡
 <img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Overfit_lr0.2_iters200_FPS10.gif">
 
 ### (3)可视化梯度下降
@@ -70,6 +70,24 @@ graph TD
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_sin_small_iter_10000_lr_0.2.gif">
 </div>
 
+#### (3.3)神经网络线性回归梯度下降优化可视化
+##### (3.3.1)欠拟合
+
+<div align="center">
+<img src="LearnTorch_ALL/TeachImage/Grad/underfitting_iter_10000_lr_0.5_H1_5_H2_5.gif">
+</div>
+
+##### (3.3.2)良好拟合
+
+<div align="center">
+<img src="LearnTorch_ALL/TeachImage/Grad/wellfitting_iter_10000_lr_0.5_H1_10_H2_5.gif">
+</div>
+
+##### (3.3.3)过拟合
+
+<div align="center">
+<img src="LearnTorch_ALL/TeachImage/Grad/overfitting_iter_10000_lr_0.5_H1_15_H2_10.gif">
+</div>
 
 
 
