@@ -4,8 +4,7 @@ if '__file__' in globals():
 import streamlit as st
 from LearnTorch_ALL.TeachImage.ShowLearningRate import gradient_descent_show
 
-print("Current working directory:", os.getcwd())
-st.set_page_config(page_title="学习率和迭代次数", page_icon="📊")
+st.set_page_config(page_title="学习率和迭代次数可视化", page_icon="📊")
 
 intro = '''学习率和迭代次数是深度学习训练的重要**超参数**
 
@@ -54,6 +53,6 @@ with container2:
     st.markdown("调节学习率和迭代次数试一下吧！")
     lr = st.slider("学习率：", 0.0, 1.0, 0.1)
     iters = st.slider("迭代次数：", 0, 100, 1)
-    file_path = st.text_input("文件保存路径", "../imgs")
+    file_path = st.text_input("文件保存路径", "./imgs")
     if st.button("启动训练", type="secondary",use_container_width=True):
         st.image(gradient_descent_show(lr = lr, iters = iters,fps=10,file_path = file_path))
