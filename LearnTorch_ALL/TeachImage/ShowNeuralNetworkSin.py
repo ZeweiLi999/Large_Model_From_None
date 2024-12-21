@@ -31,12 +31,12 @@ def linear_regression_visualization(lr, iters, fps, if_save, file_path):
     """
     # 数据准备
     np.random.seed(0)
-    x = np.random.rand(500, 1)
-    y = np.sin(2 * np.pi * x) + (np.random.rand(500, 1) * 2 - 1)
+    x = np.random.rand(10, 1)
+    y = np.sin(2 * np.pi * x) + (np.random.rand(10, 1) * 2 - 1)
     x, y = Variable(x), Variable(y)
 
     # 权重的初始化
-    I, H, O = 1, 10, 1
+    I, H, O = 1, 100, 1
     # I对应输入层的维度，H对应隐藏层维度，O对应输出层维度，H是超参数
     W1 = Variable(0.01 * np.random.randn(I, H))
     b1 = Variable(np.zeros(H))
@@ -118,4 +118,4 @@ def linear_regression_visualization(lr, iters, fps, if_save, file_path):
 
 if __name__ == "__main__":
     file_path = os.path.join(".", "Grad", "linear_regression_sin_small.gif")
-    linear_regression_visualization(lr=0.2, iters=1000, fps=30, if_save=False, file_path=file_path)
+    linear_regression_visualization(lr=0.8, iters=1000, fps=30, if_save=False, file_path=file_path)

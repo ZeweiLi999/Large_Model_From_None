@@ -1,0 +1,10 @@
+{
+  "robot": [
+    {
+      "name": "aa",
+      "model": "__pycache__",
+      "description": "\u6ca1\u6709\u63cf\u8ff0...",
+      "image": "./imgs/test_img.png"
+    }
+  ]
+}
