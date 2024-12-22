@@ -15,6 +15,7 @@ pages = {
         st.Page("Pages/3_GradDownVisual.py", title="梯度下降可视化", icon="📈"),
     ],
     "大模型教程": [
+        st.Page("Pages/9_Modelscope.py", title="魔搭社区微调教程", icon="🌅"),
         st.Page("Pages/7_Colab.py", title="Colab微调教程", icon="🧰"),
         st.Page("Pages/8_ShowLLM.py", title="低参数大模型对比", icon="🖥️"),
     ],
