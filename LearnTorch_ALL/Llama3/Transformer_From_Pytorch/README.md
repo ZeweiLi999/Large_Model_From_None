@@ -28,3 +28,5 @@
       - 是按照修改后的concat写法训练1000次后得到的模型，Loss也为3e-6
     - MyTransformer_fault.pth
       - 只训练了5个epoch的模型，用于验证所做的测试是有意义的（用此模型预测会出错）
+
+转载于BoXiaolei的github
