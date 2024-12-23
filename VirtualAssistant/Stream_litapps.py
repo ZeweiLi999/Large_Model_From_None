@@ -18,6 +18,7 @@ pages = {
         st.Page("Pages/9_Modelscope.py", title="魔搭社区微调教程", icon="🌅"),
         st.Page("Pages/7_Colab.py", title="Colab微调教程", icon="🧰"),
         st.Page("Pages/8_ShowLLM.py", title="低参数大模型对比", icon="🖥️"),
+        st.Page("Pages/10_Environment.py", title="CUDA pytorch环境安装教程", icon="🪁"),
     ],
     "应用-虚拟助手": [
         st.Page("Pages/4_CreateRobot.py", title="创建助手", icon="🤖"),
