@@ -8,11 +8,11 @@
 
 #### 1.1 首页如下：
 
-![image-20241211100122240](./model_finetuning/images/image-20241211100122240.png)
+![image-20241211100122240](./imgs/colab_images/image-20241211100122240.png)
 
 #### 1.2 在右上角有一个创建文件的按钮
 
-![image-20241211094249109](./model_finetuning/images/image-20241211094249109.png)
+![image-20241211094249109](./imgs/colab_images/image-20241211094249109.png)
 
 ### 2. 然后让我们创建一个 **Jupyter Notebook**文件😀：
 
@@ -20,17 +20,17 @@
 
 
 
-![image-20241211095226766](./model_finetuning/images/image-20241211095226766.png)
+![image-20241211095226766](./imgs/colab_images/image-20241211095226766.png)
 
-![image-20241211095250399](./model_finetuning/images/image-20241211095250399.png)
+![image-20241211095250399](./imgs/colab_images/image-20241211095250399.png)
 
 #### 2.2 创建的文件页面如下：
 
-![image-20241211100248580](./model_finetuning/images/image-20241211100248580.png)
+![image-20241211100248580](./imgs/colab_images/image-20241211100248580.png)
 
 #### 2.3 单击Untitled0.ipynb即可进行改名：
 
-![image-20241211100351462](./model_finetuning/images/image-20241211100351462.png)
+![image-20241211100351462](./imgs/colab_images/image-20241211100351462.png)
 
 ### 3. 将cpu更改为gpu😋：
 
@@ -38,41 +38,41 @@
 
 ​	
 
-![image-20241211095509138](./model_finetuning/images/image-20241211095509138.png)
+![image-20241211095509138](./imgs/colab_images/image-20241211095509138.png)
 
 #### 3.2 打开后出现以下界面，选择**T4 GPU**，点击保存
 
-![image-20241211095847692](./model_finetuning/images/image-20241211095847692.png)
+![image-20241211095847692](./imgs/colab_images/image-20241211095847692.png)
 
 #### 3.3 点击保存后点击右上角**连接T4**进行gpu连接
 
-![image-20241211100600432](./model_finetuning/images/image-20241211100600432.png)
+![image-20241211100600432](./imgs/colab_images/image-20241211100600432.png)
 
 
 
 #### 3.4 出现以下显示即表示连接成功
 
-![image-20241211100808130](./model_finetuning/images/image-20241211100808130.png)
+![image-20241211100808130](./imgs/colab_images/image-20241211100808130.png)
 
 ##  模型微调🤓
 
 ### 1. 代码执行教程🤩
 
-	#### 1.1 点击**+ 代码**进行添加
+#### 1.1 点击+代码进行添加
 
 
 
-![image-20241211101359455](./model_finetuning/images/image-20241211101359455.png)
+![image-20241211101359455](./imgs/colab_images/image-20241211101359455.png)
 
 #### 1.2 （提示）出现**绿色勾**就代表执行完成，以下代码全是再执行完上一步后进行下一步的操作
 
 
 
-![image-20241211231318825](./model_finetuning/images/image-20241211231318825.png)
+![image-20241211231318825](./imgs/colab_images/image-20241211231318825.png)
 
 #### 1.3 首先下载最新的`Unsloth`库，点击左侧的**运行按钮**，以下代码全部按照点击左侧运行按钮执行 😶‍🌫️
 
-![image-20241211102501876](./model_finetuning/images/image-20241211102501876.png)
+![image-20241211102501876](./imgs/colab_images/image-20241211102501876.png)
 
 ```
 %%capture
@@ -101,14 +101,14 @@ load_in_4bit = True
 
 # 支持的 4bit 预量化模型列表（直接在 Hugging Face 上可用）
 fourbit_models = [
-    "unslo./meta-Llama-3.1-8B-bnb-4bit",      # Llama-3.1 8B 参数模型（量化后 2 倍速度提升）
-    "unslo./meta-Llama-3.1-8B-Instruct-bnb-4bit", # 指令微调版本
-    "unslo./meta-Llama-3.1-70B-bnb-4bit",     # Llama-3.1 70B 参数模型
-    "unslo./meta-Llama-3.1-405B-bnb-4bit",    # Llama-3.1 超大模型（405B 参数）
-    "unslo./mistral-Nemo-Base-2407-bnb-4bit", # Mistral 12B 参数模型，速度更快
-    "unslo./mistral-Nemo-Instruct-2407-bnb-4bit", # Mistral 指令微调版本
-    "unslo./mistral-7b-v0.3-bnb-4bit",        # Mistral 7B 参数，v3 版本
-    "unslo./mistral-7b-instruct-v0.3-bnb-4bit", # Mistral 7B 指令微调版本
+    "unsloth/meta-Llama-3.1-8B-bnb-4bit",      # Llama-3.1 8B 参数模型（量化后 2 倍速度提升）
+    "unsloth/meta-Llama-3.1-8B-Instruct-bnb-4bit", # 指令微调版本
+    "unsloth/meta-Llama-3.1-70B-bnb-4bit",     # Llama-3.1 70B 参数模型
+    "unsloth/meta-Llama-3.1-405B-bnb-4bit",    # Llama-3.1 超大模型（405B 参数）
+    "unsloth/mistral-Nemo-Base-2407-bnb-4bit", # Mistral 12B 参数模型，速度更快
+    "unsloth/mistral-Nemo-Instruct-2407-bnb-4bit", # Mistral 指令微调版本
+    "unsloth/mistral-7b-v0.3-bnb-4bit",        # Mistral 7B 参数，v3 版本
+    "unsloth/mistral-7b-instruct-v0.3-bnb-4bit", # Mistral 7B 指令微调版本
     "unsloth/Phi-3.5-mini-instruct",           # Phi-3.5 小型指令微调版本
     "unsloth/Phi-3-medium-4k-instruct",        # Phi-3 中型指令版本，支持 4k 长度
     "unsloth/gemma-2-9b-bnb-4bit",             # Gemma 2 9B 参数模型
@@ -119,7 +119,7 @@ fourbit_models = [
 # 加载预训练模型和分词器
 model, tokenizer = FastLanguageModel.from_pretrained(
 	# 指定要加载的模型名称，可以根据需求选择自己需要的模型，除以上列表的模型外，还有很多种模型可以进行训练
-    model_name = "unslo./meta-Llama-3.1-8B",  
+    model_name = "unsloth/meta-Llama-3.1-8B",  
     max_seq_length = max_seq_length,          # 最大序列长度设置
     dtype = dtype,                            # 数据类型（自动或手动选择）
     load_in_4bit = load_in_4bit,              # 启用 4bit 量化加载
@@ -132,11 +132,11 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 
 ​	如下即基础模型下载完成
 
-![image-20241212131334061](./model_finetuning/images/image-20241212131334061.png)
+![image-20241212131334061](./imgs/colab_images/image-20241212131334061.png)
 
 #### 1.5 这段代码使用 `FastLanguageModel` 的 `get_peft_model` 方法来为基础模型添加 **PEFT (Parameter-Efficient Fine-Tuning)** 支持。PEFT 是一种轻量化微调技术，通过引入低秩近似（如 LoRA）和优化技巧来降低微调大语言模型的计算成本和显存需求🤩
 
-![image-20241211103837845](./model_finetuning/images/image-20241211103837845.png)
+![image-20241211103837845](./imgs/colab_images/image-20241211103837845.png)
 
 ```
 model = FastLanguageModel.get_peft_model(
@@ -165,7 +165,7 @@ model = FastLanguageModel.get_peft_model(
 
 #### 1.6 这段代码主要用于将一个 JSON 数据集格式化为模型训练或推理时所需的统一输入格式。通过使用 Alpaca 风格的指令式模板，结合每个样本的 `instruction`（指令）、`input`（上下文输入）和 `output`（期望的响应），生成适合模型处理的文本。同时，挂载 Google Drive 以便访问存储的数据集文件🙃
 
-![image-20241211104012054](./model_finetuning/images/image-20241211104012054.png)
+![image-20241211104012054](./imgs/colab_images/image-20241211104012054.png)
 
 ```
 # 定义任务模板，用于将指令、输入和响应格式化为完整的提示文本
@@ -285,7 +285,7 @@ trainer_stats = trainer.train()
 
 ​	如界面显示就是在训练过程之中会进行60步的训练，这个参数可以对1.7步骤中的**max_steps**进行修改
 
-![image-20241212131904301](./model_finetuning/images/image-20241212131904301.png)
+![image-20241212131904301](./imgs/colab_images/image-20241212131904301.png)
 
 #### 1.10 训练完成之后可以统计和显示训练过程中的内存使用情况以及所花费的时间，为调试和优化提供参考。
 
@@ -342,7 +342,7 @@ _ = model.generate(
 )
 ```
 
-![image-20241212132117281](./model_finetuning/images/image-20241212132117281.png)
+![image-20241212132117281](./imgs/colab_images/image-20241212132117281.png)
 
 #### 1.12 保存模型权重以及分词器 （推荐保存在云盘之中，在挂载云盘后保存权重以及分词器，后续可以进行下载，从而转为本地运行微调后的模型）😁
 
@@ -470,7 +470,7 @@ _ = model.generate(**inputs, streamer = text_streamer, max_new_tokens = 128)
 
 ##### 以下就是通过微调后产生的回答：
 
-![image-20241211231549018](./model_finetuning/images/image-20241211231549018.png)
+![image-20241211231549018](./imgs/colab_images/image-20241211231549018.png)
 
 ##  微调数据集🫡
 
