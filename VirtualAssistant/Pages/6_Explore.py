@@ -68,9 +68,9 @@ with open('./LLM/History.json', 'r') as f:
     data = json.load(f)
 
 # Streamlit 页面设置
-st.set_page_config(page_title="Explore Page", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="探索助手", page_icon="🥳", layout="wide")
 
-st.title("Explore Your Bots! 🤖")
+st.title("Explore Your Bots! 🥳")
 st.write("选择你喜欢的助手, 去和它聊天吧! 这里提供了默认助手和用户自定义的助手...")
 
 # 搜索框

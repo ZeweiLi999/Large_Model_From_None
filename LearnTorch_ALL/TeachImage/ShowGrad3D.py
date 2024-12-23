@@ -102,6 +102,11 @@ def visualize_rosenbrock_show(lr, iters, file_path, starting_point):
     - starting_point: Initial point for gradient descent
     """
     # Run gradient descent
+    filename = os.path.join(file_path,"3D_iter_{}_lr_{}_x_{}_y_{}.gif".format(iters, lr, starting_point[0], starting_point[1]))
+    if os.path.exists(filename):
+        # 如果已有，就不要再重新运行了
+        return filename
+
     history = gradient_descent_rosenbrock(starting_point, learning_rate=lr, n_iterations=iters)
 
     # Create a meshgrid for the surface plot

@@ -81,4 +81,5 @@ with container2:
     y = st.slider("Y初始点：", -5, 5, -1,key=8)
     file_path = st.text_input("文件保存路径", "./imgs",key=2)
     if st.button("启动训练", type="secondary",use_container_width=True,key=3):
+        st.divider()
         st.image(visualize_rosenbrock_show(lr = lr2, iters = iters2 ,file_path = file_path,starting_point=[x,y]))
