@@ -79,14 +79,17 @@ with container1:
 st.markdown("## 2.模型测评")
 container2 = st.container(border=True)
 with container2:
-    st.header("Qwen2.5-3B-instruct模型", divider=True)
+    st.header("Qwen2.5-3B-Instruct模型", divider=True)
     st.markdown("安全限制强，中文能力强，语言优美，讲故事能力强")
-    st.header("Qwen2.5-3B-code模型", divider=True)
+    st.image("./imgs/8_ShowLLM_imgs/Qwen2.5-3B-Instruct.png")
+    st.header("Qwen2.5-3B-Code模型", divider=True)
     st.markdown("专门为了写代码和修正代码设计的模型，"
                 "具体可参照技术报告 https://arxiv.org/pdf/2409.12186 ，"
                 "基本上每个回答都会有可复制的代码块")
-    st.header("LLama3.2-3B-instruct模型", divider=True)
+    st.image("./imgs/8_ShowLLM_imgs/Qwen2.5-3B-Code.png")
+    st.header("LLama3.2-3B-Instruct模型", divider=True)
     st.markdown("安全限制弱，中文能力一般，有时候讲中文会胡言乱语，需要中文加强微调，讲故事能力强")
+    st.image("./imgs/8_ShowLLM_imgs/LLama3.2-3B-Instruct.png")
 
 
 
