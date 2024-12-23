@@ -6,6 +6,7 @@ st.header("安装cuda 11.8🖥︎")
 st.subheader("1.首先查看自己电脑的CUDA版本，选择的Pytorch的CUDA版本要小于你实际安装的CUDA版本🖨")
 st.image("./Configure_Environment/img.png")
 st.subheader("2.通过阿里云镜像来下载所需要的pytorch版本🚁")
+st.image("./Configure_Environment/qwen.png")
 st.subheader("pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 -f https://mirrors.aliyun.com/pytorch-wheels/cu118")
 st.image("./Configure_Environment/pytorch.png")
 
