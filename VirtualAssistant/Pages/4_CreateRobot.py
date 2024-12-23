@@ -20,6 +20,7 @@ def vote(select_model,StringBotName):
         data[StringBotName]= {
             'model': select_model,
             "description": StringPrompt,
+            "start": StringStart,
             "image": f"./imgs/ChatImgs/{uploaded_file.name}"
         }
         with open('./LLM/History.json', 'w') as f:
@@ -55,6 +56,8 @@ if uploaded_file is not None:
     st.image(uploaded_file)
 
 StringPrompt = st.text_area("输入你的提示词")
+
+StringStart = st.text_area("输入你的开场白")
 
 create_button = st.button("开始创建")
 

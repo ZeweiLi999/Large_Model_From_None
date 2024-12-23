@@ -2,7 +2,6 @@ import streamlit as st
 import json
 import os
 
-
 def Get_path(dir="./LLM"):
     # 将相对路径转换为绝对路径
     dir = os.path.abspath(dir)
@@ -36,7 +35,7 @@ def delete(name):
         st.rerun()
 
 @st.dialog("修改虚拟助手信息")
-def update(name,model,description,image):
+def update(name,model,description,start,image):
     Assistantname = st.text_input("助手名称：",name)
     model_index = options.index(model)
     Assistantmodel = st.selectbox("模型：" , options, index = model_index)
@@ -44,6 +43,7 @@ def update(name,model,description,image):
     tarfile = image
     tarfile = os.path.basename(tarfile)
     img_index = files.index(tarfile)
+    AssistantStart = st.text_area("开场白：", start)
     Assistantimage = st.selectbox("聊天背景" + ':star2:', files, index = img_index)
     st.image("./imgs/ChatImgs/" + Assistantimage)
     col1, col2 , col3 , col4 = st.columns(4)
@@ -56,6 +56,7 @@ def update(name,model,description,image):
         data[Assistantname] = Assistant_data
         data[Assistantname]["model"] = Assistantmodel
         data[Assistantname]["description"] = Assistantdescription
+        data[Assistantname]["start"] = AssistantStart
         data[Assistantname]["image"] = "./imgs/ChatImgs/" + Assistantimage
         with open('./LLM/History.json', 'w') as f:
             json.dump(data, f, indent=2)
@@ -115,8 +116,17 @@ with st.container():
                     button2 = st.button(f"修改 {helper['name']} 助手",key=f"update_{helper['name']}",use_container_width=True)
                 with cols3:
                     button3 = st.button("删除助手",key=f"delete_{helper['name']}",use_container_width=True,type="primary")
+                if button1:
+                    # 存储选中的助手信息到会话状态
+                    st.session_state.modelname = helper['name']
+                    st.session_state.model = helper["model"]
+                    st.session_state.prompt = helper["description"]
+                    st.session_state.start = helper["start"]
+                    st.session_state.image = helper["image"]
+                    # 跳转到聊天页面
+                    st.switch_page("Pages/5_BeginChats.py")
                 if button2:
-                   update(helper['name'],helper['model'],helper["description"],helper["image"])
+                   update(helper['name'],helper['model'],helper["description"],helper["start"],helper["image"])
                 if button3:
                     delete(helper['name'])
 
