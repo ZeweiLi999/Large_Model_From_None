@@ -5,9 +5,10 @@ import streamlit as st
 
 st.set_page_config(page_title="计算图可视化", page_icon="🔠")
 
+intro_0 ='''
+### :star:1.理论学习
+'''
 intro_1 = '''
-#### :star: 知识学习
-
 导数广泛应用在现代科学技术的各个领域，尤其在包括深度学习在内的
 机器学习的各个领域，导数起着核心作用。 从某种意义上来说， 深度学习框
 架就是计算导数的工具。 因此，求导，即**自动微分**是深度学习框架中的重要部分。 这里所说的自动微分指的是由计算机(而不是人)来计算导数。
@@ -54,21 +55,31 @@ intro_9 = '''
 
 '''
 intro_12 = '''
-### :star: 可视化的加深理解
+### :star:2.可视化加深理解
 
 下面是一些简单的例子，对计算图可视化的具体实现。'''
 
+intro_13_1='''
+
+### :star:3.动手试一试
+
+'''
+
 intro_13 = '''
-### :star: 动手试一试
 
-LearnTouch作为自制深度学习框架，提供了ShowGradGraph文件，文件可支持将计算图转化为DOT语言格式，高效快速的实现对计算图的可视化。'''
+LearnTouch作为自制深度学习框架，提供了ShowGradGraph文件，文件可支持将计算图转化为DOT语言格式，高效快速的实现对计算图的可视化。
 
-# intro_10 = '''图中的变量a，它是在计算过程中出现的变量。通过上一个步骤可知，对于重复使用的同一变量，我们需要在反向传播时加上从输出端传来的导数。因此，要想求出$a$的导数，就要使用从$a$的输出端传来的两个导数。这两个导数传播出去之后，导数就可以从$a$向$x$传播了。
-# 因此，反向传播的流程就如图所示'''
-# intro_11 = '''上图是由变量$y$向$x$传播导数的流程。在向变量a传播两个导数之后，从a向$x$传播导数，也就是反向传播按照D、B、C、A或D、C、B、A的顺序进行。
-# 在进行函数A的反向传播之前，要先完成函数B和函数C的反向传播。在这个基础上，通过优化算法，我们可以实现更多复杂的计算图。
-#
-# 我们通过Graphviz实现的计算图的可视化，帮助你更好的理解与学习深度学习的内容！'''
+'''
+
+intro_14 = '''
+### :star:4.拓展
+'''
+
+intro_15 = '''
+了解主流深度学习框架如何运用计算图：
+- 1.pytorch如何构建计算图
+https://pytorch.ac.cn/blog/computational-graphs-constructed-in-pytorch/
+'''
 
 code_sphere = '''def sphere(x, y):
     z = x ** 2 + y ** 2
@@ -89,34 +100,32 @@ z = matyas(x, y)
 z.backward(retain_grad=True)'''
 
 st.markdown("# 计算图可视化🔠")
-st.markdown(intro_1)
-st.image("./imgs/GraphVisual/functions_computation_graph.png")
-st.markdown(intro_2)
-st.image("./imgs/GraphVisual/output_to_input.png")
-st.markdown(intro_3)
-st.image("./imgs/GraphVisual/o_t_i_graph.png")
-st.markdown(intro_4)
-st.image("./imgs/GraphVisual/o_t_i_computation_graph.png")
-st.markdown(intro_5)
-st.image("./imgs/GraphVisual/zhengfan.png")
-st.markdown(intro_6)
-st.markdown(intro_7)
-st.image("./imgs/GraphVisual/bizhide_jisuantu.png")
-st.markdown(intro_8)
-st.image("./imgs/GraphVisual/fuzadejisuantu1.png")
-st.markdown(intro_9)
-# st.image("./imgs/GraphVisual/cuwudejisuantu.png")
-# st.markdown(intro_10)
-# st.image("./imgs/GraphVisual/fanxiangchuanbodeshunxu.png")
-# st.markdown(intro_11)
+st.markdown(intro_0)
+container0 = st.container(border=True,key=0)
+with container0:
+    st.markdown(intro_1)
+    st.markdown("球体公式计算图可视化")
+    st.image("./imgs/1_GraphVisual/functions_computation_graph.png")
+    st.markdown(intro_2)
+    st.image("./imgs/1_GraphVisual/output_to_input.png")
+    st.markdown(intro_3)
+    st.image("./imgs/1_GraphVisual/o_t_i_graph.png")
+    st.markdown(intro_4)
+    st.image("./imgs/1_GraphVisual/o_t_i_computation_graph.png")
+    st.markdown(intro_5)
+    st.image("./imgs/1_GraphVisual/zhengfan.png")
+    st.markdown(intro_6)
+    st.markdown(intro_7)
+    st.image("./imgs/1_GraphVisual/bizhide_jisuantu.png")
+    st.markdown(intro_8)
+    st.image("./imgs/1_GraphVisual/fuzadejisuantu1.png")
+    st.markdown(intro_9)
 
-
+st.divider()
 st.markdown(intro_12)
-
-container1 = st.container(border=True)
+container1 = st.container(border=True,key=1)
 with container1:
     st.markdown("球体公式计算图可视化")
-
     st.image("../LearnTorch_ALL/TeachImage/CGMap/sphere_All.png")
     st.markdown("球体计算公式")
     st.code(code_sphere, language="python")
@@ -131,6 +140,19 @@ with container1:
     st.code(code_matyas_backward, language="python")
     st.markdown("matyas函数计算图可视化")
     st.image("../LearnTorch_ALL/TeachImage/CGMap/matyas_All.png")
-st.markdown(intro_13)
-st.image("./imgs/GraphVisual/微信图片_20241223201713.png")
 
+
+st.divider()
+st.markdown(intro_13_1)
+container2 = st.container(border=True,key=2)
+with container2:
+     st.markdown(intro_13)
+     st.image("./imgs/1_GraphVisual/showgraph.png")
+
+
+st.divider()
+st.markdown(intro_14)
+container3 = st.container(border=True,key=3)
+with container3:
+    st.markdown(intro_15)
+    st.image("./imgs/1_GraphVisual/pytorch_graph.png")

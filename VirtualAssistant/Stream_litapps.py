@@ -7,7 +7,7 @@ st.logo(sidebar_logo, icon_image=main_body_logo,size="large")
 
 pages = {
     "首页": [
-        st.Page("Pages/0_HomePages.py", title="介绍", icon="👨‍💻"),
+        st.Page("Pages/0_HomePages.py", title="LearnTorch介绍", icon="👨‍💻"),
  ],
     "基础教学-数据可视化": [
         st.Page("Pages/1_GraphVisual.py", title="计算图可视化", icon="🔠"),
