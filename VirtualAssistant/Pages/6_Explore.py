@@ -69,9 +69,9 @@ with open('./LLM/History.json', 'r') as f:
     data = json.load(f)
 
 # Streamlit 页面设置
-st.set_page_config(page_title="Explore Page", page_icon="🤖", layout="wide")
+st.set_page_config(page_title="探索助手", page_icon="🥳", layout="wide")
 
-st.title("Explore Your Bots! 🤖")
+st.title("Explore Your Bots! 🥳")
 st.write("选择你喜欢的助手, 去和它聊天吧! 这里提供了默认助手和用户自定义的助手...")
 
 # 搜索框
@@ -129,13 +129,3 @@ with st.container():
                    update(helper['name'],helper['model'],helper["description"],helper["start"],helper["image"])
                 if button3:
                     delete(helper['name'])
-
-
-
-# 底部logo部分
-st.markdown("---")
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image(r"./imgs/logo_learntorch(1).png", use_container_width=True)
-st.write("Powered by Streamlit and Hugging Face.")
-st.write("Explore AI Virtual Assistants Page")
