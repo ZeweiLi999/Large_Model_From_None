@@ -198,7 +198,7 @@ with container3:
     st.markdown("调节学习率和迭代次数试一下吧！")
     lr = st.slider("学习率：", 0.0, 1.0, 0.1)
     iters = st.slider("迭代次数：", 0, 100, 1)
-    file_path = st.text_input("文件保存路径", "./imgs")
+    file_path = st.text_input("文件保存路径", "./imgs/2_Lr_Iters/")
     if st.button("启动训练 🚀", type="secondary",use_container_width=True):
         st.write(f"🔍 正在训练模型：学习率 = {lr}, 迭代次数 = {iters} ...")
         st.image(gradient_descent_show(lr = lr, iters = iters,fps=10,file_path = file_path))
