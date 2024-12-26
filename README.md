@@ -213,7 +213,7 @@ graph TD
 ##### 魔搭社区微调：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/魔搭.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/魔搭.png" width="60%">
 </div>
 
 <br/>
