@@ -38,6 +38,7 @@ modelindex = 0
 
 if "modelname" in st.session_state:
     modeldata = list(data)
+
     st.session_state.messages = []
 
     if st.session_state.modelname in modeldata:
@@ -55,6 +56,7 @@ if "previous_option" not in st.session_state:
 if select_model != st.session_state.previous_option:
     st.session_state.previous_option = select_model  # 更新session_state
     st.session_state.messages = []
+
 
 col1,col2 = st.columns([5,1])
 with col2:

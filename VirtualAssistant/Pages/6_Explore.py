@@ -7,7 +7,9 @@ def Get_path(dir="./LLM"):
     dir = os.path.abspath(dir)
     print(dir)
     # 获取目录中的子目录
+
     return [file for file in os.listdir(dir) if os.path.isdir(os.path.join(dir, file)) and file != '__pycache__']
+
 
 options = Get_path()
 

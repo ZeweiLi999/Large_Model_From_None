@@ -9,7 +9,7 @@ with container1:
     st.code("在终端输入nvidia-smi，查看自己能安装的最大CUDA版本")
     st.image("./imgs/10_Environment/nvidia-smi.png")
     st.write("选择的Pytorch的CUDA版本要小于等于你实际安装的CUDA版本")
-
+    st.image("./imgs/10_Environment/img.png")
     st.subheader("1.2通过阿里云镜像来下载所需要的pytorch版本",divider=True)
     st.write("这是因为清华源没有CUDA版本的pytorch，会下载为cpu版本的pytorch")
     st.image("./imgs/10_Environment/qwen.png")

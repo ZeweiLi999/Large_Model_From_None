@@ -94,12 +94,15 @@ graph TD
 </div>
 
 #### (2.3)反复震荡
+
 <div align="center">
 	<img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Overfit_lr0.2_iters200_FPS10.gif">
 </div>
 
+
 ### (3)可视化梯度下降
 #### (3.1) 梯度下降优化对比牛顿法优化
+
 <img src="LearnTorch_ALL/TeachImage/Grad/GradV.S.Newton_small_iter_200_10_FPS10.gif">
 
 
