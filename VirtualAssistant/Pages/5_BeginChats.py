@@ -39,12 +39,24 @@ modelindex = 0
 if "modelname" in st.session_state:
     modeldata = list(data)
 
+    st.session_state.messages = []
+
     if st.session_state.modelname in modeldata:
         modelindex = modeldata.index(st.session_state.modelname)
 
 options = data.keys()
 
 select_model = st.selectbox("请选择你的助手" + ':star2:', options, index = modelindex)
+
+# 使用session_state来存储上次选择的值
+if "previous_option" not in st.session_state:
+    st.session_state.previous_option = select_model  # 初始化
+
+# 检查当前选项与上次选项是否不同
+if select_model != st.session_state.previous_option:
+    st.session_state.previous_option = select_model  # 更新session_state
+    st.session_state.messages = []
+
 
 col1,col2 = st.columns([5,1])
 with col2:

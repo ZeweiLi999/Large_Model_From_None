@@ -111,8 +111,6 @@ intro5 ='''
 
 - **图1：不同的学习率**
 
-    ![Learning Rate](https://raw.githubusercontent.com/terrifyzhao/terrifyzhao.github.io/master/assets/img/2019-05-23-%E5%AD%A6%E4%B9%A0%E7%8E%87Learning%20rate/pic1.jpg)
-
     在这个图中，步伐太大导致了更新过程的剧烈波动，甚至跳出了最优解的区域。
 '''
 
@@ -160,6 +158,7 @@ with container1:
     st.markdown(intro4)
     st.divider()
     st.markdown(intro5)
+    st.image("./imgs/2_Lr_Iters/pic1.jpg")
     st.divider()
     st.markdown(intro6)
 
