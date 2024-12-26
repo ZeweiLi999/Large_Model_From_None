@@ -1,64 +1,164 @@
+if '__file__' in globals():
+    import os, sys
+    sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+import os
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits import mplot3d  # 用于绘制3D图形
+from matplotlib.animation import FuncAnimation
+from LearnTorch import Variable
+import LearnTorch.Functions as F
 
+def rosenbrock(x, y):
+    """Rosenbrock function."""
+    return (1 - x)**2 +  (y - x**2)**2
 
-# 梯度函数的导数
-def gradJ1(theta):
-    return 4 * theta
+def gradient_descent_rosenbrock(starting_point, learning_rate=0.001, n_iterations=100):
+    """Perform gradient descent on the Rosenbrock function."""
+    x = Variable(np.array(starting_point[0], dtype=float))
+    y = Variable(np.array(starting_point[1], dtype=float))
+    history = [(x.data.copy(), y.data.copy())]  # Store the history of points
 
+    for _ in range(n_iterations):
+        # Compute the loss
+        loss = rosenbrock(x, y)
 
-def gradJ2(theta):
-    return 2 * theta
+        # Clear gradients and backpropagate
+        x.cleargrad()
+        y.cleargrad()
+        loss.backward()
 
+        # Update parameters
+        x.data -= learning_rate * x.grad.data
+        y.data -= learning_rate * y.grad.data
 
-# 梯度函数
-def f(x, y):
-    return 2 * x ** 2 + y ** 2
+        # Store current position
+        history.append((x.data.copy(), y.data.copy()))
 
+    return np.array(history)
 
-def ff(x, y):
-    return 2 * np.power(x, 2) + np.power(y, 2)
+def visualize_rosenbrock(lr, iters, file_path, starting_point):
+    """
+    Visualize gradient descent on the Rosenbrock function and save as a GIF.
 
+    Parameters:
+    - lr: Learning rate
+    - iters: Number of iterations
+    - file_path: Path to save the GIF
+    - starting_point: Initial point for gradient descent
+    """
+    # Run gradient descent
+    history = gradient_descent_rosenbrock(starting_point, learning_rate=lr, n_iterations=iters)
 
-def train(lr, epoch, theta1, theta2, up, dirc):
-    t1 = [theta1]
-    t2 = [theta2]
-    for i in range(epoch):
-        gradient = gradJ1(theta1)
-        theta1 = theta1 - lr * gradient
-        t1.append(theta1)
-        gradient = gradJ2(theta2)
-        theta2 = theta2 - lr * gradient
-        t2.append(theta2)
+    # Create a meshgrid for the surface plot
+    x1_range = np.linspace(-5, 5, 100)
+    x2_range = np.linspace(-5, 5, 100)
+    x1, x2 = np.meshgrid(x1_range, x2_range)
 
-    plt.figure(figsize=(10, 10))  # 设置画布大小
-    x = np.linspace(-3, 3, 30)
-    y = np.linspace(-3, 3, 30)
-    X, Y = np.meshgrid(x, y)
-    Z = f(X, Y)
-    ax = plt.axes(projection='3d')
-    fig = plt.figure()
-    # ax1 = plt.subplot(2, 1, 1)
-    # ax.plot_surface(X, Y, Z, rstride=1, cstride=1, cmap='viridis', edgecolor='none') #曲面图
-    # ax.plot_wireframe(X, Y, Z, color='c') #线框图
-    ax.contour3D(X, Y, Z, 50, cmap='binary')  # 等高线图
-    # fig =plt.figure()
-    # print(t1)
-    # print(ff(t1,t2)+10)
-    # ax1 = plt.subplot(2, 2, 1)
-    ax.scatter3D(t1, t2, ff(t1, t2)+3, c='r', marker='o')
-    # ax.plot3D(t1, t2,  ff(t1,t2),'red')
-    # 调整观察角度和方位角。这里将俯仰角设为60度，把方位角调整为35度
-    ax.view_init(up, dirc)
+    # Calculate Rosenbrock function values over the grid
+    Z = rosenbrock(x1, x2)
+
+    # Visualization setup
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Plot the Rosenbrock function surface
+    ax.plot_surface(x1, x2, Z, alpha=0.5, cmap='viridis')
+    ax.set_xlabel('X1')
+    ax.set_ylabel('X2')
+    ax.set_zlabel('Rosenbrock Function Value')
+
+    # Gradient descent path
+    line, = ax.plot([], [], [], color='red', label='Gradient Descent Path')
+    point, = ax.plot([], [], [], 'bo', label='Current Point')
+
+    def update(frame):
+        # Update the path and point for the current frame
+        line.set_data(history[:frame + 1, 0], history[:frame + 1, 1])
+        line.set_3d_properties(rosenbrock(history[:frame + 1, 0], history[:frame + 1, 1]))
+
+        # Wrap the current point in a sequence (list)
+        point.set_data([history[frame, 0]], [history[frame, 1]])
+        point.set_3d_properties([rosenbrock(history[frame, 0], history[frame, 1])])
+        ax.set_title(f'Iteration: {frame + 1}')
+        return line, point
+
+    ani = FuncAnimation(fig, update, frames=len(history), interval=100, blit=True)
+
+    # Save the animation as a GIF
+    ani.save(file_path, fps=10, writer='pillow', dpi=85)
+
+    print(f"GIF saved at {file_path}")
     plt.show()
 
 
+def visualize_rosenbrock_show(lr, iters, file_path, starting_point):
+    """
+    Visualize gradient descent on the Rosenbrock function and save as a GIF.
 
-# lr为学习率（步长） epoch为迭代次数   init_theta为初始参数的设置 up调整图片上下视角 dirc调整左右视角
-def visualize_gradient_descent(lr=0.05, epoch=10, init_theta1=-2, init_theta2=-3, up=45, dirc=100):
-    train(lr, epoch, init_theta1, init_theta2, up, dirc)
+    Parameters:
+    - lr: Learning rate
+    - iters: Number of iterations
+    - file_path: Path to save the GIF
+    - starting_point: Initial point for gradient descent
+    """
+    # Run gradient descent
+    filename = os.path.join(file_path,"3D_iter_{}_lr_{}_x_{}_y_{}.gif".format(iters, lr, starting_point[0], starting_point[1]))
+    if os.path.exists(filename):
+        # 如果已有，就不要再重新运行了
+        return filename
 
+    history = gradient_descent_rosenbrock(starting_point, learning_rate=lr, n_iterations=iters)
+
+    # Create a meshgrid for the surface plot
+    x1_range = np.linspace(-5, 5, 100)
+    x2_range = np.linspace(-5, 5, 100)
+    x1, x2 = np.meshgrid(x1_range, x2_range)
+
+    # Calculate Rosenbrock function values over the grid
+    Z = rosenbrock(x1, x2)
+
+    # Visualization setup
+    fig = plt.figure(figsize=(10, 8))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Plot the Rosenbrock function surface
+    ax.plot_surface(x1, x2, Z, alpha=0.5, cmap='viridis')
+    ax.set_xlabel('X1')
+    ax.set_ylabel('X2')
+    ax.set_zlabel('Rosenbrock Function Value')
+
+    # Gradient descent path
+    line, = ax.plot([], [], [], color='red', label='Gradient Descent Path')
+    point, = ax.plot([], [], [], 'bo', label='Current Point')
+
+    def update(frame):
+        # Update the path and point for the current frame
+        line.set_data(history[:frame + 1, 0], history[:frame + 1, 1])
+        line.set_3d_properties(rosenbrock(history[:frame + 1, 0], history[:frame + 1, 1]))
+
+        # Wrap the current point in a sequence (list)
+        point.set_data([history[frame, 0]], [history[frame, 1]])
+        point.set_3d_properties([rosenbrock(history[frame, 0], history[frame, 1])])
+        ax.set_title(f'Iteration: {frame + 1}')
+        return line, point
+
+    ani = FuncAnimation(fig, update, frames=len(history), interval=100, blit=True)
+
+    # Save the animation as a GIF
+    #ani.save(file_path, fps=10, writer='pillow', dpi=85)
+
+    filename = os.path.join(file_path, "3D_iter_{}_lr_{}_x_{}_y_{}.gif".format(iters, lr, starting_point[0], starting_point[1]))
+    ani.save(filename, fps=10, writer="pillow", dpi=85)
+
+    return filename
 
 if __name__ == "__main__":
-    visualize_gradient_descent(lr=0.05, epoch=10, init_theta1=-2, init_theta2=-3, up=60, dirc=35)
+    file_path = os.path.join("Grad", "gradient_descent_rosenbrock.gif")
+
+    # Example usage
+    visualize_rosenbrock(
+        lr=0.001,
+        iters=100,
+        file_path=file_path,
+        starting_point=[-3, -3]
+    )

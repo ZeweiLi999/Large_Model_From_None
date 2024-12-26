@@ -1,2 +1,5 @@
 .idea/*
 .vscode/*
+LearnTorch_ALL/LearnTorch/__pycache__/*.pyc
+VirtualAssistant/LLM/__pycache__/*.pyc
+LearnTorch_ALL/TeachImage/__pycache__/*.pyc
