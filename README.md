@@ -18,7 +18,7 @@
 **环境配置：进入到Large_Model_From_None目录，运行以下代码**
 
 ```
-pip install requirements.txt -r 
+pip install -r requirements.txt
 ```
 
 
