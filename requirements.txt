@@ -1,5 +1,5 @@
 # This file may be used to create an environment using:
 # platform: win-64
-matplotlib=3.9.4=pypi_0
-numpy=1.26.4=pypi_0
-streamlit=1.41.0=pypi_0
+matplotlib==3.9.4
+numpy==1.26.4
+streamlit==1.41.0
