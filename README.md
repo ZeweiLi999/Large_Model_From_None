@@ -8,19 +8,31 @@
 
 <br/>
 
-##### 项目启动：进入到 VirtualAssistant目录，运行以下代码
+使用LearnTorch进行可视化仅需三个引入库：
 
-<!-- 
+<div align="center">
+    <img src="./imgs/readme_import.PNG" width="60%" height="60%">
+</div>
+
+
+**环境配置：进入到Large_Model_From_None目录，运行以下代码**
+
+```
+pip install requirements.txt -r 
+```
+
+
+
+##### 项目启动：进入到 VirtualAssistant目录，运行以下代码
 
 ```代码语言
 streamlit run Stream_litapps.py
 ```
 
--->
-
 <br/>
 
 ## 1.项目介绍/Intro ![Static Badge](https://img.shields.io/badge/Intro-项目介绍-4B9D9D) 
+
 我们要实现的最终项目如下图所示：
 
 <img src="imgs/规划思维导图.PNG">
@@ -42,6 +54,7 @@ Large_Model_From_None
         ├─model_finetuning
         ├─Pages
 ```
+
 -->
 
 ```mermaid
@@ -64,11 +77,13 @@ graph TD
 
 
 ## 1.自制深度学习框架/LearnTorch ![Static Badge](https://img.shields.io/badge/LearnTorch-自制深度学习框架-0584E3) 
+
 <br/><br/><br/><br/>
 
 <div align=center>
 <img src=".\imgs\img_title-removebg.png">
 </div><br/><br/><br/>
+
 
 ### (1)自动微分
 
@@ -77,21 +92,26 @@ graph TD
         <img src="./LearnTorch_ALL/TeachImage/Grad/0_10_yx4.png" width="48%" height="48%">
 </div>
 
+
 ### (2)可视化计算图
+
 <img src="./LearnTorch_ALL/TeachImage/CGMap/sphere_All.png">
 
 ### (2)可视化学习率和迭代次数
+
 #### (2.1)优化慢
 
 <div align="center">
 	<img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Underfit_lr0.001_iters200_FPS10.gif">
 </div>
 
+
 #### (2.2)优化速度快
 
 <div align="center">
 	<img src="./LearnTorch_ALL/TeachImage/Grad/Gradient_Wellfit_lr0.085_iters200_FPS10.gif">
 </div>
+
 
 #### (2.3)反复震荡
 
@@ -101,26 +121,32 @@ graph TD
 
 
 ### (3)可视化梯度下降
+
 #### (3.1) 梯度下降优化对比牛顿法优化
 
 <img src="LearnTorch_ALL/TeachImage/Grad/GradV.S.Newton_small_iter_200_10_FPS10.gif">
 
 
 #### (3.2)线性回归梯度下降优化可视化
+
 <div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_small_iter_200_lr_0.1.gif">
 </div>
+
 
 <div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/linear_regression_sin_small_iter_10000_lr_0.2.gif">
 </div>
 
+
 #### (3.3)神经网络线性回归梯度下降优化可视化
+
 ##### (3.3.1)欠拟合
 
 <div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/underfitting_iter_10000_lr_0.5_H1_5_H2_5.gif">
 </div>
+
 
 ##### (3.3.2)良好拟合
 
@@ -128,11 +154,13 @@ graph TD
 <img src="LearnTorch_ALL/TeachImage/Grad/wellfitting_iter_10000_lr_0.5_H1_10_H2_5.gif">
 </div>
 
+
 ##### (3.3.3)过拟合
 
 <div align="center">
 <img src="LearnTorch_ALL/TeachImage/Grad/overfitting_iter_10000_lr_0.5_H1_15_H2_10.gif">
 </div>
+
 
 
 
@@ -156,8 +184,9 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/计算图可视化.png">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/计算图可视化.PNG">
 </div>
+
 
 #### 1.2 学习率和迭代次数可视化
 
@@ -166,8 +195,9 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/学习率和迭代次数可视化.png">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/学习率和迭代次数可视化.PNG">
 </div>
+
 
 #### 1.3 梯度下降可视化
 
@@ -175,7 +205,12 @@ graph TD
 
 <br/>
 
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/梯度下降可视化.png" width="60%">
+<div align="center">
+	<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/梯度下降可视化.PNG" width="60%">
+</div>
+
+
+
 
 
 
@@ -191,8 +226,9 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/安装教程.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/安装教程.PNG" width="60%">
 </div>
+
 
 
 #### 2.2 低参数大模型测评
@@ -202,8 +238,9 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/低参数大模型测评.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/低参数大模型测评.PNG" width="60%">
 </div>
+
 
 <br/>
 
@@ -216,16 +253,18 @@ graph TD
 ##### 魔搭社区微调：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/魔搭.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/魔搭.PNG" width="60%">
 </div>
+
 
 <br/>
 
 ##### colab微调：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/colab.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/colab.PNG" width="60%">
 </div>
+
 
 <br/>
 
@@ -236,8 +275,9 @@ graph TD
 #### 3.1 创建助手
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/创建助手.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/创建助手.PNG" width="60%">
 </div>
+
 
 <br/>
 
@@ -248,8 +288,9 @@ graph TD
 ##### 创建助手信息有缺：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/warning.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/warning.PNG" width="60%">
 </div>
+
 
 <br/>
 
@@ -257,8 +298,9 @@ graph TD
 ##### 创建助手名重复：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/exist.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/exist.PNG" width="60%">
 </div>
+
 
 <br/>
 
@@ -267,8 +309,9 @@ graph TD
 ##### 聊天页面：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/start.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/start.PNG" width="60%">
 </div>
+
 
 ##### 这一部分实现了选择与自己创建的私人助手进行聊天，同时也提供了输出限制，来控制模型输出的内容数量
 
@@ -277,16 +320,18 @@ graph TD
 ##### 与微调后的甄嬛模型聊天
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/chat.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/chat.PNG" width="60%">
 </div>
+
 
 <br/>
 
 #### 3.3 探索助手
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/explore.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/explore.PNG" width="60%">
 </div>
+
 
 ##### 这一部分提供了修改、删除私人助手的功能，同时上面的搜索框可以通过助手名和提示词来搜索你想要的模型，点击开始聊天按钮后会跳转到开始聊天页面与你选择的助手进行聊天
 
@@ -295,14 +340,16 @@ graph TD
 ##### 搜索助手：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/search.png" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/search.PNG" width="60%">
 </div>
+
 
 ##### 修改助手：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/update.png" width="30%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/update.PNG" width="30%">
 </div>
+
 
 <br/>
 
