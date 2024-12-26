@@ -184,7 +184,7 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/计算图可视化.PNG">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/计算图可视化.png">
 </div>
 
 
@@ -195,7 +195,7 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/学习率和迭代次数可视化.PNG">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/学习率和迭代次数可视化.png">
 </div>
 
 
@@ -206,7 +206,7 @@ graph TD
 <br/>
 
 <div align="center">
-	<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/梯度下降可视化.PNG" width="60%">
+	<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/梯度下降可视化.png" width="60%">
 </div>
 
 
@@ -226,7 +226,7 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/安装教程.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/安装教程.png" width="60%">
 </div>
 
 
@@ -238,7 +238,7 @@ graph TD
 <br/>
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/低参数大模型测评.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/低参数大模型测评.png" width="60%">
 </div>
 
 
@@ -253,7 +253,7 @@ graph TD
 ##### 魔搭社区微调：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/魔搭.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/魔搭.png" width="60%">
 </div>
 
 
@@ -262,7 +262,7 @@ graph TD
 ##### colab微调：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/colab.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/colab.png" width="60%">
 </div>
 
 
@@ -275,7 +275,7 @@ graph TD
 #### 3.1 创建助手
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/创建助手.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/创建助手.png" width="60%">
 </div>
 
 
@@ -288,7 +288,7 @@ graph TD
 ##### 创建助手信息有缺：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/warning.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/warning.png" width="60%">
 </div>
 
 
@@ -298,7 +298,7 @@ graph TD
 ##### 创建助手名重复：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/exist.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/exist.png" width="60%">
 </div>
 
 
@@ -309,7 +309,7 @@ graph TD
 ##### 聊天页面：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/start.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/start.png" width="60%">
 </div>
 
 
@@ -320,7 +320,7 @@ graph TD
 ##### 与微调后的甄嬛模型聊天
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/chat.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/chat.png" width="60%">
 </div>
 
 
@@ -329,7 +329,7 @@ graph TD
 #### 3.3 探索助手
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/explore.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/explore.png" width="60%">
 </div>
 
 
@@ -340,14 +340,14 @@ graph TD
 ##### 搜索助手：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/search.PNG" width="60%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/search.png" width="60%">
 </div>
 
 
 ##### 修改助手：
 
 <div align="center">
-<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/update.PNG" width="30%">
+<img src="./VirtualAssistant/imgs/VirtualAssistant_imgs/update.png" width="30%">
 </div>
 
 
